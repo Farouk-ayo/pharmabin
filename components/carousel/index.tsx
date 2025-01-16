@@ -53,7 +53,7 @@ export default function Carousel() {
         {cards.map((card, index) => (
           <SwiperSlide key={index}>
             <div className="relative z-10 text-center text-white max-w-5xl mx-auto py-16">
-              <p className="text-2xl md:text-4xl font-medium italic mb-4">
+              <p className="text-2xl md:text-4xl text-white font-medium italic mb-4">
                 “{card.quote}”
               </p>
               <p className="text-lg font-medium text-secondary">
