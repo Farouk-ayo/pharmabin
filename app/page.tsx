@@ -1,33 +1,15 @@
 import Badge from "@/components/badge";
 import Button from "@/components/buttons";
-import { Card } from "@/components/cards";
+import { Card, cards } from "@/components/cards";
 import Carousel from "@/components/carousel";
+import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
 import FaqSection from "@/components/faq";
+import GallerySection from "@/components/gallery";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
+import { DividerIcon } from "@/components/icons/divider";
 import Image from "next/image";
-
-const cards = [
-  {
-    image: "/community-3.png",
-    title: "The Future Of Pharmaceutical Waste Management In Our Homes",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-  },
-  {
-    image: "/community-2.png",
-    title: "What You Need To Know About Pharmaceutical Waste Disposal",
-    description:
-      "Learn about the proper ways to manage pharmaceutical waste effectively and safely...",
-  },
-  {
-    image: "/community-1.png",
-    title: "Are Expired & Unused Drugs Part Of Pharmaceutical Waste",
-    description:
-      "Understand how expired and unused medications contribute to pharmaceutical waste and their proper disposal methods...",
-  },
-];
 
 export default function Home() {
   return (
@@ -187,9 +169,11 @@ export default function Home() {
         </section>
       </section>
       <section
-        className="relative py-96 "
+        className="relative pt-96 "
         style={{
           backgroundImage: "url(./bg-community.svg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="container mx-auto px-6">
@@ -218,7 +202,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="py-20 flex flex-col lg:flex-row items-end gap-8 px-28">
+        <div className="py-20 flex flex-col lg:flex-row  gap-8 px-4 lg:px-28">
           <div className="w-full lg:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full">
             <Badge
               text="Frequently Asked Questions"
@@ -236,6 +220,46 @@ export default function Home() {
             </p>
           </div>
           <FaqSection />
+        </div>
+      </section>
+      <section className="bg-gradient-to-r from-[#157D18]/30 via-[#023022]/20 to-[#023022]/20 bg-[#023022]/10 md:bg-transparent  py-20 px-4 lg:px-28">
+        <div className=" w-full lg:w-[70%] mx-auto text-center mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-6 ">
+            See How Pharmacies Like Yours Are Getting Ride Of Their
+            Pharmaceutical Waste
+          </h1>
+          <DividerIcon />
+        </div>
+
+        <div className="mt-4 flex flex-col lg:flex-row gap-8">
+          <GallerySection />
+          <TestimonialSection />
+        </div>
+      </section>
+      <section className="relative  px-4 lg:px-28  flex items-center overflow-hidden">
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: "url(./community-slider.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />{" "}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/70 bg-[#157D18]/60 md:bg-transparent " />
+        <div className="relative z-10 text-center text-white w-full md:w-[50%] mx-auto py-16">
+          <p className="text-2xl md:text-4xl text-white font-semibold  mb-4">
+            Want To Know More About How PharmaBin Operate?
+          </p>
+          <p className="text-base my-4 font-medium text-white">
+            Your time is valuable, and we don&apos;t want to play hard to get.
+            You can either phone us directly on the details listed on our
+            contact page, or feel free to fill out this short form and one of
+            our team members will get back to you as quickly as possible.
+          </p>
+          <Button variant="secondary" className="text-black">
+            Join Us Now
+          </Button>
         </div>
       </section>
     </>

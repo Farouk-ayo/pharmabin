@@ -270,3 +270,74 @@ export const CheckMark = ({
     </svg>
   );
 };
+
+export const CrossIcon = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      width="49"
+      height="49"
+      viewBox="0 0 49 49"
+      fill={fill || "none"}
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_26_257)">
+        <path
+          d="M34.5599 34.5598C40.3689 28.7508 40.3689 19.3325 34.5599 13.5234C28.7508 7.71436 19.3325 7.71436 13.5234 13.5234C7.71438 19.3325 7.71438 28.7508 13.5234 34.5598C19.3325 40.3689 28.7508 40.3689 34.5599 34.5598Z"
+          fill="#023022"
+        />
+        <path
+          d="M18.3836 19.4999L20.1868 17.6968L30.2041 27.7141L28.401 29.5172L18.3836 19.4999Z"
+          fill="white"
+        />
+        <path
+          d="M18.3836 27.9999L28.401 17.9825L30.2041 19.7857L20.1868 29.803L18.3836 27.9999Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_26_257">
+          <rect
+            width="34"
+            height="34"
+            fill="white"
+            transform="translate(0 24.0416) rotate(-45)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const PlusIcon = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill={fill || "none"}
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17 31.875C25.2152 31.875 31.875 25.2152 31.875 17C31.875 8.78476 25.2152 2.125 17 2.125C8.78476 2.125 2.125 8.78476 2.125 17C2.125 25.2152 8.78476 31.875 17 31.875Z"
+        fill="#333333"
+        fillOpacity="0.25"
+      />
+      <path
+        d="M16.2917 9.91663H18.4167V24.0833H16.2917V9.91663Z"
+        fill="white"
+      />
+      <path
+        d="M9.91666 15.5833H24.0833V18.4166H9.91666V15.5833Z"
+        fill="white"
+      />
+    </svg>
+  );
+};

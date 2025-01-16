@@ -1,5 +1,26 @@
 import Image from "next/image";
 
+export const cards = [
+  {
+    image: "/community-3.png",
+    title: "The Future Of Pharmaceutical Waste Management In Our Homes",
+    description:
+      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
+  },
+  {
+    image: "/community-2.png",
+    title: "What You Need To Know About Pharmaceutical Waste Disposal",
+    description:
+      "Learn about the proper ways to manage pharmaceutical waste effectively and safely...",
+  },
+  {
+    image: "/community-1.png",
+    title: "Are Expired & Unused Drugs Part Of Pharmaceutical Waste",
+    description:
+      "Understand how expired and unused medications contribute to pharmaceutical waste and their proper disposal methods...",
+  },
+];
+
 interface CardProps {
   image: string;
   title: string;
