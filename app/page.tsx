@@ -1,6 +1,7 @@
 import Badge from "@/components/badge";
 import Button from "@/components/buttons";
 import Carousel from "@/components/carousel";
+import DisposalDiagram from "@/components/disposalDiagram";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import Image from "next/image";
@@ -9,7 +10,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className="px-4 lg:px-28 py-20 bg-white rounded-lg shadow-md relative z-10">
+      <section
+        className="px-4 lg:px-28 py-20 top-32  rounded-lg shadow-md relative z-10"
+        style={{
+          backgroundImage: "url(./bg-waste-land-1.svg)",
+        }}
+      >
         <div className="lg:w-[50%]">
           <Badge text="About Us" bgColor="bg-tertiary" className="mb-8" />
           <h1 className="text-3xl font-bold text-tertiary3 mb-6">
@@ -89,6 +95,20 @@ export default function Home() {
         </div>
       </section>
       <Carousel />
+      <section
+        className="px-4 lg:px-28 py-20 top-32 bg-white rounded-lg shadow-md relative z-10"
+        style={{
+          backgroundImage: "url(./bg-waste-land-2.svg)",
+        }}
+      >
+        <div className="lg:w-[50%]">
+          <Badge text="Why PharmaBin" bgColor="bg-tertiary" className="mb-8" />
+          <h1 className="text-3xl font-bold text-tertiary3 mb-6">
+            The Most Secure Pharmaceutical Waste Management In Nigeria
+          </h1>
+        </div>
+        <DisposalDiagram />
+      </section>
     </>
   );
 }

@@ -11,27 +11,24 @@ const cards = [
       "PharmaBin has opened my eyes to the rules and regulations that go along with all aspects of a healthcare facility. It makes compliance so easy.",
     author: "Pharm. Oluwabusayo Cyril",
     designation: "CEO Well-Land Pharmacy & Stores",
-    backgroundImage: "./community-slider1.png",
   },
   {
     quote:
-      "With PharmaBin’s innovative solutions, managing pharmaceutical waste has become effortless and secure for our facility.",
+      "PharmaBin has opened my eyes to the rules and regulations that go along with all aspects of a healthcare facility. It makes compliance so easy",
     author: "Dr. Adetola James",
     designation: "Medical Director, MedLife Clinic",
-    backgroundImage: "./community-slider2.png",
   },
   {
     quote:
-      "Thanks to PharmaBin, we have achieved compliance with all regulations while ensuring the safety of our patients.",
-    author: "Pharm. Olayemi Oladele",
-    designation: "Owner, CarePlus Pharmacy",
-    backgroundImage: "./community-slider3.png",
+      "This was disposal body has opened my eyes to the rules and regulations that go along with all aspects of a healthcare facility. It makes compliance so easy.",
+    author: "Dr. Johnson Bankole",
+    designation: "MD Lando Recycling Industrial Limited",
   },
 ];
 
 export default function Carousel() {
   return (
-    <div className="relative  px-4 lg:px-28  flex items-center overflow-hidden">
+    <div className="relative  px-4 lg:px-28 top-32  flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full"
         style={{
