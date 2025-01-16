@@ -8,7 +8,7 @@ import {
 
 export default function Header() {
   return (
-    <div className="relative top-32 px-4 lg:px-28 py-10 md:py-40 min-h-[600px] flex items-center overflow-hidden">
+    <div className="relative  md:top-32 px-4 lg:px-28 py-40 min-h-[600px] flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full"
         style={{
@@ -20,7 +20,7 @@ export default function Header() {
       />
       <div className="absolute inset-0 md:bg-gradient-to-r from-[#157D18]/90 via-[#157D18]/40 to-transparent bg-[#157D18]/60 md:bg-transparent " />
 
-      <div className="relative w-full md:w-[70%] text-left p-5 md:p-10 flex flex-col gap-5">
+      <div className="relative w-full md:w-[90%] text-left p-5 md:p-10 flex flex-col gap-5">
         <div className="absolute top-0 left-0 ">
           <TopLeftIcon />
         </div>
@@ -36,7 +36,7 @@ export default function Header() {
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
           Secure Your Pharmaceutical Waste With Our Disposal Services
         </h1>
-        <p className="text-base md:text-lg text-medium text-white">
+        <p className="text-sm md:text-lg text-medium text-white">
           PharmaBin pharmaceutical waste collection systems are leading a new
           wave of pharmaceutical containers designed first and foremost to
           PROTECT. With built-in security features that prevent tampering and

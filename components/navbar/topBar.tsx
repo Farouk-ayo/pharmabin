@@ -5,7 +5,7 @@ import { FacebookIcon, InstagramIcon, WhatsappIcon, XIcon } from "../icons";
 
 const TopBar: React.FC = () => {
   return (
-    <div className="bg-primaryDark text-white py-3 px-5 lg:px-28 flex flex-col md:flex-row justify-between items-center text-sm">
+    <div className=" hidden md:flex bg-primaryDark text-white py-3 px-5 lg:px-28  sm:flex-col md:flex-row justify-between items-center text-sm">
       <div className="flex items-center space-x-2">
         <div className="flex items-center space-x-4">
           <PhoneCallIcon className="w-4 h-4" />
