@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { MenuIcon, XIcon } from "lucide-react";
-import Button from "../buttons/button";
+import Button from "../buttons";
 import TopBar from "./topBar";
 
 export default function Navbar() {

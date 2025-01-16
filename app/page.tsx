@@ -1,5 +1,7 @@
-import Badge from "@/components/badge/badge";
-import Header from "@/components/header/header";
+import Badge from "@/components/badge";
+import Button from "@/components/buttons";
+import Carousel from "@/components/carousel";
+import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import Image from "next/image";
 
@@ -7,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className="px-4 lg:px-28 py-40 bg-white rounded-lg shadow-md relative z-10">
+      <section className="px-4 lg:px-28 py-20 bg-white rounded-lg shadow-md relative z-10">
         <div className="lg:w-[50%]">
           <Badge text="About Us" bgColor="bg-tertiary" className="mb-8" />
           <h1 className="text-3xl font-bold text-tertiary3 mb-6">
@@ -78,17 +80,15 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="mt-8">
-              <a
-                href="#"
-                className="inline-block bg-yellow-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-yellow-600"
-              >
+            <div className="mt-2">
+              <Button variant="secondary" className="text-black">
                 More About Us
-              </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
+      <Carousel />
     </>
   );
 }

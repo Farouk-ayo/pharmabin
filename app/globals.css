@@ -13,3 +13,17 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+  border-radius: 0.5rem !important;
+}
+.swiper-pagination-bullet {
+  height: 0.4rem !important;
+  background-color: #fff !important;
+}
+
+.swiper-pagination-bullets {
+  position: absolute !important;
+  bottom: 10px !important;
+}

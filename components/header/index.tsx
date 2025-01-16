@@ -1,4 +1,4 @@
-import Button from "../buttons/button";
+import Button from "../buttons";
 import {
   BottomLeftIcon,
   BottomRightIcon,
@@ -18,7 +18,7 @@ export default function Header() {
           backgroundRepeat: "no-repeat",
         }}
       />
-      <div className="absolute inset-0 md:bg-gradient-to-r from-[#157D18]/90 via-[#157D18]/40 to-transparent bg-[#157D18]/60 md:bg-transparent " />
+      <div className="absolute inset-0 md:bg-gradient-to-r from-[#157D18]/90 via-[#157D18]/50 to-transparent bg-[#157D18]/60 md:bg-transparent " />
 
       <div className="relative w-full md:w-[90%] text-left p-5 md:p-10 flex flex-col gap-5">
         <div className="absolute top-0 left-0 ">

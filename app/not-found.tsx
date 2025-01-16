@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/components/navbar/navbar";
+import Navbar from "@/components/navbar";
 import TopBar from "@/components/navbar/topBar";
 import Link from "next/link";
 
