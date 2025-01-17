@@ -52,7 +52,7 @@ const TestimonialSection = () => {
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="relative z-10 text-center text-primary  flex flex-col gap-2 lg:gap-20 h-full pb-20 md:pb-10">
+            <div className="relative z-10 text-center text-primary  flex flex-col gap-2 lg:gap-20 h-full py-20 md:py-10">
               <p className="text-xl md:text-2xl italic mb-6">
                 &quot;{testimonial.quote}&quot;
               </p>
