@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <Header />
       <section
-        className="px-4 lg:px-28 py-20 top-32 relative z-10"
+        className="px-4 lg:px-28 md:py-20 top-10 md:top-32 relative z-10"
         style={{
           backgroundImage: "url(./bg-waste-land-1.svg)",
         }}
@@ -224,14 +224,14 @@ export default function Home() {
       </section>
       <section className="bg-gradient-to-r from-[#157D18]/30 via-[#023022]/20 to-[#023022]/20 bg-[#023022]/10 md:bg-transparent  py-20 px-4 lg:px-28">
         <div className=" w-full lg:w-[70%] mx-auto text-center mb-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-6 ">
+          <h1 className="text-2xl md:text-4xl font-bold text-primary mb-6 ">
             See How Pharmacies Like Yours Are Getting Ride Of Their
             Pharmaceutical Waste
           </h1>
           <DividerIcon />
         </div>
 
-        <div className="mt-4 flex flex-col lg:flex-row gap-8">
+        <div className="mt-4 flex flex-col lg:flex-row lg:gap-8">
           <GallerySection />
           <TestimonialSection />
         </div>

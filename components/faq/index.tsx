@@ -76,7 +76,7 @@ const FaqSection = () => {
                 onClick={() => toggleFaq(index)}
                 className="w-full text-left p-4 flex justify-between items-center text-gray-800 font-medium"
               >
-                <span className="text-tertiary3 text-xl font-semibold">
+                <span className="text-tertiary3 text-lg font-semibold">
                   {item.question}
                 </span>
                 <div className="text-2xl">

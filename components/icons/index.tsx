@@ -341,3 +341,61 @@ export const PlusIcon = ({
     </svg>
   );
 };
+
+export const ArrowRight = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      {...props}
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      fill={fill || "none"}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="20"
+        cy="20"
+        r="20"
+        transform="rotate(-180 20 20)"
+        fill="#BB8300"
+      />
+      <path
+        d="M18 14.72L22.3467 19.0667C22.86 19.58 22.86 20.42 22.3467 20.9334L18 25.28"
+        stroke="white"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const ArrowLeft = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      {...props}
+      fill={fill || "none"}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="20" cy="20" r="19.5" stroke="#BB8300" />
+      <path
+        d="M22 25.28L17.6533 20.9333C17.14 20.42 17.14 19.58 17.6533 19.0666L22 14.72"
+        stroke="#BB8300"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};

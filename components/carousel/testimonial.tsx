@@ -3,7 +3,9 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { ArrowLeft, ArrowRight } from "../icons";
 
 const TestimonialSection = () => {
   const testimonials = [
@@ -27,20 +29,30 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <div className="relative w-full md:w-1/2">
+    <div className="relative w-full mx-auto md:w-1/2 ">
       <Swiper
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination, Autoplay, Navigation]}
         spaceBetween={30}
         centeredSlides={true}
         slidesPerView={1}
+        navigation={{
+          prevEl: ".custom-prev",
+          nextEl: ".custom-next",
+        }}
         loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true,
+          el: ".custom-pagination",
+          bulletClass:
+            "inline-block h-2 w-2 mx-1 rounded-full bg-gray-400 cursor-pointer transition-all duration-300",
+          bulletActiveClass: "!bg-black",
+        }}
         className="h-full"
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="relative z-10 text-center text-primary p-8 flex flex-col justify-center h-full">
+            <div className="relative z-10 text-center text-primary  flex flex-col gap-2 lg:gap-20 h-full pb-20 md:pb-10">
               <p className="text-xl md:text-2xl italic mb-6">
                 &quot;{testimonial.quote}&quot;
               </p>
@@ -53,6 +65,15 @@ const TestimonialSection = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <div className="custom-pagination absolute bottom-0  left-1/2 -translate-y-1/2 z-20" />
+
+      <button className="custom-prev absolute left-0 bottom-0 z-20 p-2 hover:opacity-75 transition-opacity">
+        <ArrowLeft />
+      </button>
+      <button className="custom-next absolute right-0 bottom-0 z-20 p-2 hover:opacity-75 transition-opacity">
+        <ArrowRight />
+      </button>
     </div>
   );
 };
