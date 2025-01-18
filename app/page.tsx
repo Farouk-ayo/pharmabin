@@ -9,6 +9,7 @@ import GallerySection from "@/components/gallery";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
+import { services } from "@/lib/data";
 import Image from "next/image";
 
 export default function Home() {
@@ -67,27 +68,14 @@ export default function Home() {
 
             <div>
               <ul className="text-textPrimary flex flex-col gap-2">
-                <li className="flex items-center gap-3">
-                  <CheckMark className=" w-12 h-12 " />
-                  <span>
-                    <strong>Secure pickups</strong> with PharmaBin’s own trucks
-                    and drivers, no third parties
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckMark className=" w-12 h-12 " />
-                  <span>
-                    <strong>Compliance Reporting</strong> of waste collection,
-                    treatment, and destruction
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckMark className=" w-12 h-12 " />
-                  <span>
-                    <strong>Education material</strong> that helps patients and
-                    practitioners on waste disposal
-                  </span>
-                </li>
+                {services.map((service, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <CheckMark className=" w-12 h-12 " />
+                    <span>
+                      <strong>{service.title}</strong> {service.description}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -234,32 +222,6 @@ export default function Home() {
         <div className="mt-4 flex flex-col lg:flex-row lg:gap-8">
           <GallerySection />
           <TestimonialSection />
-        </div>
-      </section>
-      <section className="relative  px-4 lg:px-28  flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: "url(./community-slider.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />{" "}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/70 bg-[#157D18]/60 md:bg-transparent " />
-        <div className="relative z-10 text-center text-white w-full md:w-[50%] mx-auto py-16">
-          <p className="text-2xl md:text-4xl text-white font-semibold  mb-4">
-            Want To Know More About How PharmaBin Operate?
-          </p>
-          <p className="text-base my-4 font-medium text-white">
-            Your time is valuable, and we don&apos;t want to play hard to get.
-            You can either phone us directly on the details listed on our
-            contact page, or feel free to fill out this short form and one of
-            our team members will get back to you as quickly as possible.
-          </p>
-          <Button variant="secondary" className="text-black">
-            Join Us Now
-          </Button>
         </div>
       </section>
     </>

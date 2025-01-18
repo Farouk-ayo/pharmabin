@@ -67,11 +67,14 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="w-full lg:w-1/2">
+    <section className="w-full bg-transparent">
       <div className="">
         <div className="">
           {faqData.map((item, index) => (
-            <div key={index} className="border-b   border-gray-300 bg-white ">
+            <div
+              key={index}
+              className="border-b   border-gray-300 bg-transparent "
+            >
               <button
                 onClick={() => toggleFaq(index)}
                 className="w-full text-left p-4 flex justify-between items-center text-gray-800 font-medium"
