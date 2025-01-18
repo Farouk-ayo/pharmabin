@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
 }) => {
   const baseStyles =
-    "px-2 py-2 sm:px-5 sm:py-4 rounded-md font-semibold transition-all duration-200 ease-in-out text-sm sm:text-lg ";
+    "px-2 py-2 sm:px-5 py-4 rounded-md font-semibold transition-all duration-200 ease-in-out text-sm sm:text-lg ";
 
   const variantStyles: Record<string, string> = {
     primary: "bg-primary hover:bg-tertiary",

@@ -66,11 +66,10 @@ const TestimonialSection = () => {
         ))}
       </Swiper>
 
-      <div className="custom-pagination absolute bottom-0  left-1/2 -translate-y-1/2 z-20" />
-
       <button className="custom-prev absolute left-0 bottom-0 z-20 p-2 hover:opacity-75 transition-opacity">
         <ArrowLeft />
       </button>
+      <div className="custom-pagination absolute bottom-0  left-[50%] -translate-y-1/2 z-20" />
       <button className="custom-next absolute right-0 bottom-0 z-20 p-2 hover:opacity-75 transition-opacity">
         <ArrowRight />
       </button>

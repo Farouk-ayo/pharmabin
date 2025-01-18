@@ -67,21 +67,21 @@ export default function Home() {
 
             <div>
               <ul className="text-textPrimary flex flex-col gap-2">
-                <li className="flex items-start gap-3">
+                <li className="flex items-center gap-3">
                   <CheckMark className=" w-12 h-12 " />
                   <span>
                     <strong>Secure pickups</strong> with PharmaBin’s own trucks
                     and drivers, no third parties
                   </span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-center gap-3">
                   <CheckMark className=" w-12 h-12 " />
                   <span>
                     <strong>Compliance Reporting</strong> of waste collection,
                     treatment, and destruction
                   </span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-center gap-3">
                   <CheckMark className=" w-12 h-12 " />
                   <span>
                     <strong>Education material</strong> that helps patients and

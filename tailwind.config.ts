@@ -17,6 +17,7 @@ export default {
         tertiary2: "#02302240",
         tertiary3: "#023022",
         textPrimary: "#333333",
+        bgPrimary: "##F4F4F4",
       },
     },
   },
