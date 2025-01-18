@@ -1,6 +1,11 @@
 import Link from "next/link";
 
-const LinkSection = ({ title, links }) => {
+interface LinkSectionProps {
+  title: string;
+  links: string[];
+}
+
+const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
   return (
     <div>
       <h3 className="text-xl font-bold text-primary mb-4">{title}</h3>
