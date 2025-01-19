@@ -1,3 +1,4 @@
+import DisposalDiagram from "@/components/disposalDiagram/disposalDiagram";
 import FaqSection from "@/components/faq";
 import Header from "@/components/header/header";
 import { CheckMark } from "@/components/icons";
@@ -17,7 +18,7 @@ const AboutUs = () => {
       <Header
         title="About Us"
         description={
-          <p className="text-sm md:text-lg text-medium text-white">
+          <p className="text-base md:text-lg text-medium text-white">
             Welcome to PharmaBin, an online resource to help you find medication
             disposal programs at an independent community pharmacy in your
             neighborhood. This public service program is presented by the 
@@ -37,7 +38,7 @@ const AboutUs = () => {
           </div>
 
           <div className="space-y-6 text-textPrimary">
-            <p className="text-sm md:text-base lg:text-lg text-center">
+            <p className="text-base md:text-base lg:text-lg text-center">
               Welcome to PharmaBin, an online resource to help you find
               medication disposal programs at an independent community pharmacy
               in your neighborhood. This public service program is presented by
@@ -47,7 +48,7 @@ const AboutUs = () => {
               </strong>
             </p>
 
-            <p className="text-sm md:text-base lg:text-lg text-center">
+            <p className="text-base md:text-base lg:text-lg text-center">
               PharmaBin pharmaceutical solutions are designed for healthcare
               facilities to efficiently manage pharmaceutical waste. Our
               comprehensive services include waste characterization, staff
@@ -56,13 +57,13 @@ const AboutUs = () => {
               for pharmacies to create medication disposal programs to help
               their patients safely dispose of unused and expired medicines.
             </p>
-            <p className="text-sm md:text-base lg:text-lg text-center">
+            <p className="text-base md:text-base lg:text-lg text-center">
               Managed by the ACPN, this program is designed to help independent
               community pharmacies protect their patients and the environment
               while potentially attracting new patients through a low-cost,
               turn-key program.
             </p>
-            <p className="text-sm md:text-base lg:text-lg text-center font-semibold text-primary">
+            <p className="text-base md:text-base lg:text-lg text-center font-semibold text-primary">
               Our security focus also extends to our services, we deliver:
             </p>
           </div>
@@ -105,6 +106,7 @@ const AboutUs = () => {
         }}
       >
         <div className="container mx-auto px-6 py-14">
+          <DisposalDiagram />
           <div className="text-center my-12 w-full md:w-[90%] mx-auto">
             <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
               See Answers To Some Frequently Asked Questions
