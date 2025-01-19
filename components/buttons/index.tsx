@@ -4,12 +4,14 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "tertiary";
   children: React.ReactNode;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   href?: string;
   className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
   variant = "primary",
+  type = "button",
   children,
   onClick,
   href,
@@ -37,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button onClick={onClick} className={combinedStyles}>
+    <button onClick={onClick} className={combinedStyles} type={type}>
       {children}
     </button>
   );

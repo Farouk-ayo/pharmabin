@@ -183,6 +183,7 @@ export default function Home() {
             {recentCards.map((card, index) => (
               <Card
                 key={index}
+                id={card.id}
                 image={card.image}
                 title={card.title}
                 description={card.description}

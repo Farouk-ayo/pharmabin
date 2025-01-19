@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowLeftIcon, ArrowRightIcon } from "../icons";
 
 interface PaginationProps {
   currentPage: number;
@@ -25,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({
             : "text-gray-700"
         }`}
       >
-        &lt;
+        <ArrowLeftIcon />
       </button>
 
       {/* Page Numbers */}
@@ -68,7 +69,7 @@ const Pagination: React.FC<PaginationProps> = ({
             : "text-gray-700"
         }`}
       >
-        &gt;
+        <ArrowRightIcon />
       </button>
     </div>
   );

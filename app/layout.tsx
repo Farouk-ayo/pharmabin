@@ -31,7 +31,7 @@ export default function RootLayout({
           <div
             className="absolute inset-0 w-full h-full"
             style={{
-              backgroundImage: "url(./community-slider.png)",
+              backgroundImage: "url(/community-slider.png)",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",

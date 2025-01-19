@@ -28,12 +28,14 @@ export const XIcon = ({
 
 export const WhatsappIcon = ({
   stroke,
+  fill,
   ...props
-}: ReactSVGProps & { stroke?: string }) => {
+}: ReactSVGProps & { stroke?: string; fill?: string }) => {
   return (
     <svg
       width="13"
       height="14"
+      fill={fill || "none"}
       stroke={stroke || "currentColor"}
       viewBox="0 0 13 14"
       {...props}
@@ -507,6 +509,56 @@ export const TwitterIcon = ({
       <path
         d="M0.930921 0.888672L8.73848 12.0424L0.881714 21.1109H2.6501L9.52884 13.1711L15.0865 21.1109H21.1039L12.8569 9.32992L20.17 0.888672H18.4016L12.0669 8.20084L6.94838 0.888672H0.930921ZM3.53141 2.28026H6.2958L18.5031 19.7193H15.7387L3.53141 2.28026Z"
         fill="#157D18"
+      />
+    </svg>
+  );
+};
+
+export const ArrowLeftIcon = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      width="9"
+      height="16"
+      viewBox="0 0 9 16"
+      fill={fill || "none"}
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7.50003 14.6L2.0667 9.16669C1.42503 8.52502 1.42503 7.47503 2.0667 6.83336L7.50003 1.40002"
+        stroke="#858585"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const ArrowRightIcon = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      width="9"
+      height="16"
+      {...props}
+      viewBox="0 0 9 16"
+      fill={fill || "none"}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.49997 1.39997L6.9333 6.83331C7.57497 7.47498 7.57497 8.52497 6.9333 9.16664L1.49997 14.6"
+        stroke="#858585"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
