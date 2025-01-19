@@ -48,7 +48,7 @@ export default function Header() {
         </p>
         <div className="flex space-x-2 md:space-x-4">
           <Button variant="secondary">
-            <a href="/book-now">Register With Us Now</a>
+            <a href="#">Register With Us Now</a>
           </Button>
           <Button
             variant="tertiary"

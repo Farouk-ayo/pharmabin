@@ -3,7 +3,7 @@ import MapComponent from "@/components/map";
 import React from "react";
 import PharmacyDirectory from "./pharmaDir";
 
-const AboutUs = () => {
+const CollectionPoints = () => {
   return (
     <section className="">
       <Header
@@ -47,4 +47,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default CollectionPoints;
