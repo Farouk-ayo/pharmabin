@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import Button from "../buttons";
 import {
   BottomLeftIcon,
@@ -7,6 +9,8 @@ import {
 } from "../icons";
 
 export default function Header() {
+  const route = useRouter();
+
   return (
     <div className="relative  md:top-32 px-4 lg:px-28 py-40 min-h-[600px] flex items-center overflow-hidden">
       <div
@@ -46,7 +50,11 @@ export default function Header() {
           <Button variant="secondary">
             <a href="/book-now">Register With Us Now</a>
           </Button>
-          <Button variant="tertiary" className="text-white">
+          <Button
+            variant="tertiary"
+            className="text-white"
+            onClick={() => route.push("/collection-points")}
+          >
             View Collection Location Near You
           </Button>
         </div>

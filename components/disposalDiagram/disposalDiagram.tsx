@@ -88,7 +88,7 @@ const DisposalDiagram = () => {
   ];
 
   return (
-    <div className="w-full mx-auto py-10">
+    <div className="w-full mx-auto py-10 lg:inline-block hidden">
       <h1 className="text-2xl font-bold text-center text-tertiary3 mb-12">
         Why PharmaBin Pharmaceutical Waste Management
       </h1>
