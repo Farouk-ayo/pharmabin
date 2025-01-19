@@ -31,7 +31,7 @@ export default function Navbar() {
       <TopBar />
       <div className=" py-2 flex justify-between items-center px-5  lg:px-28 ">
         <Link href={"/"}>
-          <div className=" relative flex items-center  w-48  md:w-full h-20  ">
+          <div className=" relative flex items-center  w-48  md:w-52 h-20  ">
             <img
               src="/pharmabin-logo.svg"
               alt="pharmabin"

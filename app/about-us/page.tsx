@@ -18,7 +18,7 @@ const AboutUs = () => {
       <Header
         title="About Us"
         description={
-          <p className="text-base md:text-lg text-medium text-white">
+          <p className="text-lg text-medium text-white">
             Welcome to PharmaBin, an online resource to help you find medication
             disposal programs at an independent community pharmacy in your
             neighborhood. This public service program is presented by the 

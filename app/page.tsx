@@ -1,6 +1,6 @@
 import Badge from "@/components/badge";
 import Button from "@/components/buttons";
-import { Card, cards } from "@/components/cards";
+import { Card } from "@/components/cards";
 import Carousel from "@/components/carousel";
 import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
@@ -9,7 +9,7 @@ import GallerySection from "@/components/gallery";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
-import { services } from "@/lib/data";
+import { recentCards, services } from "@/lib/data";
 import Image from "next/image";
 
 export default function Home() {
@@ -180,7 +180,7 @@ export default function Home() {
 
           {/* Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cards.map((card, index) => (
+            {recentCards.map((card, index) => (
               <Card
                 key={index}
                 image={card.image}
