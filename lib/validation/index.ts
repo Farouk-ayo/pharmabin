@@ -22,6 +22,24 @@ export const stepTwoSchema = z.object({
 
 export const formSchema = stepOneSchema.merge(stepTwoSchema);
 
+export const customerServiceSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters long"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters long"),
+  emailAddress: z.string().email("Invalid email address"),
+  phoneNumber: z
+    .string()
+    .min(10, "Phone number must be at least 10 digits")
+    .max(15, "Phone number must be at most 15 digits"),
+  organizationName: z
+    .string()
+    .min(3, "Organization name must be at least 3 characters long"),
+  Message: z.string().min(10, "Message must be at least 10 characters long"),
+  newsUpdates: z.boolean().optional(),
+});
+
+// TypeScript type inference for the schema
+export type CustomerServiceFormInputs = z.infer<typeof customerServiceSchema>;
+
 export type StepOneInputs = z.infer<typeof stepOneSchema>;
 export type StepTwoInputs = z.infer<typeof stepTwoSchema>;
 export type FormInputs = z.infer<typeof formSchema>;

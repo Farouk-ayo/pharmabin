@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const StepThreeForm = () => {
   return (
-    <div className="flex flex-col justify-between items-center gap-4 py-8 ">
+    <div className="flex flex-col justify-center h-full items-center gap-4 py-8 ">
       <h2 className="text-xl font-semibold mb-2">Thank You!</h2>
       <div className="relative flex items-center w-56 md:w-full h-20">
         <Image priority src="/success.svg" alt="pharmabin" layout="fill" />

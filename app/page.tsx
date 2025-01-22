@@ -1,3 +1,4 @@
+"use client";
 import Badge from "@/components/badge";
 import Button from "@/components/buttons";
 import { Card } from "@/components/cards";
@@ -10,6 +11,7 @@ import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
 import { recentCards, services } from "@/lib/data";
+import { showToast } from "@/lib/util";
 import Image from "next/image";
 
 export default function Home() {
@@ -24,7 +26,10 @@ export default function Home() {
       >
         <div className="lg:w-[50%]">
           <Badge text="About Us" bgColor="bg-tertiary" className="mb-8" />
-          <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
+          <h1
+            className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6"
+            onClick={() => showToast.success("Hello")}
+          >
             The Industry Leader In Pharmaceutical Waste Management
           </h1>
         </div>

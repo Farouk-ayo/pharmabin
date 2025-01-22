@@ -14,3 +14,15 @@ export interface RegisteredUser {
   updatedAt?: string;
   __v?: number;
 }
+
+export interface CustomerService {
+  _id?: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  organizationName: string;
+  Message: string;
+  createdAt?: string;
+  updatedAt?: string;
+}

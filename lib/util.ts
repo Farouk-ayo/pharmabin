@@ -22,7 +22,7 @@ export const showToast = {
     toast.success(message, {
       ...defaultOptions,
       ...options,
-      style: { background: "#10B981", color: "white" },
+      style: { background: "#28a745", color: "white" },
     });
   },
 
@@ -30,7 +30,7 @@ export const showToast = {
     toast.error(message, {
       ...defaultOptions,
       ...options,
-      style: { background: "#EF4444", color: "white" },
+      style: { background: "#ff5722", color: "white" },
     });
   },
 
@@ -46,7 +46,7 @@ export const showToast = {
     toast.info(message, {
       ...defaultOptions,
       ...options,
-      style: { background: "#3B82F6", color: "white" },
+      style: { background: "#1e88e5", color: "white" },
     });
   },
 
