@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +13,7 @@ interface StepTwoProps {
   onNext: (data: StepTwoInputs) => void;
   onBack: () => void;
   defaultValues?: Partial<StepTwoInputs>;
+  isLoading?: boolean;
 }
 
 interface SelectOption {
@@ -19,7 +21,12 @@ interface SelectOption {
   label: string;
 }
 
-const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
+const StepTwoForm = ({
+  onNext,
+  onBack,
+  defaultValues,
+  isLoading,
+}: StepTwoProps) => {
   const [availableLGAs, setAvailableLGAs] = useState<SelectOption[]>([]);
 
   // Format states for react-select
@@ -39,7 +46,7 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
     defaultValues,
   });
 
-  const selectedState = watch("state");
+  const selectedState = watch("State");
 
   // Update LGAs when state changes
   useEffect(() => {
@@ -59,9 +66,9 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
 
   // Set initial state and LGAs if defaultValues exist
   useEffect(() => {
-    if (defaultValues?.state) {
+    if (defaultValues?.State) {
       const selected = nigeriaStates.find(
-        (state) => state.state.id.toString() === defaultValues.state
+        (state) => state.state.id.toString() === defaultValues.State
       );
       if (selected) {
         const lgaOptions = selected.state.locals.map((lga) => ({
@@ -103,13 +110,13 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
           Pharmacy/Company/Organisation Name
         </label>
         <input
-          {...register("businessName")}
+          {...register("organizationName")}
           placeholder="Enter business name"
           className="w-full border px-4 py-2 rounded-md"
         />
-        {errors.businessName && (
+        {errors.organizationName && (
           <span className="text-sm text-red-500">
-            {errors.businessName.message}
+            {errors.organizationName.message}
           </span>
         )}
       </div>
@@ -120,14 +127,12 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
             Pharmacy/Company/Organisation Address/City
           </label>
           <input
-            {...register("businessAddress")}
+            {...register("City")}
             placeholder="Enter business address"
             className="w-full border px-4 py-2 rounded-md"
           />
-          {errors.businessAddress && (
-            <span className="text-sm text-red-500">
-              {errors.businessAddress.message}
-            </span>
+          {errors.City && (
+            <span className="text-sm text-red-500">{errors.City.message}</span>
           )}
         </div>
         <div>
@@ -135,7 +140,7 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
             Pharmacy/Company/Organisation State
           </label>
           <Controller
-            name="state"
+            name="State"
             control={control}
             render={({ field }) => (
               <Select
@@ -151,8 +156,8 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
               />
             )}
           />
-          {errors.state && (
-            <span className="text-sm text-red-500">{errors.state.message}</span>
+          {errors.State && (
+            <span className="text-sm text-red-500">{errors.State.message}</span>
           )}
         </div>
       </div>
@@ -163,7 +168,7 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
             Pharmacy/Company/Organisation Local Govt
           </label>
           <Controller
-            name="lga"
+            name="localGovt"
             control={control}
             render={({ field }) => (
               <Select
@@ -181,8 +186,10 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
               />
             )}
           />
-          {errors.lga && (
-            <span className="text-sm text-red-500">{errors.lga.message}</span>
+          {errors.localGovt && (
+            <span className="text-sm text-red-500">
+              {errors.localGovt.message}
+            </span>
           )}
         </div>
         <div>
@@ -191,6 +198,11 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
           </label>
           <input
             {...register("zipCode")}
+            type="text"
+            pattern="\d*"
+            onInput={(e) => {
+              e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
+            }}
             placeholder="Enter zip code"
             className="w-full border px-4 py-2 rounded-md"
           />
@@ -207,7 +219,7 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
           Others (What do you want to dispose? Any special time?)
         </label>
         <textarea
-          {...register("otherDetails")}
+          {...register("Others")}
           className="w-full p-2 border rounded-md resize-none"
           rows={3}
           placeholder="Enter other details"
@@ -218,7 +230,7 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
         <Button
           type="submit"
           isDisabled={isSubmitting}
-          isLoading
+          isLoading={isLoading}
           className="text-white w-full"
         >
           Continue

@@ -1,63 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronDown, Phone, Mail, MapPin } from "lucide-react";
-
-type Pharmacy = {
-  id: string;
-  name: string;
-  address: string;
-  phone: string;
-  email: string;
-  area: string;
-};
-
-type LocalArea = {
-  id: string;
-  name: string;
-};
-
-const localAreas: LocalArea[] = [
-  { id: "ife-central", name: "Ife Central" },
-  { id: "ife-east", name: "Ife East" },
-  { id: "ife-north", name: "Ife North" },
-  { id: "ife-south", name: "Ife South" },
-  { id: "atakumosa-east", name: "Atakumosa East" },
-  // Add other areas...
-];
-
-const pharmacies: Pharmacy[] = [
-  {
-    id: "1",
-    name: "Campus Pharmacy 1",
-    address:
-      "Opposite SU Building, Obafemi Awolowo University, Ile-Ife, Osun State",
-    phone: "09035539042",
-    email: "campuspharm@gmail.com",
-    area: "ife-central",
-  },
-  {
-    id: "2",
-    name: "Ooni Of Ile Palace",
-    address:
-      "Opposite SU Building, Obafemi Awolowo University, Ile-Ife, Osun State",
-    phone: "09035539042",
-    email: "campuspharm@gmail.com",
-    area: "ife-central",
-  },
-  // Add other pharmacies...
-];
+import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
+import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
 
 const PharmacyDirectory = () => {
+  const { data: pharmacies = [], isLoading } = useGetRegisterUsers();
   const [selectedState, setSelectedState] = useState("Osun State");
-  const [selectedArea, setSelectedArea] = useState<string>("");
+  const [selectedArea, setSelectedArea] = useState<string>("Ife Central");
   const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
+  const [localAreas, setLocalAreas] = useState<{ name: string; id: number }[]>(
+    []
+  );
 
-  const filteredPharmacies = selectedArea
-    ? pharmacies.filter((pharmacy) => pharmacy.area === selectedArea)
-    : pharmacies;
+  // Update local areas when the selected state changes
+  useEffect(() => {
+    const stateData = nigeriaStates.find(
+      (state) => state.state.name === selectedState
+    );
+    if (stateData) {
+      setLocalAreas(stateData.state.locals);
+      // Default to the first local area in the list
+      setSelectedArea(stateData.state.locals[0]?.name || "");
+    }
+  }, [selectedState]);
+
+  const filteredPharmacies = pharmacies.filter(
+    (pharmacy) =>
+      pharmacy.State === selectedState && pharmacy.localGovt === selectedArea
+  );
 
   return (
-    <div className=" mx-auto px-4 lg:px-28 py-8">
+    <div className="mx-auto px-4 lg:px-28 py-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div className="flex items-center gap-5 justify-center mx-auto">
@@ -77,15 +51,18 @@ const PharmacyDirectory = () => {
         <div className="relative">
           {isStateDropdownOpen && (
             <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-              <button
-                className="w-full text-left px-4 py-2 hover:bg-gray-100"
-                onClick={() => {
-                  setSelectedState("Osun State");
-                  setIsStateDropdownOpen(false);
-                }}
-              >
-                Osun State
-              </button>
+              {nigeriaStates.map((state) => (
+                <button
+                  key={state.state.id}
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                  onClick={() => {
+                    setSelectedState(state.state.name);
+                    setIsStateDropdownOpen(false);
+                  }}
+                >
+                  {state.state.name}
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -101,9 +78,9 @@ const PharmacyDirectory = () => {
               {localAreas.map((area) => (
                 <button
                   key={area.id}
-                  onClick={() => setSelectedArea(area.id)}
+                  onClick={() => setSelectedArea(area.name)}
                   className={`w-full text-left px-3 py-2 rounded-md transition-colors ${
-                    selectedArea === area.id
+                    selectedArea === area.name
                       ? "bg-green-100 text-green-700"
                       : "hover:bg-gray-100"
                   }`}
@@ -117,35 +94,45 @@ const PharmacyDirectory = () => {
 
         {/* Pharmacy Listings */}
         <div className="lg:col-span-3">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {filteredPharmacies.map((pharmacy) => (
-              <div
-                key={pharmacy.id}
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-green-600 mb-2">
-                  {pharmacy.name}
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-start gap-2">
-                    <MapPin
-                      size={16}
-                      className="mt-1 flex-shrink-0 text-gray-400"
-                    />
-                    <p className="text-gray-600">{pharmacy.address}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone size={16} className="text-gray-400" />
-                    <p className="text-gray-600">Phone No: {pharmacy.phone}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail size={16} className="text-gray-400" />
-                    <p className="text-gray-600">Email: {pharmacy.email}</p>
+          {isLoading ? (
+            <p>Loading pharmacies...</p>
+          ) : filteredPharmacies.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {filteredPharmacies.map((pharmacy) => (
+                <div
+                  key={pharmacy._id}
+                  className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                >
+                  <h3 className="font-semibold text-green-600 mb-2">
+                    {pharmacy.organizationName}
+                  </h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-start gap-2">
+                      <MapPin
+                        size={16}
+                        className="mt-1 flex-shrink-0 text-gray-400"
+                      />
+                      <p className="text-gray-600">{pharmacy.City}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone size={16} className="text-gray-400" />
+                      <p className="text-gray-600">
+                        Phone No: {pharmacy.phoneNumber}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail size={16} className="text-gray-400" />
+                      <p className="text-gray-600">
+                        Email: {pharmacy.emailAddress}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <p>No pharmacies found for this selection.</p>
+          )}
         </div>
       </div>
     </div>

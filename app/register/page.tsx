@@ -1,14 +1,26 @@
 "use client";
-
 import React, { useState } from "react";
 import StepOneForm from "./components/stepOne";
 import StepTwoForm from "./components/stepTwo";
 import StepThreeForm from "./components/stepThree";
 import { FormInputs, StepOneInputs, StepTwoInputs } from "@/lib/validation";
+import { usePostRegister } from "@/lib/hooks/api/mutations";
 
 const Page = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<Partial<FormInputs>>({});
+  const [formData, setFormData] = useState<FormInputs>({
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    organizationName: "",
+    City: "",
+    State: "",
+    localGovt: "",
+    zipCode: 0,
+    Others: "",
+  });
+  const postRegister = usePostRegister();
 
   const handleStepOneSubmit = (data: StepOneInputs) => {
     setFormData((prev) => ({
@@ -18,12 +30,24 @@ const Page = () => {
     setStep(2);
   };
 
-  const handleStepTwoSubmit = (data: StepTwoInputs) => {
+  const handleStepTwoSubmit = async (data: StepTwoInputs) => {
     setFormData((prev) => ({
       ...prev,
       ...data,
     }));
-    setStep(3);
+
+    const completeFormData = { ...formData, ...data };
+
+    postRegister.mutate(completeFormData, {
+      onSuccess: () => {
+        setStep(3);
+      },
+      onError: (error: Error) => {
+        console.error("Error registering user:", error);
+        console.log(completeFormData);
+        console.log("Error registering user:", error);
+      },
+    });
   };
 
   const renderStepContent = () => {
@@ -33,10 +57,10 @@ const Page = () => {
           <StepOneForm
             onNext={handleStepOneSubmit}
             defaultValues={{
-              firstName: formData.firstName || "",
-              lastName: formData.lastName || "",
-              email: formData.email || "",
-              phone: formData.phone || "",
+              firstName: formData.firstName,
+              lastName: formData.lastName,
+              emailAddress: formData.emailAddress,
+              phoneNumber: formData.phoneNumber,
             }}
           />
         );
@@ -45,13 +69,14 @@ const Page = () => {
           <StepTwoForm
             onNext={handleStepTwoSubmit}
             onBack={() => setStep(1)}
+            isLoading={postRegister.isPending}
             defaultValues={{
-              businessName: formData.businessName || "",
-              businessAddress: formData.businessAddress || "",
-              state: formData.state || "",
-              lga: formData.lga || "",
-              zipCode: formData.zipCode || "",
-              otherDetails: formData.otherDetails || "",
+              organizationName: formData.organizationName,
+              City: formData.City,
+              State: formData.State,
+              localGovt: formData.localGovt,
+              zipCode: formData.zipCode,
+              Others: formData.Others,
             }}
           />
         );
@@ -63,13 +88,13 @@ const Page = () => {
   };
 
   return (
-    <div className="w-full  bg-white  py-8">
+    <div className="w-full bg-white py-8">
       <div className="flex items-center justify-center mb-8">
         {[1, 2, 3].map((currentStep) => (
           <React.Fragment key={currentStep}>
             <div
               className={`
-                w-8 h-8 rounded-full flex items-center justify-center text-sm  font-bold
+                w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
                 ${
                   currentStep === step
                     ? "bg-primary text-white"
@@ -83,7 +108,7 @@ const Page = () => {
             </div>
             {currentStep < 3 && (
               <div
-                className={`flex-1 h-0.5 mx-2 border-t-2  font-semibold border-dashed
+                className={`flex-1 h-0.5 mx-2 border-t-2 font-semibold border-dashed
                   ${currentStep < step ? "border-primary" : "border-gray-200"}
                 `}
               />

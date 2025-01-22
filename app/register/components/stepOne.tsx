@@ -57,13 +57,15 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
           Email Address
         </label>
         <input
-          {...register("email")}
+          {...register("emailAddress")}
           type="email"
           placeholder="Enter email address"
           className="w-full border px-4 py-2 rounded-md "
         />
-        {errors.email && (
-          <span className="text-sm text-red-500">{errors.email.message}</span>
+        {errors.emailAddress && (
+          <span className="text-sm text-red-500">
+            {errors.emailAddress.message}
+          </span>
         )}
       </div>
 
@@ -72,13 +74,15 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
           Phone Number
         </label>
         <input
-          {...register("phone")}
+          {...register("phoneNumber")}
           type="tel"
           placeholder="Enter phone number"
           className="w-full border px-4 py-2 rounded-md "
         />
-        {errors.phone && (
-          <span className="text-sm text-red-500">{errors.phone.message}</span>
+        {errors.phoneNumber && (
+          <span className="text-sm text-red-500">
+            {errors.phoneNumber.message}
+          </span>
         )}
       </div>
 
