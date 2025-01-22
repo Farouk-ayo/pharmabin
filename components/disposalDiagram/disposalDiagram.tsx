@@ -96,15 +96,30 @@ const DisposalDiagram = () => {
       <div className="grid grid-cols-3 gap-16 relative">
         <div className="col-start-2 row-start-2 w-80 h-80 mx-auto relative">
           <div className="   ">
-            <Image src={"/ellipse-3.svg"} alt="ellipse" layout="fill" />
+            <Image
+              priority
+              src={"/ellipse-3.svg"}
+              alt="ellipse"
+              layout="fill"
+            />
           </div>
 
           <div className="">
-            <Image src={"/ellipse-2.svg"} alt="ellipse" layout="fill" />
+            <Image
+              priority
+              src={"/ellipse-2.svg"}
+              alt="ellipse"
+              layout="fill"
+            />
           </div>
 
           <div className="  ">
-            <Image src={"/ellipse-1.svg"} alt="ellipse" layout="fill" />
+            <Image
+              priority
+              src={"/ellipse-1.svg"}
+              alt="ellipse"
+              layout="fill"
+            />
           </div>
           {items.map((item) => (
             <LineWithArrow

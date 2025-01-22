@@ -13,7 +13,14 @@ export const Card: React.FC<CardProps> = ({
   id,
 }) => (
   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col justify-between">
-    <Image src={image} alt={title} className="" width={1000} height={500} />
+    <Image
+      src={image}
+      alt={title}
+      className=""
+      width={1000}
+      height={500}
+      priority
+    />
     <div className="p-6 flex-col flex justify-between items-center text-center">
       <h3 className="text-xl font-bold text-green-800 mb-2">{title}</h3>
       <p className="text-gray-600 mb-4">{description}</p>

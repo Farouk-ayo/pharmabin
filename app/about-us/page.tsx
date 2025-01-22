@@ -90,6 +90,7 @@ const AboutUs = () => {
               layout="responsive"
               objectFit="cover"
               className="rounded-lg"
+              priority
               width={300}
               height={100}
             />{" "}

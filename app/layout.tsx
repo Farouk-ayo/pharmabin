@@ -48,7 +48,7 @@ export default function RootLayout({
               contact page, or feel free to fill out this short form and one of
               our team members will get back to you as quickly as possible.
             </p>
-            <Button variant="secondary" className="text-black">
+            <Button variant="secondary" className="text-black" href="/register">
               Join Us Now
             </Button>
           </div>

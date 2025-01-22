@@ -107,15 +107,15 @@ const DisposalDiagram: React.FC = () => {
       {/* Right side circular diagram */}
       <div className="relative w-96 h-96">
         <div className="   rounded-full ">
-          <Image src={"/ellipse-3.svg"} alt="ellipse" layout="fill" />
+          <Image priority src={"/ellipse-3.svg"} alt="ellipse" layout="fill" />
         </div>
 
         <div className="">
-          <Image src={"/ellipse-2.svg"} alt="ellipse" layout="fill" />
+          <Image priority src={"/ellipse-2.svg"} alt="ellipse" layout="fill" />
         </div>
 
         <div className="  ">
-          <Image src={"/ellipse-1.svg"} alt="ellipse" layout="fill" />
+          <Image priority src={"/ellipse-1.svg"} alt="ellipse" layout="fill" />
         </div>
 
         {/* Numbers around the circle */}

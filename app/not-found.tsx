@@ -1,39 +1,45 @@
 "use client";
+import Button from "@/components/buttons";
 import Navbar from "@/components/navbar";
 import TopBar from "@/components/navbar/topBar";
-import Link from "next/link";
+import Image from "next/image";
 
 const NotFound = () => {
   return (
-    <>
+    <section className="w-full">
       <Navbar />
       <TopBar />
-      <div className="top-24 relative flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="text-center max-w-md md:max-w-full p-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-            Oops! <span className="text-primary">You are lost</span>
+      <div className="relative flex flex-col-reverse lg:flex-row items-center justify-between min-h-screen bg-gradient-to-b from-[#eafbf500] to-[#157D1861] px-6 md:px-16 lg:px-28 w-full py-20">
+        {/* Left Content */}
+        <div className="text-center lg:text-left max-w-lg lg:max-w-xl">
+          <h1 className="text-6xl md:text-9xl font-bold text-primary mb-4">
+            404
           </h1>
-          <p className="text-black mb-8">
-            Looks like the page you&apos;re looking for doesn&apos;t exist. But
-            don&apos;t worry, we&apos;ve got plenty of other things for you to
-            explore.
+          <h2 className="text-2xl md:text-5xl font-semibold text-gray-800 mb-4">
+            Page Not Found
+          </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Sorry, the page you’re looking for does not exist or has been moved.
+            Please go back to the Home page.
           </p>
-          <div className="w-full max-w-xs mx-auto mb-8">
-            {/* <img
-              src="/404.svg"
-              alt="404 Error Illustration"
-              className="w-full h-auto"
-            /> */}
-          </div>
-          <Link
-            href="/"
-            className="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-blue-700 transition"
-          >
-            Go back home
-          </Link>
+          <Button href="/" variant="secondary" className="">
+            Go Back Home
+          </Button>
+        </div>
+
+        {/* Right Content */}
+        <div className="relative flex-shrink-0 w-full lg:w-1/2 h-[300px] md:h-[400px] lg:h-[500px]">
+          <Image
+            src="/404.svg"
+            alt="404 Error Icon"
+            className="object-contain"
+            layout="fill"
+            priority={true}
+          />
         </div>
       </div>
-    </>
+    </section>
   );
 };
+
 export default NotFound;

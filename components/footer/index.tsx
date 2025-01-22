@@ -24,7 +24,7 @@ const Footer = () => {
           className="hover:fill-primary transition-colors duration-300"
         />
       ),
-      url: "https://www.facebook.com/profile.php?id=61563409156552",
+      url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
     },
     {
       name: "Instagram",
@@ -36,7 +36,7 @@ const Footer = () => {
           className="hover:stroke-primary transition-colors duration-300"
         />
       ),
-      url: "https://www.instagram.com/gswift.official",
+      url: "https://www.instagram.com/pharmabin?utm_source=qr&igsh=MTc2MTh5MHBjaDR3bg==",
     },
     {
       name: "TikTok",
@@ -49,7 +49,7 @@ const Footer = () => {
           className="hover:fill-primary transition-colors duration-300"
         />
       ),
-      url: "https://vt.tiktok.com/ZGe78yaob/",
+      url: "https://vm.tiktok.com/ZMkx6G17D/",
     },
     {
       name: "X",
@@ -59,7 +59,7 @@ const Footer = () => {
           className="hover:fill-primary transition-colors duration-300"
         />
       ),
-      url: "https://x.com/GSwift_official",
+      url: "https://x.com/pharmabin1?t=gHx2rchT87XsIhBxdce0LQ&s=08",
     },
     {
       name: "LinkedIn",
@@ -69,7 +69,7 @@ const Footer = () => {
           className="hover:text-primary transition-colors duration-300"
         />
       ),
-      url: "https://www.linkedin.com/in/g-swift-165052322/",
+      url: "https://www.linkedin.com/company/pharmabin-ng/",
     },
   ];
   const quickLinks = ["Home", "About Us", "Articles", "Contact Us"];
@@ -89,7 +89,7 @@ const Footer = () => {
           <LinkSection title="Legal Links" links={legalLinks} />
           <ContactInfo />
         </div>
-        <CopyRight/>
+        <CopyRight />
       </div>
     </footer>
   );

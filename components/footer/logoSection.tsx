@@ -12,9 +12,14 @@ interface SocialLink {
 const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
   return (
     <div className="lg:col-span-1">
-      <Link href={"/"}>
+      <Link href={"/"} target="_blank" rel="noopener noreferrer">
         <div className="relative flex items-center w-56 md:w-full h-20">
-          <Image src="/pharmabin-logo.svg" alt="pharmabin" layout="fill" />
+          <Image
+            priority
+            src="/pharmabin-logo.svg"
+            alt="pharmabin"
+            layout="fill"
+          />
         </div>
       </Link>
       <p className="text-base text-gray-600 my-6">

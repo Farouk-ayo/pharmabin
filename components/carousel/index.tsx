@@ -28,7 +28,7 @@ const cards = [
 
 export default function Carousel() {
   return (
-    <div className="relative  px-4 lg:px-28 top-32  flex items-center overflow-hidden">
+    <div className="relative w-full h-full px-4 lg:px-28 flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full"
         style={{
@@ -37,8 +37,8 @@ export default function Carousel() {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-      />{" "}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/70 bg-[#157D18]/60 md:bg-transparent " />
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/70 bg-[#157D18]/50 md:bg-transparent" />
       <Swiper
         modules={[Pagination, Autoplay]}
         spaceBetween={30}
@@ -48,11 +48,11 @@ export default function Carousel() {
         loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        className="h-full relative"
+        className="h-full"
       >
         {cards.map((card, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative z-10 text-center text-white max-w-5xl mx-auto py-16">
+          <SwiperSlide key={index} className="h-full">
+            <div className="relative z-10 mx-auto py-16 flex flex-col items-center justify-center h-full text-center text-white max-w-5xl px-4">
               <p className="text-2xl md:text-4xl text-white font-medium italic mb-4">
                 “{card.quote}”
               </p>
@@ -63,7 +63,7 @@ export default function Carousel() {
               </p>
             </div>
           </SwiperSlide>
-        ))}{" "}
+        ))}
       </Swiper>
     </div>
   );

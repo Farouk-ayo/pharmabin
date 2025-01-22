@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 interface ButtonProps {
@@ -7,6 +8,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   href?: string;
   className?: string;
+  isDisabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   href,
   className,
+  isDisabled = false,
 }) => {
   const baseStyles =
     "px-2 py-2 sm:px-5 py-4 rounded-md font-semibold transition-all duration-200 ease-in-out text-sm sm:text-lg ";
@@ -26,20 +29,40 @@ const Button: React.FC<ButtonProps> = ({
     tertiary: "bg-tertiary3 hover:bg-tertiary2",
   };
 
+  const disabledStyles =
+    "bg-gray-400 text-gray-600 cursor-not-allowed opacity-50";
+
   const combinedStyles = `${baseStyles} ${variantStyles[variant] || ""} ${
     className || ""
-  }`;
+  } ${isDisabled ? disabledStyles : ""}`;
+  const handleClick = (event: React.MouseEvent) => {
+    if (isDisabled) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (onClick) {
+      onClick();
+    }
+  };
 
   if (href) {
     return (
-      <a href={href} className={combinedStyles}>
+      <a
+        href={isDisabled ? undefined : href}
+        className={combinedStyles}
+        onClick={handleClick}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button onClick={onClick} className={combinedStyles} type={type}>
+    <button
+      onClick={handleClick}
+      className={combinedStyles}
+      type={type}
+      disabled={isDisabled}
+    >
       {children}
     </button>
   );

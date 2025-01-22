@@ -40,6 +40,7 @@ const MVCSection = () => {
             >
               <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
                 <Image
+                  priority
                   src={card.icon}
                   alt={card.title}
                   width={100}
@@ -61,6 +62,7 @@ const MVCSection = () => {
       </div>
       <div className="hidden xl:inline-block absolute  -top-[25%] left-[20%] h-full w-[30rem]">
         <Image
+          priority
           src="/line-up.svg"
           alt="line"
           objectFit="contain"

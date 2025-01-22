@@ -80,14 +80,21 @@ export default function Home() {
             </div>
 
             <div className="mt-2">
-              <Button variant="secondary" className="text-black">
+              <Button
+                variant="secondary"
+                className="text-black"
+                href="/about-us"
+              >
                 More About Us
               </Button>
             </div>
           </div>
         </div>
       </section>
-      <Carousel />
+      <section className="top-32 relative">
+        <Carousel />
+      </section>
+
       <section
         className="px-4 lg:px-28 py-20 top-32 bg-white relative z-10"
         style={{
@@ -141,7 +148,11 @@ export default function Home() {
               and any type of packaging are allowed, provided the medications
               are not controlled substances.
             </p>
-            <Button variant="secondary" className="text-black mt-4">
+            <Button
+              variant="secondary"
+              className="text-black mt-4"
+              href="/collection-points"
+            >
               View Locations Near You
             </Button>
           </div>
@@ -152,6 +163,7 @@ export default function Home() {
               layout="fill"
               objectFit="cover"
               className="rounded-lg"
+              priority
             />
           </div>
         </section>
