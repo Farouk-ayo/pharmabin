@@ -9,6 +9,7 @@ interface ButtonProps {
   href?: string;
   className?: string;
   isDisabled?: boolean;
+  isLoading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   href,
   className,
   isDisabled = false,
+  isLoading = false,
 }) => {
   const baseStyles =
     "px-2 py-2 sm:px-5 py-4 rounded-md font-semibold transition-all duration-200 ease-in-out text-sm sm:text-lg ";
@@ -34,9 +36,10 @@ const Button: React.FC<ButtonProps> = ({
 
   const combinedStyles = `${baseStyles} ${variantStyles[variant] || ""} ${
     className || ""
-  } ${isDisabled ? disabledStyles : ""}`;
+  } ${isDisabled || isLoading ? disabledStyles : ""}`;
+
   const handleClick = (event: React.MouseEvent) => {
-    if (isDisabled) {
+    if (isDisabled || isLoading) {
       event.preventDefault();
       event.stopPropagation();
     } else if (onClick) {
@@ -44,14 +47,25 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
+  const buttonContent = (
+    <>
+      {isLoading && <span className="loader"></span>}
+      {typeof children === "string" ? (
+        <span>{isLoading ? "Loading..." : children}</span>
+      ) : (
+        children
+      )}
+    </>
+  );
+
   if (href) {
     return (
       <a
-        href={isDisabled ? undefined : href}
+        href={isDisabled || isLoading ? undefined : href}
         className={combinedStyles}
         onClick={handleClick}
       >
-        {children}
+        {buttonContent}
       </a>
     );
   }
@@ -61,9 +75,9 @@ const Button: React.FC<ButtonProps> = ({
       onClick={handleClick}
       className={combinedStyles}
       type={type}
-      disabled={isDisabled}
+      disabled={isDisabled || isLoading}
     >
-      {children}
+      {buttonContent}
     </button>
   );
 };

@@ -4,22 +4,61 @@ import React, { useState } from "react";
 import StepOneForm from "./components/stepOne";
 import StepTwoForm from "./components/stepTwo";
 import StepThreeForm from "./components/stepThree";
+import { FormInputs, StepOneInputs, StepTwoInputs } from "@/lib/validation";
 
 const Page = () => {
   const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<Partial<FormInputs>>({});
+
+  const handleStepOneSubmit = (data: StepOneInputs) => {
+    setFormData((prev) => ({
+      ...prev,
+      ...data,
+    }));
+    setStep(2);
+  };
+
+  const handleStepTwoSubmit = (data: StepTwoInputs) => {
+    setFormData((prev) => ({
+      ...prev,
+      ...data,
+    }));
+    setStep(3);
+  };
 
   const renderStepContent = () => {
     switch (step) {
       case 1:
-        return <StepOneForm onNext={() => setStep(2)} />;
+        return (
+          <StepOneForm
+            onNext={handleStepOneSubmit}
+            defaultValues={{
+              firstName: formData.firstName || "",
+              lastName: formData.lastName || "",
+              email: formData.email || "",
+              phone: formData.phone || "",
+            }}
+          />
+        );
       case 2:
         return (
-          <StepTwoForm onNext={() => setStep(3)} onBack={() => setStep(1)} />
+          <StepTwoForm
+            onNext={handleStepTwoSubmit}
+            onBack={() => setStep(1)}
+            defaultValues={{
+              businessName: formData.businessName || "",
+              businessAddress: formData.businessAddress || "",
+              state: formData.state || "",
+              lga: formData.lga || "",
+              zipCode: formData.zipCode || "",
+              otherDetails: formData.otherDetails || "",
+            }}
+          />
         );
       case 3:
         return <StepThreeForm />;
       default:
-        return <StepOneForm onNext={() => setStep(2)} />;
+        return <StepOneForm onNext={handleStepOneSubmit} />;
     }
   };
 
@@ -54,16 +93,6 @@ const Page = () => {
       </div>
 
       <div>{renderStepContent()}</div>
-      <div className="mt-6 flex justify-between">
-        {step > 1 && step < 3 && (
-          <button
-            className="px-4 py-2 bg-gray-200 text-gray-600 rounded-md"
-            onClick={() => setStep((prev) => prev - 1)}
-          >
-            Back
-          </button>
-        )}
-      </div>
     </div>
   );
 };

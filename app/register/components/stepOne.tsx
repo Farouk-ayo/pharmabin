@@ -84,6 +84,7 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
 
       <Button
         variant="primary"
+        type="submit"
         isDisabled={isSubmitting}
         className=" w-full text-white"
       >

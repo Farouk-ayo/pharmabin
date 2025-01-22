@@ -1,8 +1,12 @@
-import { useForm } from "react-hook-form";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StepTwoInputs, stepTwoSchema } from "@/lib/validation";
 import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
+import Button from "@/components/buttons";
+import { ArrowLeftIcon } from "lucide-react";
+import Select from "react-select";
 
 interface StepTwoProps {
   onNext: (data: StepTwoInputs) => void;
@@ -10,46 +14,98 @@ interface StepTwoProps {
   defaultValues?: Partial<StepTwoInputs>;
 }
 
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
 const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
-  const [selectedState, setSelectedState] = useState<string | null>(null);
-  const [availableLGAs, setAvailableLGAs] = useState<
-    { name: string; id: number }[]
-  >([]);
+  const [availableLGAs, setAvailableLGAs] = useState<SelectOption[]>([]);
+
+  // Format states for react-select
+  const stateOptions: SelectOption[] = nigeriaStates.map((state) => ({
+    value: state.state.id.toString(),
+    label: state.state.name,
+  }));
 
   const {
     register,
     handleSubmit,
-    setValue,
+    control,
     formState: { errors, isSubmitting },
+    watch,
   } = useForm<StepTwoInputs>({
     resolver: zodResolver(stepTwoSchema),
     defaultValues,
   });
 
-  const handleStateChange = (stateId: string) => {
-    const selected = nigeriaStates.find(
-      (state) => state.state.id.toString() === stateId
-    );
-    setSelectedState(selected?.state.name || null);
-    setAvailableLGAs(selected?.state.locals || []);
-    setValue("state", stateId);
-    setValue("lga", ""); // Reset LGA when state changes
-  };
+  const selectedState = watch("state");
 
-  const handleLGAChange = (lgaId: string) => {
-    setValue("lga", lgaId);
+  // Update LGAs when state changes
+  useEffect(() => {
+    if (selectedState) {
+      const selected = nigeriaStates.find(
+        (state) => state.state.id.toString() === selectedState
+      );
+      if (selected) {
+        const lgaOptions = selected.state.locals.map((lga) => ({
+          value: lga.id.toString(),
+          label: lga.name,
+        }));
+        setAvailableLGAs(lgaOptions);
+      }
+    }
+  }, [selectedState]);
+
+  // Set initial state and LGAs if defaultValues exist
+  useEffect(() => {
+    if (defaultValues?.state) {
+      const selected = nigeriaStates.find(
+        (state) => state.state.id.toString() === defaultValues.state
+      );
+      if (selected) {
+        const lgaOptions = selected.state.locals.map((lga) => ({
+          value: lga.id.toString(),
+          label: lga.name,
+        }));
+        setAvailableLGAs(lgaOptions);
+      }
+    }
+  }, [defaultValues]);
+
+  const customStyles = {
+    control: (base: any) => ({
+      ...base,
+      padding: "2px",
+      borderRadius: "6px",
+      borderColor: "#E5E7EB",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "#D1D5DB",
+      },
+      minHeight: "42px",
+      scrollbarWidth: "thin",
+      scrollbarColor: "#e5e7eb #e5e7eb",
+    }),
+    option: (base: any, state: { isSelected: boolean }) => ({
+      ...base,
+      backgroundColor: state.isSelected ? "#157D18" : "white",
+      "&:hover": {
+        backgroundColor: state.isSelected ? "#157D18" : "#f3f4f6",
+      },
+    }),
   };
 
   return (
     <form onSubmit={handleSubmit(onNext)} className="space-y-4">
-      <div>
-        <label className="block text-sm text-gray-600 mb-1">
+      <div className="w-full">
+        <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
           Pharmacy/Company/Organisation Name
         </label>
         <input
           {...register("businessName")}
           placeholder="Enter business name"
-          className="w-full"
+          className="w-full border px-4 py-2 rounded-md"
         />
         {errors.businessName && (
           <span className="text-sm text-red-500">
@@ -58,79 +114,96 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
         )}
       </div>
 
-      <div>
-        <label className="block text-sm text-gray-600 mb-1">
-          Business Address
-        </label>
-        <input
-          {...register("businessAddress")}
-          placeholder="Enter business address"
-          className="w-full"
-        />
-        {errors.businessAddress && (
-          <span className="text-sm text-red-500">
-            {errors.businessAddress.message}
-          </span>
-        )}
-      </div>
-
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-600 mb-1">State</label>
-          <select
-            value={selectedState || ""}
-            onChange={(e) => handleStateChange(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded-md"
-          >
-            <option value="">Select State</option>
-            {nigeriaStates.map((state) => (
-              <option key={state.state.id} value={state.state.id}>
-                {state.state.name}
-              </option>
-            ))}
-          </select>
+          <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
+            Pharmacy/Company/Organisation Address/City
+          </label>
+          <input
+            {...register("businessAddress")}
+            placeholder="Enter business address"
+            className="w-full border px-4 py-2 rounded-md"
+          />
+          {errors.businessAddress && (
+            <span className="text-sm text-red-500">
+              {errors.businessAddress.message}
+            </span>
+          )}
+        </div>
+        <div>
+          <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
+            Pharmacy/Company/Organisation State
+          </label>
+          <Controller
+            name="state"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={stateOptions}
+                placeholder="Select State"
+                styles={customStyles}
+                value={
+                  stateOptions.find((option) => option.value === field.value) ||
+                  null
+                }
+                onChange={(option) => field.onChange(option?.value)}
+              />
+            )}
+          />
           {errors.state && (
             <span className="text-sm text-red-500">{errors.state.message}</span>
           )}
         </div>
+      </div>
 
+      <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-600 mb-1">
-            Local Government
+          <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
+            Pharmacy/Company/Organisation Local Govt
           </label>
-          <select
-            {...register("lga")}
-            disabled={!selectedState}
-            onChange={(e) => handleLGAChange(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded-md"
-          >
-            <option value="">Select LGA</option>
-            {availableLGAs.map((lga) => (
-              <option key={lga.id} value={lga.id}>
-                {lga.name}
-              </option>
-            ))}
-          </select>
+          <Controller
+            name="lga"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={availableLGAs}
+                isDisabled={!selectedState}
+                placeholder="Select LGA"
+                styles={customStyles}
+                value={
+                  availableLGAs.find(
+                    (option) => option.value === field.value
+                  ) || null
+                }
+                onChange={(option) => field.onChange(option?.value)}
+              />
+            )}
+          />
           {errors.lga && (
             <span className="text-sm text-red-500">{errors.lga.message}</span>
+          )}
+        </div>
+        <div>
+          <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
+            Pharmacy/Company/Organisation Zip Code
+          </label>
+          <input
+            {...register("zipCode")}
+            placeholder="Enter zip code"
+            className="w-full border px-4 py-2 rounded-md"
+          />
+          {errors.zipCode && (
+            <span className="text-sm text-red-500">
+              {errors.zipCode.message}
+            </span>
           )}
         </div>
       </div>
 
       <div>
-        <label className="block text-sm text-gray-600 mb-1">Zip Code</label>
-        <input
-          {...register("zipCode")}
-          placeholder="Enter zip code"
-          className="w-full"
-        />
-        {errors.zipCode && (
-          <span className="text-sm text-red-500">{errors.zipCode.message}</span>
-        )}
-      </div>
-
-      <div>
-        <label className="block text-sm text-gray-600 mb-1">
+        <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
           Others (What do you want to dispose? Any special time?)
         </label>
         <textarea
@@ -141,21 +214,21 @@ const StepTwoForm = ({ onNext, onBack, defaultValues }: StepTwoProps) => {
         />
       </div>
 
-      <div className="flex gap-4">
-        <button
-          type="button"
-          onClick={onBack}
-          className="w-full py-3 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-        >
-          Back
-        </button>
-        <button
+      <div className="flex flex-col gap-4">
+        <Button
           type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-primary text-white py-3 rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+          isDisabled={isSubmitting}
+          isLoading
+          className="text-white w-full"
         >
           Continue
-        </button>
+        </Button>
+        <Button
+          onClick={onBack}
+          className="w-full flex items-center gap-2 justify-center text-primaryDark border-none bg-transparent"
+        >
+          <ArrowLeftIcon /> Back
+        </Button>
       </div>
     </form>
   );

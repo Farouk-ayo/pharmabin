@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Button from "@/components/buttons";
+import { Toaster } from "sonner";
 
 const sourceSansPro = Source_Sans_3({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default function RootLayout({
           </div>
         </section>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
