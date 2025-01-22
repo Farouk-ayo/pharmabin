@@ -13,14 +13,12 @@ const PharmacyDirectory = () => {
     []
   );
 
-  // Update local areas when the selected state changes
   useEffect(() => {
     const stateData = nigeriaStates.find(
       (state) => state.state.name === selectedState
     );
     if (stateData) {
       setLocalAreas(stateData.state.locals);
-      // Default to the first local area in the list
       setSelectedArea(stateData.state.locals[0]?.name || "");
     }
   }, [selectedState]);

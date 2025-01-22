@@ -5,6 +5,7 @@ import StepTwoForm from "./components/stepTwo";
 import StepThreeForm from "./components/stepThree";
 import { FormInputs, StepOneInputs, StepTwoInputs } from "@/lib/validation";
 import { usePostRegister } from "@/lib/hooks/api/mutations";
+import { showToast } from "@/lib/util";
 
 const Page = () => {
   const [step, setStep] = useState(1);
@@ -40,12 +41,11 @@ const Page = () => {
 
     postRegister.mutate(completeFormData, {
       onSuccess: () => {
+        showToast.success("User registered successfully");
         setStep(3);
       },
       onError: (error: Error) => {
-        console.error("Error registering user:", error);
-        console.log(completeFormData);
-        console.log("Error registering user:", error);
+        showToast.error(error.message);
       },
     });
   };

@@ -29,9 +29,9 @@ const StepTwoForm = ({
 }: StepTwoProps) => {
   const [availableLGAs, setAvailableLGAs] = useState<SelectOption[]>([]);
 
-  // Format states for react-select
+  // Format states for react-select using names instead of IDs
   const stateOptions: SelectOption[] = nigeriaStates.map((state) => ({
-    value: state.state.id.toString(),
+    value: state.state.name,
     label: state.state.name,
   }));
 
@@ -48,15 +48,14 @@ const StepTwoForm = ({
 
   const selectedState = watch("State");
 
-  // Update LGAs when state changes
   useEffect(() => {
     if (selectedState) {
       const selected = nigeriaStates.find(
-        (state) => state.state.id.toString() === selectedState
+        (state) => state.state.name === selectedState
       );
       if (selected) {
         const lgaOptions = selected.state.locals.map((lga) => ({
-          value: lga.id.toString(),
+          value: lga.name,
           label: lga.name,
         }));
         setAvailableLGAs(lgaOptions);
@@ -64,15 +63,14 @@ const StepTwoForm = ({
     }
   }, [selectedState]);
 
-  // Set initial state and LGAs if defaultValues exist
   useEffect(() => {
     if (defaultValues?.State) {
       const selected = nigeriaStates.find(
-        (state) => state.state.id.toString() === defaultValues.State
+        (state) => state.state.name === defaultValues.State
       );
       if (selected) {
         const lgaOptions = selected.state.locals.map((lga) => ({
-          value: lga.id.toString(),
+          value: lga.name,
           label: lga.name,
         }));
         setAvailableLGAs(lgaOptions);
