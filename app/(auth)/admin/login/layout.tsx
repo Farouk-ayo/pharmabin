@@ -34,9 +34,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     />
                   </div>
                 </Link>
-                <h1 className="text-2xl text-center lg:text-left font-semibold lg:text-xl">
-                  Join PharmaBin For Free Today
-                </h1>
               </div>
               <div className="w-full relative">{children}</div>
             </div>
@@ -45,7 +42,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Carousel />
           </div>
         </div>
-      </section>{" "}
+      </section>
     </section>
   );
 };

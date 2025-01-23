@@ -1,4 +1,4 @@
-import { CustomerService, RegisteredUser } from "@/lib/types";
+import { CustomerService, LoginInputs, RegisteredUser } from "@/lib/types";
 import axiosInstance from "@/services/axiosInstance";
 import { useMutation } from "@tanstack/react-query";
 
@@ -17,6 +17,16 @@ export const usePostCustomer = () => {
     mutationKey: ["post-customer"],
     mutationFn: (customerServiceDetails: CustomerService) => {
       return axiosInstance.post("/customer/add", customerServiceDetails);
+    },
+  });
+  return mutationDetails;
+};
+
+export const usePostAdmin = () => {
+  const mutationDetails = useMutation({
+    mutationKey: ["post-admin"],
+    mutationFn: (adminDetails: LoginInputs) => {
+      return axiosInstance.post("/admin/login", adminDetails);
     },
   });
   return mutationDetails;

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
 import RootClientLayout from "./layout.client";
 
 const sourceSansPro = Source_Sans_3({
@@ -83,7 +82,6 @@ export default function RootLayout({
     <html lang="en" className={sourceSansPro.className}>
       <body className={` antialiased`}>
         <RootClientLayout>{children}</RootClientLayout>
-        <Footer />
       </body>
     </html>
   );

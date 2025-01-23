@@ -119,7 +119,7 @@ const ContactUs = () => {
                     type="text"
                     {...register("firstName")}
                     placeholder="Enter first name"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                   {errors.firstName && (
                     <span className="text-red-600">
@@ -135,7 +135,7 @@ const ContactUs = () => {
                     type="text"
                     {...register("lastName")}
                     placeholder="Enter last name"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                   {errors.lastName && (
                     <span className="text-red-600">
@@ -151,7 +151,7 @@ const ContactUs = () => {
                     type="email"
                     {...register("emailAddress")}
                     placeholder="Enter email address"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                   {errors.emailAddress && (
                     <span className="text-red-600">
@@ -167,7 +167,7 @@ const ContactUs = () => {
                     type="tel"
                     {...register("phoneNumber")}
                     placeholder="Enter phone number"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                   {errors.phoneNumber && (
                     <span className="text-red-600">
@@ -183,7 +183,7 @@ const ContactUs = () => {
                     type="text"
                     {...register("organizationName")}
                     placeholder="Enter business name"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                   {errors.organizationName && (
                     <span className="text-red-600">
@@ -198,7 +198,7 @@ const ContactUs = () => {
                   <textarea
                     {...register("Message")}
                     placeholder="Enter what you need help for"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                    className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary"
                     rows={4}
                   ></textarea>
                   {errors.Message && (

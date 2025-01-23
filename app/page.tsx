@@ -6,17 +6,20 @@ import Carousel from "@/components/carousel";
 import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
 import FaqSection from "@/components/faq";
+import CallToAction from "@/components/footer/callToAction";
 import GallerySection from "@/components/gallery";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
+import Navbar from "@/components/navbar";
 import { recentCards, services } from "@/lib/data";
 import { showToast } from "@/lib/util";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <>
+    <section>
+      <Navbar />
       <Header />
       <section
         className="px-4 lg:px-28 md:py-20 top-10 md:top-32 relative z-10"
@@ -242,6 +245,7 @@ export default function Home() {
           <TestimonialSection />
         </div>
       </section>
-    </>
+      <CallToAction />
+    </section>
   );
 }

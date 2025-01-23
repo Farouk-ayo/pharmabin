@@ -26,3 +26,27 @@ export interface CustomerService {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface LoginInputs {
+  emailAddress: string;
+  password: string;
+}
+
+// DASHBOARD TYPES
+export interface Notification {
+  id: number;
+  title: string;
+  message: string;
+  time: string;
+  date: string;
+}
+export interface NotificationModalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  notifications: Notification[];
+}
+
+export interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}

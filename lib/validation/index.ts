@@ -37,8 +37,13 @@ export const customerServiceSchema = z.object({
   newsUpdates: z.boolean().optional(),
 });
 
-// TypeScript type inference for the schema
+export const loginSchema = z.object({
+  emailAddress: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+});
+
 export type CustomerServiceFormInputs = z.infer<typeof customerServiceSchema>;
+export type LoginFormmInputs = z.infer<typeof loginSchema>;
 
 export type StepOneInputs = z.infer<typeof stepOneSchema>;
 export type StepTwoInputs = z.infer<typeof stepTwoSchema>;

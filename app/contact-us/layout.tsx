@@ -1,14 +1,27 @@
-import type { Metadata } from "next";
+import Footer from "@/components/footer";
+import CallToAction from "@/components/footer/callToAction";
+import Navbar from "@/components/navbar";
+import { Metadata } from "next";
+import React from "react";
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
 
 export const metadata: Metadata = {
-  title: "Pharmabin || Contact Us",
-  description: "Contact Us",
+  title: " Home || Pharmabin",
+  description: " Home Pharmabin",
 };
 
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return <>{children}</>;
-}
+const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
+  return (
+    <section>
+      <Navbar />
+      {children}
+      <CallToAction />
+      <Footer />
+    </section>
+  );
+};
+
+export default HomeLayout;

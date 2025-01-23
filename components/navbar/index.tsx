@@ -117,7 +117,11 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button href={"/login"} variant="secondary" className="text-black">
+            <Button
+              href={"/register"}
+              variant="secondary"
+              className="text-black"
+            >
               Join us Now
             </Button>
           </div>
