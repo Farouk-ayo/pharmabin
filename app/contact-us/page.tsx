@@ -193,7 +193,7 @@ const ContactUs = () => {
                 </div>
                 <div>
                   <label className="block text-black font-semibold">
-                    Others (Any special time?)
+                    Others (Any special thing?)
                   </label>
                   <textarea
                     {...register("Message")}
