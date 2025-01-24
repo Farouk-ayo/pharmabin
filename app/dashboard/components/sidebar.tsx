@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import React, { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { XIcon } from "lucide-react";
 
@@ -17,10 +16,20 @@ import {
 } from "@/components/icons";
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const [isMobile, setIsMobile] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const currentPath = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const icons: Record<string, React.ReactNode> = {
     "/dashboard": <Dashboard />,
@@ -38,7 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   const handleLogout = () => {
     setShowLogoutModal(false);
-
     router.push("/login");
   };
 
@@ -73,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             {navlinks.map((link) => (
               <Link
                 key={link.route}
-                className={`flex flex-row gap-5 items-center px-2 py-4 lg:p-4 font-semibold  rounded-lg hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary ${
+                className={`flex flex-row gap-5 items-center px-2 py-4 lg:p-4 font-semibold rounded-lg hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary ${
                   currentPath === link.route ? " text-primary fill-primary" : ""
                 }`}
                 href={link.route}
@@ -87,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
 
         <button
-          className="flex flex-row gap-3 items-center justify-center p-4 text-black rounded-lg  hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
+          className="flex flex-row gap-3 items-center justify-center p-4 text-black rounded-lg hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
           onClick={() => setShowLogoutModal(true)}
         >
           <span>
