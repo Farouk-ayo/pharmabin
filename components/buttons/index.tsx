@@ -48,14 +48,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const buttonContent = (
-    <>
-      {isLoading && <span className="loader"></span>}
-      {typeof children === "string" ? (
-        <span>{isLoading ? "Loading..." : children}</span>
-      ) : (
-        children
-      )}
-    </>
+    <>{isLoading ? <span className="loader"></span> : children}</>
   );
 
   if (href) {

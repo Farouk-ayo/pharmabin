@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         style={{ maxHeight: "100vh" }}
       >
         <div className="flex flex-col gap-8">
-          <div className="flex flex-row items-center justify-between py-6">
+          <div className="flex flex-row items-center justify-between ">
             <Link href={"/"}>
               <div className="relative flex items-center w-48 md:w-52 h-20">
                 <Image
@@ -87,11 +87,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
 
         <button
-          className="flex flex-row gap-3 item-center justify-center p-4 text-black rounded-lg  hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
+          className="flex flex-row gap-3 items-center justify-center p-4 text-black rounded-lg  hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
           onClick={() => setShowLogoutModal(true)}
         >
-          <Logout /> <span>Logout</span>
-          <span className="mr-2 cursor-pointer"></span>
+          <span>
+            <Logout />
+          </span>{" "}
+          <span>Logout</span>
         </button>
       </div>
       <Modal

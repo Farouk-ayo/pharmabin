@@ -15,7 +15,7 @@ const Dashboard = () => {
   const { data: articles, isPending: isLoadingArticles } = useGetArticles();
 
   return (
-    <div className="py-14 px-8 space-y-6">
+    <div className="md:py-14 py-10 px-4 md:px-8 space-y-6">
       <h2 className="text-xl font-bold mb-4 text-primary">Statistics</h2>
       {isLoadingUsers || isLoadingArticles ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -13,7 +13,7 @@ const ArticlesPage = () => {
   };
 
   return (
-    <div className="py-14 px-8 space-y-6">
+    <div className="md:py-14 py-10 px-4 md:px-8 space-y-6">
       {isLoadingArticles ? (
         <LoadingSkeleton count={10} type="table" />
       ) : (

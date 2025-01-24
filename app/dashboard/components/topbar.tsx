@@ -13,7 +13,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
 
   return (
     <div
-      className={`fixed h-24 z-50 ${
+      className={`fixed h-24 z-50 w-full ${
         isMobile ? "left-0 right-0 bg-white" : "left-72 right-0 bg-white"
       } flex items-center justify-between px-4 py-3 border-b`}
     >

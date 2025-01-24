@@ -5,9 +5,10 @@ import React from "react";
 interface ModalProps {
   isOpen: boolean;
   title: string;
-  message?: string; // Optional message to display
-  confirmText?: string; // Text for the confirm button
-  cancelText?: string; // Text for the cancel button
+  isConfirmLoading?: boolean;
+  message?: string;
+  confirmText?: string;
+  cancelText?: string;
   onClose: () => void;
   onConfirm: () => void;
 }
@@ -16,6 +17,7 @@ const Modal: React.FC<ModalProps> = ({
   isOpen,
   title,
   message,
+  isConfirmLoading,
   confirmText = "Yes",
   cancelText = "No",
   onClose,
@@ -31,14 +33,11 @@ const Modal: React.FC<ModalProps> = ({
         <div className="flex flex-col gap-3">
           <button
             onClick={onConfirm}
-            className="bg-primary  text-white py-2 px-4 rounded-full hover:bg-blue-600"
+            className="bg-red-600  text-white py-2 px-4 rounded-full "
           >
-            {confirmText}
+            {isConfirmLoading ? <span className="loader"></span> : confirmText}
           </button>
-          <button
-            onClick={onClose}
-            className="text-primary hover:underline  hover:text-blue-600"
-          >
+          <button onClick={onClose} className="text-black hover:underline ">
             {cancelText}
           </button>
         </div>

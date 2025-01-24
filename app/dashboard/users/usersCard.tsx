@@ -7,7 +7,7 @@ interface UserCardProps {
   user: RegisteredUser;
   edit?: boolean;
   delete?: boolean;
-  onEdit?: (_id: string) => void;
+  onEdit?: (user: RegisteredUser) => void;
   onDelete?: (_id: string) => void;
 }
 
@@ -78,8 +78,8 @@ const UserCard: React.FC<UserCardProps> = ({
         <div className="flex justify-center items-center gap-4 mt-4">
           {edit && (
             <Button
-              className="!bg-black   text-white !px-6 !py-2 rounded-lg  text-sm"
-              onClick={() => user._id && onEdit?.(user._id)}
+              className="!bg-black text-white !px-6 !py-2 rounded-lg text-sm"
+              onClick={() => user && onEdit?.(user)}
             >
               Edit
             </Button>
