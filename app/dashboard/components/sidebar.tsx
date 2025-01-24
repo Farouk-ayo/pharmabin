@@ -26,14 +26,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     "/dashboard": <Dashboard />,
     "/dashboard/users": <Users />,
     "/dashboard/articles": <Articles />,
-    "/dashboard/feedback": <Feedback />,
+    "/dashboard/feedbacks": <Feedback />,
   };
 
   const navlinks = [
     { route: "/dashboard", label: "Home" },
-    { route: "/dashboard/users", label: "Users" },
+    { route: "/dashboard/users", label: "Registered Users" },
     { route: "/dashboard/articles", label: "Articles" },
-    { route: "/dashboard/feedback", label: "Feedbacks" },
+    { route: "/dashboard/feedbacks", label: "Feedbacks" },
   ];
 
   const handleLogout = () => {
@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
 
         <button
-          className="flex flex-row gap-3 item-center justify-center p-4 text-black rounded-lg hover:bg-[#102c79] cursor-pointer"
+          className="flex flex-row gap-3 item-center justify-center p-4 text-black rounded-lg  hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
           onClick={() => setShowLogoutModal(true)}
         >
           <Logout /> <span>Logout</span>

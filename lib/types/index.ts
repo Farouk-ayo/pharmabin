@@ -50,3 +50,8 @@ export interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
+export interface ArticleCard {
+  date: string;
+  title: string;
+  subtitle: string;
+}

@@ -17,7 +17,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <Topbar toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       <main
-        className={`flex-1 min-h-screen overflow-y-auto bg-white pt-[5rem] ml-0 lg:ml-72`}
+        className={`flex-1 min-h-screen overflow-y-auto bg-gray-100 pt-[5rem] ml-0 lg:ml-72`}
       >
         {children}
       </main>
