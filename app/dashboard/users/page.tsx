@@ -9,6 +9,7 @@ import { useDeleteRegisteredUser } from "@/lib/hooks/api/mutations";
 import Modal from "@/components/modal/modalConfirmation";
 import { RegisteredUser } from "@/lib/types";
 import EditUser from "./editUser";
+import { showToast } from "@/lib/util";
 
 const Page = () => {
   const { data: users, isPending: isLoadingUsers } = useGetRegisterUsers();
@@ -31,6 +32,7 @@ const Page = () => {
       deleteUser(userIdToDelete, {
         onSuccess: () => {
           setShowDeleteModal(false);
+          showToast.success("User deleted successfully");
           setIsDeleting(false);
         },
         onError: (error) => {

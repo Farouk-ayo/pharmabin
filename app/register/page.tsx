@@ -38,6 +38,7 @@ const Page = () => {
     }));
 
     const completeFormData = { ...formData, ...data };
+    console.log(completeFormData);
 
     postRegister.mutate(completeFormData, {
       onSuccess: () => {

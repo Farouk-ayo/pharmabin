@@ -2,6 +2,7 @@ import { CustomerService, LoginInputs, RegisteredUser } from "@/lib/types";
 import { showToast } from "@/lib/util";
 import axiosInstance from "@/services/axiosInstance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export const usePostRegister = () => {
   const mutationDetails = useMutation({
@@ -67,6 +68,7 @@ export const useDeleteRegisteredUser = () => {
 
 export const usePatchRegisterUser = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
   const mutationDetails = useMutation({
     mutationKey: ["update-register-user"],
     mutationFn: ({ _id, data }: { _id: string; data: RegisteredUser }) => {
@@ -74,6 +76,8 @@ export const usePatchRegisterUser = () => {
     },
     onSuccess: (data) => {
       const id = data.data.id;
+      router.push("/dashboard/users");
+      queryClient.invalidateQueries({ queryKey: ["get-register-user"] });
       queryClient.setQueryData(
         ["get-register-user"],
         (oldData: RegisteredUser | undefined) => {

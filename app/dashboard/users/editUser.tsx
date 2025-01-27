@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { usePatchRegisterUser } from "@/lib/hooks/api/mutations";
 import { RegisteredUser } from "@/lib/types";
 import Button from "@/components/buttons";
+import { showToast } from "@/lib/util";
 
 interface EditUserProps {
   user: RegisteredUser;
@@ -19,11 +20,16 @@ const EditUser: React.FC<EditUserProps> = ({ user, onCancel }) => {
   };
 
   const handleSave = () => {
+    console.log(editedUser);
     updateUser(
       { _id: editedUser._id || "", data: editedUser },
       {
         onSuccess: () => {
+          showToast.success("User updated successfully");
           onCancel();
+        },
+        onError: (error) => {
+          showToast.error(error.message);
         },
       }
     );

@@ -1,6 +1,3 @@
-import Footer from "@/components/footer";
-import CallToAction from "@/components/footer/callToAction";
-import Navbar from "@/components/navbar";
 import { Metadata } from "next";
 import React from "react";
 
@@ -14,14 +11,7 @@ export const metadata: Metadata = {
 };
 
 const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <section>
-      <Navbar />
-      {children}
-      <CallToAction />
-      <Footer />
-    </section>
-  );
+  return <section>{children}</section>;
 };
 
 export default HomeLayout;

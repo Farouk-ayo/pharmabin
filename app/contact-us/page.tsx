@@ -37,7 +37,7 @@ const ContactUs = () => {
     postCustomer.mutate(data, {
       onSuccess: (data) => {
         console.log(data);
-        showToast.success("User registered successfully");
+        showToast.success("Message sent successfully");
         reset(initialFormData);
       },
       onError: (error: Error) => {
@@ -193,7 +193,7 @@ const ContactUs = () => {
                 </div>
                 <div>
                   <label className="block text-black font-semibold">
-                    Others (Any special thing?)
+                    Message
                   </label>
                   <textarea
                     {...register("Message")}
