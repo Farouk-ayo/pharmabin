@@ -6,6 +6,7 @@ import Carousel from "@/components/carousel";
 import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
 import FaqSection from "@/components/faq";
+import Footer from "@/components/footer";
 import CallToAction from "@/components/footer/callToAction";
 import GallerySection from "@/components/gallery";
 import Header from "@/components/header";
@@ -87,15 +88,13 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="mt-2">
-              <Button
-                variant="secondary"
-                className="text-black"
-                href="/about-us"
-              >
-                More About Us
-              </Button>
-            </div>
+            <Button
+              variant="secondary"
+              className="text-black w-max"
+              href="/about-us"
+            >
+              More About Us
+            </Button>
           </div>
         </div>
       </section>
@@ -131,11 +130,11 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/90 bg-[#157D18]/60 md:bg-transparent " />
         </div>
         <section className="absolute top-[10%] lg:top-[30%] left-[5%] right-[5%] bg-white rounded-lg shadow p-8 md:p-16 flex flex-col lg:flex-row items-end gap-8">
-          <div className="relative gap-2 w-full lg:w-[50%] ">
+          <div className="relative  w-full lg:w-[50%] flex-col flex  ">
             <Badge
               text="Nearby Location"
               bgColor="bg-tertiary"
-              className="mb-8"
+              className="mb-8 w-max"
             />{" "}
             <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
               Do You Want To Dispose Your Pharmaceutical Waste? Find A
@@ -158,7 +157,7 @@ export default function Home() {
             </p>
             <Button
               variant="secondary"
-              className="text-black mt-4"
+              className="text-black w-max"
               href="/collection-points"
             >
               View Locations Near You
@@ -177,7 +176,7 @@ export default function Home() {
         </section>
       </section>
       <section
-        className="relative pt-96 "
+        className="relative pt-[26rem] sm:pt-40 lg:pt-96 "
         style={{
           backgroundImage: "url(./bg-community.svg)",
           backgroundSize: "cover",
@@ -246,6 +245,7 @@ export default function Home() {
         </div>
       </section>
       <CallToAction />
+      <Footer />
     </section>
   );
 }

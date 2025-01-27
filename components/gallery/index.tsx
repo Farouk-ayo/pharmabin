@@ -1,37 +1,38 @@
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
-const GallerySection = () => {
+const ImageGallery = () => {
+  const images = ["/waste-1.svg", "/waste-2.svg", "/waste-3.svg"];
+
   return (
-    <div className="relative w-[80%] md:w-1/2 h-[400px] md:m-auto ">
-      <div className="absolute left-24 animate-float w-full z-[4] h-full">
-        <Image
-          priority
-          src="/waste-3.svg"
-          alt="pill"
-          layout="fill"
-          className=""
-        />
-      </div>
-      <div className="absolute  scale-95 left-10 animate-float-delayed z-[5] w-full h-full">
-        <Image
-          priority
-          src="/waste-2.svg"
-          alt="bottle"
-          layout="fill"
-          className=""
-        />
-      </div>
-      <div className="absolute top-0 left-0 animate-float z-10 h-full w-full">
-        <Image
-          priority
-          src="/waste-1.svg"
-          alt="syringe"
-          layout="fill"
-          className=""
-        />
+    <div className="flex justify-center items-center w-full">
+      <div className="relative flex items-center justify-center w-full h-60 ">
+        {images.map((image, index) => (
+          <motion.div
+            key={index}
+            initial={{ zIndex: 10 - index }}
+            whileHover={{ scale: 1.1, zIndex: 20 }}
+            className={`absolute rounded-lg shadow-lg overflow-hidden transition-all duration-300 ${
+              index === 0
+                ? "left-0"
+                : index === 1
+                ? "left-10 sm:left-20"
+                : "left-20 sm:left-40"
+            }`}
+          >
+            <Image
+              src={image}
+              alt={`Gallery Image ${index + 1}`}
+              className="w-64 h-64 sm:w-[30rem] sm:h-[25rem] object-cover rounded-lg hover:outline hover:outline-4 hover:outline-primary"
+              width={320}
+              height={320}
+            />
+          </motion.div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default GallerySection;
+export default ImageGallery;

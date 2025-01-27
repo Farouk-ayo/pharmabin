@@ -11,14 +11,15 @@ const sourceSansPro = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "PharmaBin | Secure Pharmaceutical Waste Disposal Services in Nigeria",
+  title:
+    "PharmaBin | Safely Dispose your Pharmaceutical waste with our Eco-friendly Services in Nigeria",
   description:
     "PharmaBin is Nigeria's leading pharmaceutical waste management solution. Protect your environment with secure, compliant, and efficient waste disposal systems.",
   keywords: [
     "PharmaBin",
     "pharmaceutical waste management",
     "pharmaceutical waste disposal",
-    "secure waste disposal",
+    "Safely Dispose your Pharmaceutical waste",
     "NAFDAC pharmaceutical waste program",
     "medication disposal",
     "waste compliance",
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "PharmaBin | Secure Pharmaceutical Waste Disposal Services in Nigeria",
+      "PharmaBin | Safely Dispose your Pharmaceutical waste with our Eco-friendly Services",
     description:
       "PharmaBin offers secure pharmaceutical waste collection systems with tamper-proof features to protect your patients, environment, and comply with regulations.",
     url: "https://www.pharmabin.org",
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://www.pharmabin.org/og-image.png",
-        alt: "PharmaBin - Secure Pharmaceutical Waste Disposal",
+        alt: "PharmaBin - Safely Dispose your Pharmaceutical waste with our Eco-friendly Services",
         width: 1200,
         height: 630,
       },
@@ -66,9 +67,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "PharmaBin | Secure Pharmaceutical Waste Disposal Services in Nigeria",
+      "PharmaBin | Safely Dispose your Pharmaceutical waste with our Eco-friendly Services in Nigeria",
     description:
-      "PharmaBin ensures secure pharmaceutical waste disposal with regulatory compliance and environmentally sustainable solutions.",
+      "PharmaBin ensures Safely Dispose your Pharmaceutical waste with our Eco-friendly Services with regulatory compliance and environmentally sustainable solutions.",
     images: ["https://www.pharmabin.org/og-image.png"],
   },
 };

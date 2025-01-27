@@ -14,11 +14,11 @@ const CallToAction = () => {
         }}
       />{" "}
       <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/70 bg-[#157D18]/60 md:bg-transparent " />
-      <div className="relative z-10 text-center text-white w-full md:w-[50%] mx-auto py-16">
-        <p className="text-2xl md:text-4xl text-white font-semibold  mb-4">
+      <div className="relative z-10 text-center text-white w-full md:w-[50%] mx-auto  py-28 flex flex-col items-center gap-4 ">
+        <p className="text-2xl md:text-4xl text-white font-semibold  ">
           Want To Know More About How PharmaBin Operate?
         </p>
-        <p className="text-base my-4 font-medium text-white">
+        <p className="text-base font-medium text-white">
           Your time is valuable, and we don&apos;t want to play hard to get. You
           can either phone us directly on the details listed on our contact
           page, or feel free to fill out this short form and one of our team

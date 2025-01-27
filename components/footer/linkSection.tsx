@@ -1,8 +1,13 @@
 import Link from "next/link";
 
+interface QuickLinks {
+  link: string;
+  name: string;
+}
+
 interface LinkSectionProps {
   title: string;
-  links: string[];
+  links: QuickLinks[];
 }
 
 const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
@@ -11,12 +16,12 @@ const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
       <h3 className="text-xl font-bold text-primary mb-4">{title}</h3>
       <ul className="space-y-3">
         {links.map((item) => (
-          <li key={item}>
+          <li key={item.name}>
             <Link
-              href="/"
+              href={item.link}
               className="text-gray-600 hover:text-primary transition-colors"
             >
-              {item}
+              {item.name}
             </Link>
           </li>
         ))}

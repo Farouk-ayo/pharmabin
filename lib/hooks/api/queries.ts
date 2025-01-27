@@ -7,6 +7,7 @@ export const useGetRegisterUsers = () => {
     queryKey: ["get-register-user"],
     queryFn: async () => {
       const response = await axiosInstance.get("/register/get/");
+      console.log(response.data);
       return response.data;
     },
   });

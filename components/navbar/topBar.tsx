@@ -3,6 +3,31 @@
 import { PhoneCallIcon } from "lucide-react";
 import { FacebookIcon, InstagramIcon, WhatsappIcon, XIcon } from "../icons";
 
+const socialLinks = [
+  {
+    name: "PharmaBin",
+    icon: (
+      <FacebookIcon className="w-4 h-4 cursor-pointer text-white hover:text-secondary" />
+    ),
+    url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
+  },
+  {
+    name: "PharmaBin_01",
+    icon: (
+      <InstagramIcon className="w-4 h-4 cursor-pointer text-white hover:text-secondary" />
+    ),
+    url: "https://www.instagram.com/pharmabin?utm_source=qr&igsh=MTc2MTh5MHBjaDR3bg==",
+  },
+
+  {
+    name: "@PharmaBin1",
+    icon: (
+      <XIcon className="w-4 h-4 cursor-pointer text-white hover:text-secondary" />
+    ),
+    url: "https://x.com/pharmabin1?t=gHx2rchT87XsIhBxdce0LQ&s=08",
+  },
+];
+
 const TopBar: React.FC = () => {
   return (
     <div className=" hidden md:flex bg-primaryDark text-white py-3 px-5 lg:px-28  sm:flex-col md:flex-row justify-between items-center text-sm">
@@ -19,14 +44,18 @@ const TopBar: React.FC = () => {
       </div>
 
       <div className="flex items-center space-x-4 mt-2 md:mt-0">
-        <div className="flex items-center space-x-1">
-          <XIcon className="w-4 h-4" />
-          <span>@PharmaBin1</span>
-        </div>
-        <FacebookIcon className="w-4 h-4 cursor-pointer hover:text-secondary" />
-        <span>PharmaBin</span>
-        <InstagramIcon className="w-4 h-4 cursor-pointer hover:text-secondary" />
-        <span>PharmaBin_01</span>
+        {socialLinks.map((link) => (
+          <a
+            key={link.name}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-1"
+          >
+            {link.icon}
+            <span>{link.name}</span>
+          </a>
+        ))}
       </div>
     </div>
   );

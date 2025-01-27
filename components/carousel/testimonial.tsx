@@ -52,7 +52,7 @@ const TestimonialSection = () => {
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="relative z-10 text-center text-primary  flex flex-col gap-2 lg:gap-20 h-full py-20 md:py-10">
+            <div className="relative z-10 text-center text-primary  flex flex-col gap-2 lg:gap-20 h-full py-20 md:py-12">
               <p className="text-xl md:text-2xl italic mb-6">
                 &quot;{testimonial.quote}&quot;
               </p>
@@ -69,7 +69,7 @@ const TestimonialSection = () => {
       <button className="custom-prev absolute left-0 bottom-0 z-20 p-2 hover:opacity-75 transition-opacity">
         <ArrowLeft />
       </button>
-      <div className="custom-pagination   -translate-y-1/2  bottom-0 left-1/2 m-auto  absolute w-full   z-20" />
+      <div className="custom-pagination   !-translate-y-1/2  !-bottom-1 !left-1/2 !m-auto  !absolute !w-full   !z-20" />
       <button className="custom-next absolute right-0 bottom-0 z-20 p-2 hover:opacity-75 transition-opacity">
         <ArrowRight />
       </button>

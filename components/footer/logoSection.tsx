@@ -11,9 +11,9 @@ interface SocialLink {
 
 const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
   return (
-    <div className="lg:col-span-1">
+    <div className="lg:col-span-2">
       <Link href={"/"} target="_blank" rel="noopener noreferrer">
-        <div className="relative flex items-center w-56 md:w-full h-20">
+        <div className="relative w-56  h-20">
           <Image
             priority
             src="/pharmabin-logo.svg"
@@ -30,7 +30,7 @@ const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
       </p>
       <div className="flex items-center space-x-4">
         {socialLinks.map((link) => (
-          <SocialIcon link={""} key={link.name} {...link} />
+          <SocialIcon link={link.url} key={link.name} {...link} />
         ))}
       </div>
     </div>

@@ -38,7 +38,8 @@ export default function Header() {
           <BottomRightIcon />{" "}
         </div>
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
-          Secure Your Pharmaceutical Waste With Our Disposal Services
+          Safely Dispose your Pharmaceutical waste with our Eco-friendly
+          Services
         </h1>
         <p className="text-sm md:text-lg text-medium text-white">
           PharmaBin pharmaceutical waste collection systems are leading a new

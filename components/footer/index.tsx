@@ -72,18 +72,49 @@ const Footer = () => {
       url: "https://www.linkedin.com/company/pharmabin-ng/",
     },
   ];
-  const quickLinks = ["Home", "About Us", "Articles", "Contact Us"];
+
+  const quickLinks = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "/about-us",
+      name: "About Us",
+    },
+    {
+      link: "/articles",
+      name: "Articles",
+    },
+    {
+      link: "/contact-us",
+      name: "Contact Us",
+    },
+  ];
+
   const legalLinks = [
-    "Privacy Policy",
-    "Quality Policy",
-    "Cookies Policy",
-    "Terms & Condition",
+    {
+      link: "#",
+      name: "Privacy Policy",
+    },
+    {
+      link: "#",
+      name: "Quality Policy",
+    },
+    {
+      link: "#",
+      name: "Cookies Policy",
+    },
+    {
+      link: "#",
+      name: "Terms & Condition",
+    },
   ];
 
   return (
     <footer className="bg-bgPrimary px-4 sm:px-6 lg:px-20 py-14">
       <div className="mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           <LogoSection socialLinks={socialLinks} />
           <LinkSection title="Quick Links" links={quickLinks} />
           <LinkSection title="Legal Links" links={legalLinks} />

@@ -24,7 +24,7 @@ export default function Header({ title, description }: HeaderProps) {
       />
       <div className="absolute inset-0  bg-primary " />
 
-      <div className="relative w-full md:w-[90%]  p-5 z-20 md:p-10 flex flex-col gap-5 text-center">
+      <div className="relative w-full md:w-[90%] mx-auto p-5 z-20 md:p-10 flex flex-col gap-5 text-center">
         <div className="absolute top-0 left-0 ">
           <TopLeftIcon />
         </div>

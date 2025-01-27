@@ -19,6 +19,25 @@ export default {
         textPrimary: "#333333",
         bgPrimary: "##F4F4F4",
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "float-delayed": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-15px)" },
+        },
+        "float-slower": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
+      },
+      animation: {
+        float: "float 3s ease-in-out infinite",
+        "float-delayed": "float-delayed 3.5s ease-in-out infinite",
+        "float-slower": "float-slower 4s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
