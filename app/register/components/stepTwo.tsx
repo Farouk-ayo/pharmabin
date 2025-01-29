@@ -21,6 +21,29 @@ interface SelectOption {
   label: string;
 }
 
+export const customStyles = {
+  control: (base: any) => ({
+    ...base,
+    padding: "2px",
+    borderRadius: "6px",
+    borderColor: "#E5E7EB",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "#D1D5DB",
+    },
+    minHeight: "42px",
+    scrollbarWidth: "thin",
+    scrollbarColor: "#e5e7eb #e5e7eb",
+  }),
+  option: (base: any, state: { isSelected: boolean }) => ({
+    ...base,
+    backgroundColor: state.isSelected ? "#157D18" : "white",
+    "&:hover": {
+      backgroundColor: state.isSelected ? "#157D18" : "#f3f4f6",
+    },
+  }),
+};
+
 const StepTwoForm = ({
   onNext,
   onBack,
@@ -77,29 +100,6 @@ const StepTwoForm = ({
       }
     }
   }, [defaultValues]);
-
-  const customStyles = {
-    control: (base: any) => ({
-      ...base,
-      padding: "2px",
-      borderRadius: "6px",
-      borderColor: "#E5E7EB",
-      boxShadow: "none",
-      "&:hover": {
-        borderColor: "#D1D5DB",
-      },
-      minHeight: "42px",
-      scrollbarWidth: "thin",
-      scrollbarColor: "#e5e7eb #e5e7eb",
-    }),
-    option: (base: any, state: { isSelected: boolean }) => ({
-      ...base,
-      backgroundColor: state.isSelected ? "#157D18" : "white",
-      "&:hover": {
-        backgroundColor: state.isSelected ? "#157D18" : "#f3f4f6",
-      },
-    }),
-  };
 
   return (
     <form onSubmit={handleSubmit(onNext)} className="space-y-4">

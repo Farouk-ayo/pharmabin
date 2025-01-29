@@ -17,7 +17,7 @@ export const useGetArticles = () => {
   return useQuery<ArticleCard[]>({
     queryKey: ["get-article"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/articles/get/");
+      const response = await axiosInstance.get("/article/get/");
       return response.data;
     },
   });

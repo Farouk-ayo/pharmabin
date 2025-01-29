@@ -82,7 +82,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <Link
                 key={link.route}
                 className={`flex flex-row gap-5 items-center px-2 py-4 lg:p-4 font-semibold rounded-lg hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary ${
-                  currentPath === link.route ? " text-primary fill-primary" : ""
+                  currentPath.startsWith(link.route)
+                    ? " text-primary fill-primary"
+                    : ""
                 }`}
                 href={link.route}
                 onClick={isMobile ? onClose : undefined}

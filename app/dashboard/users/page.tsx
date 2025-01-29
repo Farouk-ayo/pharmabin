@@ -7,17 +7,15 @@ import LoadingSkeleton from "@/components/loadingSkeleton";
 import Pagination from "@/components/pagination";
 import { useDeleteRegisteredUser } from "@/lib/hooks/api/mutations";
 import Modal from "@/components/modal/modalConfirmation";
-import { RegisteredUser } from "@/lib/types";
-import EditUser from "./editUser";
 import { showToast } from "@/lib/util";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const { data: users, isPending: isLoadingUsers } = useGetRegisterUsers();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
-
-  const [userToEdit, setUserToEdit] = useState<RegisteredUser | null>(null);
+  const router = useRouter();
 
   const { mutate: deleteUser } = useDeleteRegisteredUser();
 
@@ -43,16 +41,9 @@ const Page = () => {
     }
   };
 
-  const handleCancelEdit = () => {
-    setUserToEdit(null);
+  const handleEdit = (_id: string) => {
+    router.push(`/dashboard/users/${_id}`);
   };
-  const handleEdit = (user: RegisteredUser) => {
-    setUserToEdit(user);
-  };
-
-  if (userToEdit) {
-    return <EditUser user={userToEdit} onCancel={handleCancelEdit} />;
-  }
 
   return (
     <div className="md:py-14 py-10 px-4 md:px-8 space-y-6">
@@ -66,7 +57,7 @@ const Page = () => {
               user={user}
               edit={true}
               delete={true}
-              onEdit={() => handleEdit(user)}
+              onEdit={() => user._id && handleEdit(user._id)}
               onDelete={handleDelete}
             />
           </div>
@@ -82,7 +73,8 @@ const Page = () => {
       <Modal
         isOpen={showDeleteModal}
         isConfirmLoading={isDeleting}
-        title="Are you sure you want to delete this user?"
+        title="DELETE"
+        message="Are you sure you want to delete this user?"
         onConfirm={handleConfirmDelete}
         onClose={() => setShowDeleteModal(false)}
       />

@@ -7,6 +7,7 @@ import LoadingSkeleton from "@/components/loadingSkeleton";
 
 const ArticlesPage = () => {
   const { data: articles, isPending: isLoadingArticles } = useGetArticles();
+  console.log(articles);
 
   const handleAddArticle = () => {
     console.log("Add Article button clicked");
