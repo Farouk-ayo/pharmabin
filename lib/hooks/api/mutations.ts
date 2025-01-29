@@ -1,4 +1,9 @@
-import { CustomerService, LoginInputs, RegisteredUser } from "@/lib/types";
+import {
+  ArticleCard,
+  CustomerService,
+  LoginInputs,
+  RegisteredUser,
+} from "@/lib/types";
 import { showToast } from "@/lib/util";
 import axiosInstance from "@/services/axiosInstance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -74,21 +79,9 @@ export const usePatchRegisterUser = () => {
     mutationFn: ({ _id, data }: { _id: string; data: RegisteredUser }) => {
       return axiosInstance.patch(`/register/${_id}`, data);
     },
-    onSuccess: (data) => {
-      const id = data.data.id;
+    onSuccess: () => {
       router.push("/dashboard/users");
       queryClient.invalidateQueries({ queryKey: ["get-register-user"] });
-      queryClient.setQueryData(
-        ["get-register-user"],
-        (oldData: RegisteredUser | undefined) => {
-          if (!oldData) return oldData;
-
-          if (oldData._id === id) {
-            return data.data;
-          }
-          return oldData;
-        }
-      );
       showToast.success("updated user successfully");
     },
     onError: (error: Error) => {
@@ -96,4 +89,23 @@ export const usePatchRegisterUser = () => {
     },
   });
   return mutationDetails;
+};
+
+export const usePostArticle = () => {
+  const queryClient = useQueryClient();
+  const router = useRouter();
+  return useMutation({
+    mutationKey: ["post-article"],
+    mutationFn: (articleDetails: ArticleCard) => {
+      return axiosInstance.post("/article/add", articleDetails);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-articles"] });
+      router.push("/dashboard/articles");
+      showToast.success("Article posted successfully");
+    },
+    onError: (error: Error) => {
+      showToast.error(error.message);
+    },
+  });
 };

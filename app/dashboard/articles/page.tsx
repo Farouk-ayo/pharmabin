@@ -4,13 +4,14 @@ import React from "react";
 import ArticlesSection from "./articlesCard";
 import { useGetArticles } from "@/lib/hooks/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
+import { useRouter } from "next/navigation";
 
 const ArticlesPage = () => {
   const { data: articles, isPending: isLoadingArticles } = useGetArticles();
-  console.log(articles);
+  const router = useRouter();
 
   const handleAddArticle = () => {
-    console.log("Add Article button clicked");
+    router.push("/dashboard/articles/add");
   };
 
   return (

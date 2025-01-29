@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
 import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
 import LoadingSkeleton from "@/components/loadingSkeleton";
+import Button from "@/components/buttons";
 
 const PharmacyDirectory = () => {
   const { data: pharmacies = [], isLoading } = useGetRegisterUsers();
@@ -13,7 +14,6 @@ const PharmacyDirectory = () => {
   const [localAreas, setLocalAreas] = useState<string[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -62,13 +62,14 @@ const PharmacyDirectory = () => {
             Discover PharmaBin Collection Point In
           </h1>
           <div className="relative">
-            <button
+            <Button
+              variant="secondary"
               onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
-              className="bg-green-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-green-700 transition-colors"
+              className="bg-primary text-white px-4 py-2 rounded-md flex items-center gap-2  "
             >
               {selectedState}
               <ChevronDown size={20} />
-            </button>
+            </Button>
 
             {/* Updated Dropdown */}
             {isStateDropdownOpen && (
@@ -128,7 +129,7 @@ const PharmacyDirectory = () => {
                   key={pharmacy._id}
                   className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
                 >
-                  <h3 className="font-semibold text-green-600 mb-2 text-xl">
+                  <h3 className="font-semibold text-primbg-primary mb-2 text-xl">
                     {pharmacy.organizationName}
                   </h3>
                   <div className="space-y-2 text-base">

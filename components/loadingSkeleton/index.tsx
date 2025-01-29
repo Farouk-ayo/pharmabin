@@ -34,6 +34,31 @@ const LoadingSkeleton = ({ count = 6, type = "card" }) => {
           ))}
         </div>
       )}
+      {type === "Article" && (
+        <div className=" mx-auto p-6 bg-gray-50 rounded-lg shadow-md animate-pulse">
+          <div className="flex justify-between items-center mb-4">
+            <div className="h-6 w-32 bg-gray-300 rounded"></div>
+            <div className="h-8 w-20 bg-gray-300 rounded"></div>
+          </div>
+
+          <div className="h-40 bg-gray-300 rounded-lg mb-6"></div>
+
+          <div className="space-y-4">
+            {[...Array(10)].map((_, index) => (
+              <div key={index} className="h-10 bg-gray-300 rounded"></div>
+            ))}
+          </div>
+
+          <div className="flex justify-between mt-6">
+            {[...Array(4)].map((_, index) => (
+              <div
+                key={index}
+                className="h-20 w-20 bg-gray-300 rounded-full"
+              ></div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   ));
 };

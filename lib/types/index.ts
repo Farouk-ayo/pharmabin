@@ -50,8 +50,41 @@ export interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
-export interface ArticleCard {
-  date: string;
-  title: string;
-  subtitle: string;
-}
+export type ArticleResponse = {
+  _id: string;
+  Title: string;
+  Caption: string;
+  Subtitle1: string;
+  Content1: string;
+  Subtitle2: string;
+  Content2: string;
+  Subtitle3?: string;
+  Content3?: string;
+  Subtitle4?: string;
+  Content4?: string;
+  articleImage1Url: string;
+  articleImage1Id: string;
+  articleImage2Url: string;
+  articleImage2Id: string;
+  articleImage3Url?: string;
+  articleImage3Id?: string;
+  articleImage4Url?: string;
+  articleImage4Id?: string;
+  createdAt: string;
+  __v: number;
+};
+
+export type ArticleCard = {
+  Title: string;
+  Caption: string;
+  Subtitle1?: string;
+  Subtitle2?: string;
+  Subtitle3?: string;
+  Subtitle4?: string;
+  Content1?: string;
+  Content2?: string;
+  Content3?: string;
+  Content4?: string;
+  articleImage1?: string;
+  articleImage2?: string;
+};

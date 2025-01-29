@@ -93,18 +93,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 <span className=" text-base">{link.label}</span>
               </Link>
             ))}
+            <button
+              className="flex p-4 flex-row gap-5 items-center text-black rounded-lg hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
+              onClick={() => setShowLogoutModal(true)}
+            >
+              <span>
+                <Logout />
+              </span>{" "}
+              <span>Logout</span>
+            </button>
           </ul>
         </div>
-
-        <button
-          className="flex flex-row gap-3 items-center justify-center p-4 text-black rounded-lg hover:bg-primary2 cursor-pointer hover:text-primary hover:fill-primary"
-          onClick={() => setShowLogoutModal(true)}
-        >
-          <span>
-            <Logout />
-          </span>{" "}
-          <span>Logout</span>
-        </button>
       </div>
       <Modal
         isOpen={showLogoutModal}

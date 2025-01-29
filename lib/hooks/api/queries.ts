@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/services/axiosInstance";
-import { ArticleCard, CustomerService, RegisteredUser } from "@/lib/types";
+import { ArticleResponse, CustomerService, RegisteredUser } from "@/lib/types";
 
 export const useGetRegisterUsers = () => {
   return useQuery<RegisteredUser[]>({
@@ -14,8 +14,8 @@ export const useGetRegisterUsers = () => {
 };
 
 export const useGetArticles = () => {
-  return useQuery<ArticleCard[]>({
-    queryKey: ["get-article"],
+  return useQuery<ArticleResponse[]>({
+    queryKey: ["get-articles"],
     queryFn: async () => {
       const response = await axiosInstance.get("/article/get/");
       return response.data;
@@ -28,6 +28,16 @@ export const useGetCustomer = () => {
     queryKey: ["get-customer"],
     queryFn: async () => {
       const response = await axiosInstance.get("/customer/get/");
+      return response.data;
+    },
+  });
+};
+
+export const useGetRegisterUser = (id: string) => {
+  return useQuery<RegisteredUser>({
+    queryKey: ["get-register-user", id],
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/register/getuser/${id}`);
       return response.data;
     },
   });

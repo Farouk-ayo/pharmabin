@@ -1,10 +1,11 @@
-import type { ArticleCard } from "@/lib/types";
+import type { ArticleResponse } from "@/lib/types";
 import React from "react";
 import Pagination from "@/components/pagination";
 import Button from "@/components/buttons";
+import Image from "next/image";
 
 interface ArticlesSectionProps {
-  articles: ArticleCard[] | undefined;
+  articles: ArticleResponse[] | undefined;
   showAddArticleButton?: boolean;
   onAddArticle?: () => void;
 }
@@ -15,15 +16,17 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({
   onAddArticle,
 }) => {
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
+    <div className="w-full">
+      <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
         {showAddArticleButton && (
-          <h2 className="text-xl font-semibold text-primary">Articles</h2>
-        )}{" "}
+          <h2 className="text-xl font-semibold text-primary mb-3 md:mb-0">
+            Articles
+          </h2>
+        )}
         {showAddArticleButton && onAddArticle && (
           <Button
             onClick={onAddArticle}
-            className="!bg-black text-white !px-6 !py-2 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+            className="!bg-black w-max text-white !px-6 !py-2 rounded-lg shadow-sm focus:outline-none "
           >
             + Add Article
           </Button>
@@ -31,28 +34,38 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({
       </div>
 
       {/* Articles Table */}
-      <div className="overflow-x-auto mb-8">
-        <table className="min-w-full border-collapse text-primary text-left">
-          <thead className="bg-gray-100">
+      <div className="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 mb-8 bg-white rounded-lg shadow-md">
+        <table className="w-full min-w-[600px] border-collapse text-left">
+          <thead className="border">
             <tr>
               <th className="text-primary px-4 py-2">S/N</th>
               <th className="text-primary px-4 py-2">Date Posted</th>
               <th className="text-primary px-4 py-2">Title</th>
               <th className="text-primary px-4 py-2">Subtitle</th>
-              <th className="text-primary px-4 py-2">Action</th>
+              <th className="text-primary px-4 py-2"></th>
             </tr>
           </thead>
           <tbody>
             {articles?.map((article, index) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="text-primary px-4 py-2 text-center">
-                  {index + 1}
+              <tr key={article._id} className="hover:bg-gray-50 border">
+                <td className="px-4 py-2 text-center">{index + 1}</td>
+                <td className="px-4 py-2">
+                  {new Date(article.createdAt).toLocaleDateString()}
                 </td>
-                <td className="text-primary px-4 py-2">{article.date}</td>
-                <td className="text-primary px-4 py-2">{article.title}</td>
-                <td className="text-primary px-4 py-2">{article.subtitle}</td>
-                <td className="text-primary px-4 py-2">
-                  <button className="text-blue-600 font-semibold hover:underline">
+                <td className="px-4 py-2 flex gap-2 items-center">
+                  <div className="relative md:w-20 md:h-20 w-10 h-10">
+                    <Image
+                      layout="fill"
+                      src={article.articleImage1Url || "/"}
+                      className="rounded-[100%] object-cover"
+                      alt={article.articleImage1Id || "Article Image"}
+                    />
+                  </div>
+                  <div>{article.Title}</div>
+                </td>
+                <td className="px-4 py-2">{article.Subtitle1}</td>
+                <td className="px-4 py-2">
+                  <button className="text-yellow-600 font-semibold hover:underline">
                     View details
                   </button>
                 </td>

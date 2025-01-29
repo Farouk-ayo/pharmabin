@@ -10,32 +10,49 @@ import { useParams, useRouter } from "next/navigation";
 import Select from "react-select";
 import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
 import { customStyles } from "@/app/register/components/stepTwo";
+import { useGetRegisterUser } from "@/lib/hooks/api/queries";
+import LoadingSkeleton from "@/components/loadingSkeleton";
 
-interface EditUserProps {
-  user: RegisteredUser;
-}
-
-const EditUser: React.FC<EditUserProps> = ({ user }) => {
+const EditUser: React.FC = () => {
   const { id } = useParams();
   const router = useRouter();
-
+  const { data: user, isPending: isFetchingDetails } = useGetRegisterUser(
+    id as string
+  );
   const stateOptions = nigeriaStates.map((state) => ({
     value: state.state.name,
     label: state.state.name,
   }));
 
   const [editedUser, setEditedUser] = useState<RegisteredUser>({
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    emailAddress: user?.emailAddress || "",
-    phoneNumber: user?.phoneNumber || "",
-    organizationName: user?.organizationName || "",
-    City: user?.City || "",
-    State: user?.State || "",
-    localGovt: user?.localGovt || "",
-    zipCode: user?.zipCode || 0,
-    Others: user?.Others || "",
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    organizationName: "",
+    City: "",
+    State: "",
+    localGovt: "",
+    zipCode: 0,
+    Others: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      setEditedUser({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        emailAddress: user.emailAddress,
+        phoneNumber: user.phoneNumber,
+        organizationName: user.organizationName,
+        City: user.City,
+        State: user.State,
+        localGovt: user.localGovt,
+        zipCode: user.zipCode || 0,
+        Others: user.Others,
+      });
+    }
+  }, [user]);
 
   const [availableLGAs, setAvailableLGAs] = useState<
     { value: string; label: string }[]
@@ -62,16 +79,11 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
     setEditedUser((prev) => ({ ...prev, [field]: value }));
   };
 
-  const onCancel = () => {
-    router.push("/dashboard/users");
-  };
-
   const handleSave = () => {
     updateUser(
       { _id: Array.isArray(id) ? id[0] : id || "", data: editedUser },
       {
         onSuccess: () => {
-          showToast.success("User updated successfully");
           router.push("/dashboard/users");
         },
         onError: (error) => {
@@ -80,6 +92,10 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
       }
     );
   };
+
+  if (isFetchingDetails) {
+    return <LoadingSkeleton count={5} type="table" />;
+  }
 
   return (
     <div className="p-8">
@@ -94,7 +110,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             placeholder="Enter first name"
             value={editedUser.firstName}
             onChange={(e) => handleInputChange("firstName", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
         {/* Last Name */}
@@ -107,7 +123,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             placeholder="Enter last name"
             value={editedUser.lastName}
             onChange={(e) => handleInputChange("lastName", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
         {/* Email Address */}
@@ -120,7 +136,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             placeholder="Enter email address"
             value={editedUser.emailAddress}
             onChange={(e) => handleInputChange("emailAddress", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
         {/* Phone Number */}
@@ -133,7 +149,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             placeholder="Enter phone number"
             value={editedUser.phoneNumber}
             onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
         {/* Organization Name */}
@@ -148,7 +164,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             onChange={(e) =>
               handleInputChange("organizationName", e.target.value)
             }
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
         {/* Organization Address/City */}
@@ -161,7 +177,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             placeholder="Enter business address/city"
             value={editedUser.emailAddress || ""}
             onChange={(e) => handleInputChange("emailAddress", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
         {/* Organization State */}
@@ -192,6 +208,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
           <Select
             options={availableLGAs}
             isDisabled={!editedUser.State}
+            styles={customStyles}
             placeholder="Select LGA"
             value={
               availableLGAs.find(
@@ -203,7 +220,6 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             }
           />
         </div>
-        {/* Zip Code */}
         <div>
           <label className="block text-sm font-semibold text-gray-700">
             Pharmacy/Company/Organisation Zip Code
@@ -213,10 +229,9 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             placeholder="Enter business zip code"
             value={editedUser.zipCode || ""}
             onChange={(e) => handleInputChange("zipCode", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
-        {/* Other Details */}
         <div className="">
           <label className="block text-sm font-semibold text-gray-700">
             Others (What do you want to dispose? Any special time?)
@@ -226,7 +241,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
             value={editedUser.Others || ""}
             rows={3}
             onChange={(e) => handleInputChange("Others", e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
       </form>
@@ -234,7 +249,7 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
       {/* Buttons */}
       <div className="mt-6 flex justify-end gap-4">
         <Button
-          onClick={onCancel}
+          onClick={() => router.push("/dashboard/users")}
           className="!bg-gray-50 !text-black !px-6 !py-2 rounded-md"
         >
           Cancel
