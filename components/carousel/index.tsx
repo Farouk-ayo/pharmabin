@@ -26,18 +26,21 @@ const cards = [
   },
 ];
 
-export default function Carousel() {
+export default function Carousel({ vertical = false }: { vertical?: boolean }) {
   return (
-    <div className="relative w-full h-full px-4 lg:px-28 flex items-center overflow-hidden">
+    <div className="relative w-full h-full px-4  flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage: "url(/community-slider.png)",
+          backgroundImage: `url(${
+            vertical ? "/community-slider-2.png" : "/community-slider.png"
+          })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       />
+
       <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/70 bg-[#157D18]/50 md:bg-transparent" />
       <Swiper
         modules={[Pagination, Autoplay]}
@@ -52,7 +55,11 @@ export default function Carousel() {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index} className="h-full">
-            <div className="relative z-10 mx-auto py-16 flex flex-col items-center justify-center h-full text-center text-white max-w-5xl px-4">
+            <div
+              className={`relative z-10 mx-auto py-16 flex flex-col items-center justify-center h-full ${
+                vertical ? "text-left" : "text-center max-w-5xl"
+              }  text-white  px-4`}
+            >
               <p className="text-2xl md:text-4xl text-white font-medium italic mb-4">
                 “{card.quote}”
               </p>

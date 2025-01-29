@@ -12,15 +12,14 @@ const DisposalDiagram = () => {
     className: string;
   }) => (
     <svg
-      width="200"
+      width="150"
       height="6"
       viewBox="0 0 200 6"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`absolute ${className}`}
+      className={`relative ${className} z-[10]`}
       style={{
-        transform: `rotate(${rotation}deg) translateY(-100px)`,
-        transformOrigin: "center",
+        transform: `rotate(${rotation}deg)`,
       }}
     >
       <path
@@ -37,8 +36,8 @@ const DisposalDiagram = () => {
       content:
         "Save time and labor by disposing and segregating waste at point of generation. Our reusable containers eliminate labor associated with box assembly and remove the need to double-package for transport",
       position: "col-start-1 row-start-2",
-      rotation: 0,
-      className: "top-0 left-1/2 -translate-x-1/2",
+      rotation: 180,
+      className: "bottom-[55%] right-[40%] ",
     },
     {
       id: 2,
@@ -46,17 +45,18 @@ const DisposalDiagram = () => {
       content:
         "Inbuilt container safety trays prevent unauthorized access, and permanent locking mechanisms eliminate risk of tampering, pilfering and misappropriation of discarded pharmaceuticals",
       position: "col-start-1 row-start-1",
-      rotation: 60,
-      className: "top-1/4 right-0 -translate-y-1/2",
+      rotation: 240,
+      className: "-top-[110%] right-[30%] ",
     },
+
     {
       id: 3,
       title: "Leakproof Containers",
       content:
         "Our clinically designed pharmaceutical containers have built-in seals which minimize odors and prevent leaking of any free-flowing liquids",
       position: "col-start-3 row-start-1",
-      rotation: 120,
-      className: "bottom-1/4 right-0 -translate-y-1/2",
+      rotation: 300,
+      className: "-top-[110%] left-[80%]",
     },
     {
       id: 4,
@@ -64,8 +64,8 @@ const DisposalDiagram = () => {
       content:
         "Dramatically reduced waste costs by customized scheduling, elimination of disposables and on-site solutions to effectively segregate hazardous and non-hazardous pharmaceuticals",
       position: "col-start-3 row-start-2",
-      rotation: 180,
-      className: "bottom-0 left-1/2 -translate-x-1/2",
+      rotation: 0,
+      className: "bottom-[55%] left-[94%] ",
     },
     {
       id: 5,
@@ -73,8 +73,8 @@ const DisposalDiagram = () => {
       content:
         "Your custom inventory is updated weekly with the latest classifications to ensure you are always in compliance with drug disposal. Make your pharmaceutical waste management easy with PharmaBin",
       position: "col-start-3 row-start-3",
-      rotation: 240,
-      className: "bottom-1/4 left-0 -translate-y-1/2",
+      rotation: 120,
+      className: "bottom-[0%] right-[30%]  ",
     },
     {
       id: 6,
@@ -82,45 +82,40 @@ const DisposalDiagram = () => {
       content:
         "PharmaBin has an ongoing commitment to help educate healthcare staff to achieve greater safety awareness, and to drive behavioral change in waste management, segregation, compliance and best practice",
       position: "col-start-1 row-start-3",
-      rotation: 360,
-      className: "top-1/4 left-0 -translate-y-1/2",
+      rotation: 60,
+      className: "bottom-[0%] left-[80%]  ",
     },
   ];
 
   return (
-    <div className="w-full mx-auto py-10 lg:inline-block hidden">
+    <div className="w-full mx-auto py-10 ">
       <h1 className="text-2xl font-bold text-center text-tertiary3 mb-12">
         Why PharmaBin Pharmaceutical Waste Management
       </h1>
 
-      <div className="grid grid-cols-3 gap-16 relative">
-        <div className="col-start-2 row-start-2 w-80 h-80 mx-auto relative">
-          <div className="   ">
+      <div className="lg:grid lg:grid-cols-3 gap-16 relative flex flex-col items-center justify-center">
+        <div className="lg:col-start-2 lg:row-start-2 w-80 h-80 mx-auto relative hidden lg:block">
+          <div className="relative w-full h-full z-20">
             <Image
               priority
               src={"/ellipse-3.svg"}
               alt="ellipse"
               layout="fill"
             />
-          </div>
-
-          <div className="">
             <Image
               priority
               src={"/ellipse-2.svg"}
               alt="ellipse"
               layout="fill"
             />
-          </div>
-
-          <div className="  ">
             <Image
               priority
               src={"/ellipse-1.svg"}
               alt="ellipse"
               layout="fill"
-            />
+            />{" "}
           </div>
+
           {items.map((item) => (
             <LineWithArrow
               key={item.id}
@@ -128,11 +123,10 @@ const DisposalDiagram = () => {
               className={item.className}
             />
           ))}
-
           {items.map((item, index) => (
             <button
               key={item.id}
-              className="absolute w-10 h-10 bg-primaryDark rounded-full flex items-center justify-center text-white border border-white font-semibold transition-all duration-1000 shadow-lg"
+              className={`absolute w-10 h-10 bg-primaryDark rounded-full lg:flex items-center justify-center text-white border border-white font-semibold transition-all duration-1000 shadow-lg z-30 hidden ${item.className}`}
               style={{
                 top: "50%",
                 left: "50%",
@@ -154,17 +148,19 @@ const DisposalDiagram = () => {
         {items.map((item) => (
           <div
             key={item.id}
-            className={`relative ${item.position} items-center  w-full ${
+            className={`relative z-20 ${
+              item.position
+            } items-center h-48 my-auto  w-full left-0 ${
               item.id === 2
-                ? "left-16"
+                ? "lg:left-16"
                 : item.id === 3
-                ? "right-16"
+                ? "lg:right-16"
                 : item.id === 1 || item.id === 4
                 ? ""
                 : item.id === 6
-                ? "left-16"
+                ? "lg:left-16"
                 : item.id === 5
-                ? "right-16"
+                ? "lg:right-16"
                 : ""
             }`}
           >

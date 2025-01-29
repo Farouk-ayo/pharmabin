@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { MenuIcon, XIcon } from "lucide-react";
 import Button from "../buttons";
 import TopBar from "./topBar";
 import Image from "next/image";
@@ -44,11 +43,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white fixed w-full z-[100]">
+    <nav className="bg-white fixed  top-0 w-full z-[100] ">
       <TopBar />
-      <div className="py-2 flex justify-between items-center px-5 lg:px-28">
+      <div className="py-2 flex h-24 justify-between items-center px-5 lg:px-28">
         <Link href={"/"}>
-          <div className="relative flex items-center w-48 md:w-52 h-20">
+          <div className="relative flex items-center w-48 md:w-52 h-10">
             <Image
               src="/pharmabin-logo.svg"
               alt="pharmabin"
@@ -83,50 +82,55 @@ export default function Navbar() {
             </Button>
           </div>
         </div>
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu}>
-            {isOpen ? (
-              <XIcon className="h-6 w-6 text-primary" />
-            ) : (
-              <MenuIcon className="h-6 w-6 text-primary" />
-            )}
+        <div className="md:hidden z-50">
+          <button
+            className={`hamburger ${
+              isOpen ? "open" : ""
+            } relative z-30 w-8 h-6 flex flex-col justify-between items-center`}
+            onClick={toggleMenu}
+          >
+            <span className="line block w-full h-1 dark:bg-secondary-color-3 bg-black transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-1 dark:bg-secondary-color-3 bg-black transition-opacity duration-300 ease-in-out"></span>
+            <span className="line block w-full h-1 dark:bg-secondary-color-3 bg-black transition-transform duration-300 ease-in-out origin-center"></span>
           </button>
         </div>
-      </div>
-      {/* Mobile Menu */}
-      {isOpen && (
         <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="md:hidden bg-[#F0F4FD] shadow-md overflow-hidden"
+          initial={{ x: "100%" }}
+          animate={{ x: isOpen ? "0%" : "100%" }}
+          transition={{ duration: 0.5 }}
+          className={`fixed inset-0 w-full h-lvh bg-primary bg-opacity-50 lg:hidden`}
         >
-          <div className="flex flex-col items-center space-y-4 py-4 text-textPrimary font-semibold">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                className={`transition-colors duration-200 ${
-                  isActiveLink(link.href)
-                    ? "text-primary"
-                    : "hover:text-primary text-textPrimary"
-                }`}
-                href={link.href}
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: isOpen ? "0%" : "100%" }}
+            transition={{ duration: 0.5 }}
+            className="absolute top-0 right-0 h-full w-3/4 bg-white shadow-lg p-4"
+          >
+            <nav className="w-full flex flex-col items-center  z-40 mt-36 gap-4 justify-center">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  className={`transition-colors duration-200 text-lg ${
+                    isActiveLink(link.href)
+                      ? "text-primary font-semibold"
+                      : "hover:text-primary text-textPrimary"
+                  }`}
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Button
+                href={"/register"}
+                variant="secondary"
+                className="text-black px-10"
               >
-                {link.label}
-              </Link>
-            ))}
-            <Button
-              href={"/register"}
-              variant="secondary"
-              className="text-black"
-            >
-              Join us Now
-            </Button>
-          </div>
+                Join us Now
+              </Button>
+            </nav>
+          </motion.div>
         </motion.div>
-      )}
+      </div>
     </nav>
   );
 }

@@ -111,7 +111,7 @@ const ArticleDetails = () => {
     <section className=" relative  top-28  md:top-40 px-4 lg:px-28 pb-40 items-center overflow-hidden">
       <div>
         <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-4 ">
-          <div className="flex md:items-center text-sm text-textPrimary mb-4">
+          <div className=" hidden md:flex md:items-center text-sm text-textPrimary mb-4">
             <Link className="" href={"/articles"}>
               {" "}
               <span className="text-primary">Articles</span>
