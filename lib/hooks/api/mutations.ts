@@ -7,7 +7,6 @@ import {
 import { showToast } from "@/lib/util";
 import axiosInstance from "@/services/axiosInstance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 
 export const usePostRegister = () => {
   const mutationDetails = useMutation({
@@ -73,14 +72,12 @@ export const useDeleteRegisteredUser = () => {
 
 export const usePatchRegisterUser = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
   const mutationDetails = useMutation({
     mutationKey: ["update-register-user"],
     mutationFn: ({ _id, data }: { _id: string; data: RegisteredUser }) => {
       return axiosInstance.patch(`/register/${_id}`, data);
     },
     onSuccess: () => {
-      router.push("/dashboard/users");
       queryClient.invalidateQueries({ queryKey: ["get-register-user"] });
       showToast.success("updated user successfully");
     },
@@ -93,7 +90,6 @@ export const usePatchRegisterUser = () => {
 
 export const usePostArticle = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
   return useMutation({
     mutationKey: ["post-article"],
     mutationFn: (articleDetails: ArticleCard) => {
@@ -101,8 +97,44 @@ export const usePostArticle = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["get-articles"] });
-      router.push("/dashboard/articles");
       showToast.success("Article posted successfully");
+    },
+    onError: (error: Error) => {
+      showToast.error(error.message);
+    },
+  });
+};
+
+export const usePatchArticle = (articleId: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ["patch-article", articleId],
+    mutationFn: (updatedDetails: ArticleCard) => {
+      return axiosInstance.patch(`/article/${articleId}`, updatedDetails);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-articles"] });
+      showToast.success("Article updated successfully!");
+    },
+    onError: (error: Error) => {
+      showToast.error(error.message);
+    },
+  });
+};
+
+export const useDeleteArticle = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ["delete-article"],
+    mutationFn: (articleId: string) => {
+      return axiosInstance.delete(`/article/${articleId}`);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["get-articles"] });
+      console.log(data);
+      showToast.success("Article deleted successfully!");
     },
     onError: (error: Error) => {
       showToast.error(error.message);

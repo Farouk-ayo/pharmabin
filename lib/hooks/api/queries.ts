@@ -23,6 +23,16 @@ export const useGetArticles = () => {
   });
 };
 
+export const useGetArticle = (id: string) => {
+  return useQuery<ArticleResponse>({
+    queryKey: ["get-article", id],
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/article/${id}`);
+      return response.data;
+    },
+  });
+};
+
 export const useGetCustomer = () => {
   return useQuery<CustomerService[]>({
     queryKey: ["get-customer"],

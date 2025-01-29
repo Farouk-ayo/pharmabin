@@ -70,6 +70,7 @@ export type ArticleResponse = {
   articleImage3Id?: string;
   articleImage4Url?: string;
   articleImage4Id?: string;
+
   createdAt: string;
   __v: number;
 };
@@ -87,4 +88,6 @@ export type ArticleCard = {
   Content4?: string;
   articleImage1?: string;
   articleImage2?: string;
+  articleImage3?: string;
+  articleImage4?: string;
 };

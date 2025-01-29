@@ -3,6 +3,7 @@ import React from "react";
 import Pagination from "@/components/pagination";
 import Button from "@/components/buttons";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ArticlesSectionProps {
   articles: ArticleResponse[] | undefined;
@@ -15,6 +16,11 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({
   showAddArticleButton = false,
   onAddArticle,
 }) => {
+  const router = useRouter();
+  const onViewArticle = (id: string) => {
+    router.push(`/dashboard/articles/${id}`);
+  };
+
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
@@ -65,7 +71,10 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({
                 </td>
                 <td className="px-4 py-2">{article.Subtitle1}</td>
                 <td className="px-4 py-2">
-                  <button className="text-yellow-600 font-semibold hover:underline">
+                  <button
+                    className="text-yellow-600 font-semibold hover:underline"
+                    onClick={() => onViewArticle(article._id)}
+                  >
                     View details
                   </button>
                 </td>
