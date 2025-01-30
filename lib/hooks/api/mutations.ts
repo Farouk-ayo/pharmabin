@@ -7,6 +7,7 @@ import {
 import { showToast } from "@/lib/util";
 import axiosInstance from "@/services/axiosInstance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Cookies from "js-cookie";
 
 export const usePostRegister = () => {
   const mutationDetails = useMutation({
@@ -138,6 +139,25 @@ export const useDeleteArticle = () => {
     },
     onError: (error: Error) => {
       showToast.error(error.message);
+    },
+  });
+};
+
+export const useLogout = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ["admin-logout"],
+    mutationFn: async () => {
+      return axiosInstance.post("/admin/logout");
+    },
+    onSuccess: () => {
+      Cookies.remove("authToken");
+      queryClient.invalidateQueries({ queryKey: ["admin-data"] });
+      showToast.success("Logged out successfully!");
+    },
+    onError: (error: Error) => {
+      showToast.error(error.message || "Logout failed!");
     },
   });
 };

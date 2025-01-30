@@ -14,12 +14,15 @@ import {
   Logout,
   Users,
 } from "@/components/icons";
+import { useLogout } from "@/lib/hooks/api/mutations";
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const currentPath = usePathname();
   const router = useRouter();
+
+  const { mutate: logout } = useLogout();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -47,7 +50,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   const handleLogout = () => {
     setShowLogoutModal(false);
-    router.push("/login");
+    setShowLogoutModal(false);
+    logout(undefined, {
+      onSuccess: () => {
+        router.push("/");
+      },
+    });
   };
 
   return (

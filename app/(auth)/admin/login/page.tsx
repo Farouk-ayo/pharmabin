@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { usePostAdmin } from "@/lib/hooks/api/mutations";
 import { LoginInputsPayload } from "@/lib/types";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const AdminLogin = () => {
   const postCustomer = usePostAdmin();
@@ -32,10 +33,16 @@ const AdminLogin = () => {
       console.log("Submitting data:", data);
       await postCustomer.mutateAsync(data, {
         onSuccess: (response) => {
-          console.log("Success:", response);
-          showToast.success("Login successful");
           router.push("/dashboard");
           reset();
+          if (response?.data?.token) {
+            Cookies.set("authToken", response.data.token, { expires: 1 });
+            showToast.success("Login successful");
+            router.push("/dashboard");
+            reset();
+          } else {
+            showToast.error("Invalid login credentials");
+          }
         },
       });
     } catch (error) {
