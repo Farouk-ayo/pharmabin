@@ -13,11 +13,14 @@ import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
 import Navbar from "@/components/navbar";
-import { recentCards, services } from "@/lib/data";
+import { services } from "@/lib/data";
+import { useGetArticles } from "@/lib/hooks/api/queries";
 import { showToast } from "@/lib/util";
 import Image from "next/image";
 
 export default function Home() {
+  const { data: articles } = useGetArticles();
+  const cards = articles?.slice(0, 3) || [];
   return (
     <section>
       <Navbar />
@@ -199,13 +202,13 @@ export default function Home() {
 
           {/* Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentCards.map((card, index) => (
+            {cards.map((card, index) => (
               <Card
                 key={index}
-                id={card.id}
-                image={card.image}
-                title={card.title}
-                description={card.description}
+                id={card._id}
+                image={card.articleImage1Url}
+                title={card.Title}
+                description={card.Caption}
               />
             ))}
           </div>

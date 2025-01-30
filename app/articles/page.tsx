@@ -43,7 +43,7 @@ const AboutUs = () => {
                 key={index}
                 image={item.articleImage1Url}
                 title={item.Title}
-                description={item.Subtitle1}
+                description={item.Caption}
                 id={item._id}
               />
             ))
