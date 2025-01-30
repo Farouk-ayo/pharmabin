@@ -189,7 +189,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                 isLoading={isLoading}
                 className="bg-primaryDark text-white w-40 py-2 rounded-lg"
               >
-                SAVE
+                Save
               </Button>
             )}
             {type === "add" && (
@@ -281,7 +281,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter title"
             value={formData.Title}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
@@ -294,7 +294,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter small caption on the website"
             value={formData.Caption}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
@@ -307,7 +307,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter subtitle 1"
             value={formData.Subtitle1}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 1
@@ -319,7 +319,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter content 1"
             value={formData.Content1}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
@@ -332,7 +332,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter subtitle 2"
             value={formData.Subtitle2}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 2
@@ -344,7 +344,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter content 2"
             value={formData.Content2}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
@@ -357,7 +357,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter subtitle 3"
             value={formData.Subtitle3}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 3 (Optional)
@@ -369,7 +369,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             disabled={type === "view"}
             value={formData.Content3}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
@@ -382,7 +382,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter subtitle 4"
             value={formData.Subtitle4}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 4 (Optional)
@@ -394,7 +394,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             placeholder="Enter content 4"
             value={formData.Content4}
             onChange={handleChange}
-            className="w-full p-2  mt-1 border rounded-md"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
 

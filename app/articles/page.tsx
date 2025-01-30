@@ -1,19 +1,25 @@
 "use client";
 import { Card } from "@/components/cards";
 import Header from "@/components/header/header";
+import LoadingSkeleton from "@/components/loadingSkeleton";
 import Pagination from "@/components/pagination";
 import { cards } from "@/lib/data";
+import { useGetArticles } from "@/lib/hooks/api/queries";
 import React, { useState } from "react";
 
 const AboutUs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   const totalPages = Math.ceil(cards.length / itemsPerPage);
+  const { data: articles, isPending } = useGetArticles();
 
-  const currentData = cards.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const currentData = articles
+    ? articles.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      )
+    : [];
+
   return (
     <section className="">
       <Header
@@ -29,16 +35,20 @@ const AboutUs = () => {
       />{" "}
       <section className="px-4 lg:px-28 md:pt-20 relative z-10 my-32">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentData.map((item, index) => (
-            <Card
-              key={index}
-              image={item.image}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
+          {isPending ? (
+            <LoadingSkeleton type="card" />
+          ) : (
+            currentData.map((item, index) => (
+              <Card
+                key={index}
+                image={item.articleImage1Url}
+                title={item.Title}
+                description={item.Subtitle1}
+                id={item._id}
+              />
+            ))
+          )}
         </div>
-
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

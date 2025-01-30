@@ -8,6 +8,7 @@ import { loginSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePostAdmin } from "@/lib/hooks/api/mutations";
 import { LoginInputs } from "@/lib/types";
+import { useRouter } from "next/navigation";
 
 const AdminLogin = () => {
   const postCustomer = usePostAdmin();
@@ -15,6 +16,7 @@ const AdminLogin = () => {
     emailAddress: "",
     password: "",
   };
+  const router = useRouter();
 
   const {
     register,
@@ -32,6 +34,7 @@ const AdminLogin = () => {
       onSuccess: (data) => {
         console.log(data);
         showToast.success("User registered successfully");
+        router.push("/dashboard");
         reset(initialFormData);
       },
       onError: (error: Error) => {
@@ -60,7 +63,7 @@ const AdminLogin = () => {
                   type="email"
                   {...register("emailAddress")}
                   placeholder="Enter email address"
-                  className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                  className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
                 />
                 {errors.emailAddress && (
                   <span className="text-red-600">
@@ -77,7 +80,7 @@ const AdminLogin = () => {
                   type="password"
                   {...register("password")}
                   placeholder="Enter password"
-                  className="w-full border-[0.5px] border-gray-300 rounded-md p-2 focus:ring-primary focus:border-primary"
+                  className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
                 />
                 {errors.password && (
                   <span className="text-red-600">

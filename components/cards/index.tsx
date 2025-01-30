@@ -4,7 +4,7 @@ interface CardProps {
   image: string;
   title: string;
   description: string;
-  id?: number;
+  id: string;
 }
 export const Card: React.FC<CardProps> = ({
   image,
@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({
       alt={title}
       className=""
       width={1000}
-      height={500}
+      height={100}
       priority
     />
     <div className="p-6 flex-col flex justify-between items-center text-center">

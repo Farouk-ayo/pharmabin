@@ -17,6 +17,10 @@ export default function AddArticlePage() {
   };
 
   return (
-    <ArticleForm onSubmit={handleSubmit} isLoading={postArticle.isPending} />
+    <ArticleForm
+      onSubmit={handleSubmit}
+      isLoading={postArticle.isPending}
+      type="add"
+    />
   );
 }
