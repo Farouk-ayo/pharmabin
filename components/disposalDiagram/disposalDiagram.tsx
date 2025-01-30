@@ -96,24 +96,31 @@ const DisposalDiagram = () => {
       <div className="lg:grid lg:grid-cols-3 gap-16 relative flex flex-col items-center justify-center">
         <div className="lg:col-start-2 lg:row-start-2 w-80 h-80 mx-auto relative hidden lg:block">
           <div className="relative w-full h-full z-20">
-            <Image
-              priority
-              src={"/ellipse-3.svg"}
-              alt="ellipse"
-              layout="fill"
-            />
-            <Image
-              priority
-              src={"/ellipse-2.svg"}
-              alt="ellipse"
-              layout="fill"
-            />
-            <Image
-              priority
-              src={"/ellipse-1.svg"}
-              alt="ellipse"
-              layout="fill"
-            />{" "}
+            {/* Outer Background Circle */}
+            <div className="absolute z-10 w-full h-full rounded-full">
+              <Image
+                priority
+                src={"/ellipse-3.svg"}
+                alt="ellipse"
+                layout="fill"
+              />
+            </div>
+
+            {/* Middle Circle with Border */}
+            <div className=" z-20 absolute flex items-center justify-center w-full h-full">
+              <div className="w-60 h-60 bg-transparent rounded-full border-white border"></div>
+            </div>
+
+            {/* Foreground Circle */}
+            <div className="absolute z-30 flex items-center justify-center w-full h-full">
+              <Image
+                priority
+                src={"/ellipse-4.svg"}
+                alt="ellipse"
+                className=" scale-125  w-60 h-60 md:w-[30rem] md:h-[30rem] animate-rotateSlow "
+                layout="fill"
+              />
+            </div>
           </div>
 
           {items.map((item) => (
@@ -130,7 +137,7 @@ const DisposalDiagram = () => {
               style={{
                 top: "50%",
                 left: "50%",
-                transform: `rotate(${index * 60}deg) translate(80px) rotate(-${
+                transform: `rotate(${index * 60}deg) translate(120px) rotate(-${
                   index * 60
                 }deg)`,
                 marginLeft: "-20px",

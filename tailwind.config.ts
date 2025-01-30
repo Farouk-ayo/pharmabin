@@ -32,11 +32,16 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-5px)" },
         },
+        rotateClockwise: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         float: "float 3s ease-in-out infinite",
         "float-delayed": "float-delayed 3.5s ease-in-out infinite",
         "float-slower": "float-slower 4s ease-in-out infinite",
+        rotateSlow: "rotateClockwise 10s linear infinite",
       },
     },
   },

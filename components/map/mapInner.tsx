@@ -31,7 +31,7 @@ const MapInner: React.FC<MapProps> = ({ center, locations }) => {
     <MapContainer
       center={center}
       className="w-full h-full rounded-lg"
-      zoom={13}
+      zoom={8}
       // zoomControl={false}
       scrollWheelZoom={false}
     >

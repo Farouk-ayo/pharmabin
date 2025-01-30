@@ -70,11 +70,13 @@ const DisposalDiagram: React.FC = () => {
   const getNumberPosition = (baseRotation: number) => {
     const adjustedRotation = (baseRotation - currentRotation + 360) % 360;
     const isPrimaryPosition = Math.abs(adjustedRotation - 210) < 30;
+    const translateDistance =
+      typeof window !== "undefined" && window.innerWidth < 768 ? 120 : 200;
 
     return {
-      transform: `rotate(${adjustedRotation}deg) translate(120px) rotate(-${adjustedRotation}deg)`,
-      scale: isPrimaryPosition ? 1.5 : 1,
-      zIndex: isPrimaryPosition ? 10 : 1,
+      transform: `rotate(${adjustedRotation}deg) translate(${translateDistance}px) rotate(-${adjustedRotation}deg)`,
+      scale: isPrimaryPosition ? 1.4 : 1,
+      zIndex: isPrimaryPosition ? 30 : 50,
     };
   };
 
@@ -83,12 +85,12 @@ const DisposalDiagram: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 p-8 max-w-6xl mx-auto">
+    <div className="flex flex-col md:flex-row items-center gap-8 p-8 max-w-6xl md:mx-auto">
       {/* Left side text content */}
       <div className="flex-1 space-y-6">
         {activePointData && (
           <>
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex md:items-center md:justify-center gap-2">
               <h2 className="text-xl font-medium text-primary">
                 {activePoint}. {activePointData.title}
               </h2>
@@ -97,7 +99,7 @@ const DisposalDiagram: React.FC = () => {
               <div className="w-2 h-2 rounded-full bg-primary"></div>
               <div className="h-[1px] w-full border border-primary border-dashed"></div>
             </div>
-            <p className="text-gray-600 leading-relaxed ml-4 text-lg">
+            <p className="text-gray-600 leading-relaxed md:ml-4 text-lg">
               {activePointData.description}
             </p>
           </>
@@ -105,32 +107,43 @@ const DisposalDiagram: React.FC = () => {
       </div>
 
       {/* Right side circular diagram */}
-      <div className="relative w-96 h-96">
-        <div className="   rounded-full ">
+      <div className="relative md:w-[35rem] md:h-[35rem] h-80 w-80">
+        {/* Outer Background Circle */}
+        <div className="absolute z-10 w-full h-full rounded-full">
           <Image priority src={"/ellipse-3.svg"} alt="ellipse" layout="fill" />
         </div>
 
-        <div className="">
-          <Image priority src={"/ellipse-2.svg"} alt="ellipse" layout="fill" />
+        {/* Middle Circle with Border */}
+        <div className="absolute z-20 flex items-center justify-center w-full h-full">
+          <div className="w-[80%] h-[80%] md:w-[26rem] md:h-[26rem]  rounded-full border-white bg-transparent border"></div>
         </div>
 
-        <div className="  ">
-          <Image priority src={"/ellipse-1.svg"} alt="ellipse" layout="fill" />
+        {/* Foreground Circle */}
+        <div className="absolute z-30 flex items-center justify-center w-full h-full">
+          <Image
+            priority
+            src={"/ellipse-1.svg"}
+            alt="ellipse"
+            className=" scale-125 md:-translate-x-6 -translate-x-2  w-60 h-60 md:w-[30rem] md:h-[30rem]"
+            layout="fill"
+          />
         </div>
 
         {/* Numbers around the circle */}
         {disposalPoints.map(({ number, baseRotation }) => {
           const { transform, scale, zIndex } = getNumberPosition(baseRotation);
+
           return (
             <div
               key={number}
-              className="absolute w-10 h-10 bg-primaryDark rounded-full flex items-center justify-center text-white border border-white font-semibold transition-all duration-1000 shadow-lg"
+              className="absolute 
+             w-10 h-10 bg-primaryDark rounded-full flex items-center justify-center text-white border border-white font-semibold shadow-lg transition-all duration-1000"
               style={{
                 top: "50%",
                 left: "50%",
                 transform,
-                marginLeft: "-20px",
-                marginTop: "-20px",
+                marginLeft: "-20px", // Offset by half the marker size
+                marginTop: "-20px", // Offset by half the marker size
                 scale,
                 zIndex,
               }}

@@ -187,7 +187,7 @@ export default function Home() {
         }}
       >
         <div className="container mx-auto px-6">
-          <div className="text-center my-12 w-full md:w-[60%] mx-auto">
+          <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
             <Badge text="Articles" bgColor="bg-tertiary" className="mb-8" />{" "}
             <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
               Knowledge On How To Protect Our Communities Together

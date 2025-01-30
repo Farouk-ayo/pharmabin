@@ -60,6 +60,7 @@ const MapComponent = () => {
               )}`
             );
             const data = await res.json();
+            console.log(data);
 
             if (data.length > 0) {
               return {
@@ -87,7 +88,7 @@ const MapComponent = () => {
     };
 
     fetchLocations();
-  }, []);
+  }, [users]);
 
   // Handle search functionality
   const handleSearch = async (e: React.FormEvent) => {
