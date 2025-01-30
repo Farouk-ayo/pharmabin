@@ -12,7 +12,6 @@ const AboutUs = () => {
   const itemsPerPage = 12;
   const totalPages = Math.ceil(cards.length / itemsPerPage);
   const { data: articles, isPending } = useGetArticles();
-  console.log(articles);
 
   const currentData = articles
     ? articles.slice(

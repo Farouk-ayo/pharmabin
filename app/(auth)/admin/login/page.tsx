@@ -30,7 +30,6 @@ const AdminLogin = () => {
 
   const onSubmit = async (data: LoginInputsPayload) => {
     try {
-      console.log("Submitting data:", data);
       await postCustomer.mutateAsync(data, {
         onSuccess: (response) => {
           router.push("/dashboard");
