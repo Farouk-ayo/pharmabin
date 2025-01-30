@@ -12,6 +12,7 @@ const AboutUs = () => {
   const itemsPerPage = 12;
   const totalPages = Math.ceil(cards.length / itemsPerPage);
   const { data: articles, isPending } = useGetArticles();
+  console.log(articles);
 
   const currentData = articles
     ? articles.slice(
@@ -33,7 +34,7 @@ const AboutUs = () => {
           </p>
         }
       />{" "}
-      <section className="px-4 lg:px-28 md:pt-20 relative z-10 my-32">
+      <section className="px-4  py-12 lg:px-28 md:py-20 relative z-10 my-32">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {isPending ? (
             <LoadingSkeleton type="card" />

@@ -1,38 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { MapPinIcon } from "lucide-react";
 import Button from "../buttons";
+import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
 
-// Types
+export interface RegisteredUser {
+  _id?: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  organizationName: string;
+  City: string;
+  State: string;
+  localGovt: string;
+  zipCode: number;
+  Others?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
+}
+
 type Location = {
-  id: number;
+  id: string;
   name: string;
   lat: number;
   lng: number;
   address: string;
 };
 
-// Sample data
-const sampleLocations: Location[] = [
-  {
-    id: 1,
-    name: "PharmaBin Central",
-    lat: 7.3775,
-    lng: 3.947,
-    address: "123 Medical Way, Osogbo",
-  },
-  {
-    id: 2,
-    name: "PharmaBin East",
-    lat: 7.3875,
-    lng: 3.957,
-    address: "456 Health Street, Osogbo",
-  },
-];
-
-// Dynamically import the Map component with SSR disabled
-const Map = dynamic(() => import("./mapInner").then((mod) => mod.default), {
+// Dynamically import the MapInner component (disables SSR for Leaflet)
+const MapInner = dynamic(() => import("./mapInner"), {
   ssr: false,
   loading: () => (
     <div className="h-[500px] w-full bg-gray-100 animate-pulse flex items-center justify-center">
@@ -43,13 +42,54 @@ const Map = dynamic(() => import("./mapInner").then((mod) => mod.default), {
 
 const MapComponent = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [center, setCenter] = useState<[number, number]>([7.3775, 3.947]);
-  const [locations, setLocations] = useState<Location[]>(sampleLocations);
-  const [selectedLocation, setSelectedLocation] = useState<Location | null>(
-    null
-  );
+  const [center, setCenter] = useState<[number, number]>([7.3775, 3.947]); // Default center (Nigeria)
+  const [locations, setLocations] = useState<Location[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const { data: users } = useGetRegisterUsers();
 
+  // Fetch user locations and convert city/state to lat/lng
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const locationPromises = (users || []).map(async (user) => {
+          const query = `${user.City}, ${user.State}, Nigeria`;
+          try {
+            const res = await fetch(
+              `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+                query
+              )}`
+            );
+            const data = await res.json();
+
+            if (data.length > 0) {
+              return {
+                id: user._id || "",
+                name: user.organizationName,
+                lat: parseFloat(data[0].lat),
+                lng: parseFloat(data[0].lon),
+                address: `${user.City}, ${user.State}, ${user.zipCode}`,
+              };
+            }
+          } catch (error) {
+            console.error(`Error fetching coordinates for ${query}:`, error);
+          }
+          return null;
+        });
+
+        const resolvedLocations = (await Promise.all(locationPromises)).filter(
+          (loc) => loc !== null
+        ) as Location[];
+
+        setLocations(resolvedLocations);
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    };
+
+    fetchLocations();
+  }, []);
+
+  // Handle search functionality
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSearching(true);
@@ -62,14 +102,8 @@ const MapComponent = () => {
       );
       const data = await response.json();
 
-      if (data && data[0]) {
+      if (data.length > 0) {
         setCenter([parseFloat(data[0].lat), parseFloat(data[0].lon)]);
-        const newLocations = sampleLocations.map((loc) => ({
-          ...loc,
-          lat: parseFloat(data[0].lat) + (Math.random() - 0.5) * 0.01,
-          lng: parseFloat(data[0].lon) + (Math.random() - 0.5) * 0.01,
-        }));
-        setLocations(newLocations);
       }
     } catch (error) {
       console.error("Search error:", error);
@@ -78,8 +112,9 @@ const MapComponent = () => {
     }
   };
 
+  // Get user’s current location
   const handleUseMyLocation = () => {
-    if (typeof window !== "undefined" && navigator.geolocation) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setCenter([position.coords.latitude, position.coords.longitude]);
@@ -94,18 +129,13 @@ const MapComponent = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <div className="lg:col-span-2 h-[500px] relative">
-        <Map
-          center={center}
-          locations={locations}
-          onLocationSelect={setSelectedLocation}
-        />
+        <MapInner center={center} locations={locations} />
       </div>
 
       <div className="bg-primary p-6 rounded-lg h-min">
         <form onSubmit={handleSearch} className="space-y-4">
           <h2 className="text-white text-base md:text-lg">
-            Enter your zip code or city, state abbreviation (e.g. Ife Central,
-            Osun State) to find PharmaBin service locations near you.
+            Enter ZIP Code, City, or State to find locations near you.
           </h2>
           <div>
             <input
@@ -130,15 +160,6 @@ const MapComponent = () => {
             Use My Location
           </button>
         </form>
-
-        {selectedLocation && (
-          <div className="mt-6 p-4 bg-white rounded-lg">
-            <h3 className="font-semibold text-gray-900">
-              {selectedLocation.name}
-            </h3>
-            <p className="text-gray-600 text-sm">{selectedLocation.address}</p>
-          </div>
-        )}
       </div>
     </div>
   );

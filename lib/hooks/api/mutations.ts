@@ -1,7 +1,7 @@
 import {
   ArticleCard,
   CustomerService,
-  LoginInputs,
+  LoginInputsPayload,
   RegisteredUser,
 } from "@/lib/types";
 import { showToast } from "@/lib/util";
@@ -31,7 +31,7 @@ export const usePostCustomer = () => {
 export const usePostAdmin = () => {
   const mutationDetails = useMutation({
     mutationKey: ["post-admin"],
-    mutationFn: (adminDetails: LoginInputs) => {
+    mutationFn: (adminDetails: LoginInputsPayload) => {
       return axiosInstance.post("/admin/login", adminDetails);
     },
   });

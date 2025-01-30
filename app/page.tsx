@@ -26,7 +26,7 @@ export default function Home() {
       <Navbar />
       <Header />
       <section
-        className="px-4 lg:px-28 md:py-20 top-10 md:top-32 relative z-10"
+        className="px-4 lg:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10"
         style={{
           backgroundImage: "url(./bg-waste-land-1.svg)",
         }}

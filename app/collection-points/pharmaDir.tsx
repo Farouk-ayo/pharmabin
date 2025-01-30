@@ -55,17 +55,17 @@ const PharmacyDirectory = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div
-          className="flex flex-col sm:flex-row items-center gap-5 justify-center mx-auto relative"
+          className="flex flex-col sm:flex-row md:items-center gap-5 justify-center mx-auto relative"
           ref={dropdownRef}
         >
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Discover PharmaBin Collection Point In
           </h1>
-          <div className="relative">
+          <div className="">
             <Button
-              variant="secondary"
+              variant="primary"
               onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
-              className="bg-primary text-white px-4 py-2 rounded-md flex items-center gap-2  "
+              className="bg-primary relative text-white px-4 py-2 rounded-md flex text-left md:items-center gap-2  "
             >
               {selectedState}
               <ChevronDown size={20} />

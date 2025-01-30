@@ -28,8 +28,12 @@ export interface CustomerService {
 }
 
 export interface LoginInputs {
-  emailAddress: string;
+  email: string;
   password: string;
+}
+export interface LoginInputsPayload {
+  Email: string;
+  Password: string;
 }
 
 // DASHBOARD TYPES

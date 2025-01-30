@@ -28,7 +28,7 @@ const AboutUs = () => {
           </p>
         }
       />{" "}
-      <section className="px-4 lg:px-28 md:pt-20 top-10 md:top-32 relative z-10">
+      <section className="px-4 lg:px-28  py-12 md:py-20 top-32 md:top-32 relative z-10">
         <div className=" mx-auto space-y-12">
           <div className=" text-center space-y-6">
             <h2 className="max-w-4xl text-center mx-auto text-2xl md:text-4xl font-bold text-tertiary3">

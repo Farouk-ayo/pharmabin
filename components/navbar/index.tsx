@@ -98,7 +98,7 @@ export default function Navbar() {
           initial={{ x: "100%" }}
           animate={{ x: isOpen ? "0%" : "100%" }}
           transition={{ duration: 0.5 }}
-          className={`fixed inset-0 w-full h-lvh bg-primary bg-opacity-50 lg:hidden`}
+          className={`fixed inset-0 w-full h-lvh bg-black bg-opacity-50 lg:hidden`}
         >
           <motion.div
             initial={{ x: "100%" }}
@@ -110,9 +110,9 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  className={`transition-colors duration-200 text-lg ${
+                  className={`transition-colors font-semibold duration-200 text-lg ${
                     isActiveLink(link.href)
-                      ? "text-primary font-semibold"
+                      ? "text-primary "
                       : "hover:text-primary text-textPrimary"
                   }`}
                   href={link.href}

@@ -38,8 +38,8 @@ export const customerServiceSchema = z.object({
 });
 
 export const loginSchema = z.object({
-  emailAddress: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters long"),
+  Email: z.string().email("Invalid email address"),
+  Password: z.string().min(6, "Password must be at least 6 characters long"),
 });
 
 export const articleSchema = z.object({
