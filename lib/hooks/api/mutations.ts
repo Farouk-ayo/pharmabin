@@ -132,7 +132,7 @@ export const useDeleteArticle = () => {
     mutationFn: (articleId: string) => {
       return axiosInstance.delete(`/article/${articleId}`);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["get-articles"] });
       showToast.success("Article deleted successfully!");
     },
