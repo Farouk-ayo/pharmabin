@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 const ArticlesPage = () => {
   const { data: articles, isPending: isLoadingArticles } = useGetArticles();
   const router = useRouter();
-  console.log(articles);
 
   const handleAddArticle = () => {
     router.push("/dashboard/articles/add");

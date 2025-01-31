@@ -33,15 +33,12 @@ const ContactUs = () => {
   });
 
   const onSubmit = async (data: CustomerService) => {
-    console.log(data);
     postCustomer.mutate(data, {
       onSuccess: (data) => {
-        console.log(data);
         showToast.success("Message sent successfully");
         reset(initialFormData);
       },
       onError: (error: Error) => {
-        console.log(error);
         showToast.error(error.message);
       },
     });

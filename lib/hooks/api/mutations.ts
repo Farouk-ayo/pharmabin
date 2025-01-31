@@ -134,7 +134,6 @@ export const useDeleteArticle = () => {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["get-articles"] });
-      console.log(data);
       showToast.success("Article deleted successfully!");
     },
     onError: (error: Error) => {
