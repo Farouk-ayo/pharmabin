@@ -10,6 +10,7 @@ import { useDeleteArticle, usePatchArticle } from "@/lib/hooks/api/mutations";
 export default function ViewArticlePage() {
   const { id } = useParams();
   const { data: article, isLoading: isFetching } = useGetArticle(id as string);
+  console.log(article);
   const { mutate: deleteArticle, isPending: isDeleting } = useDeleteArticle();
   const router = useRouter();
 

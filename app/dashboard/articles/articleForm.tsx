@@ -25,28 +25,56 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
   type: initialType,
 }) => {
   const [formData, setFormData] = useState({
-    Title: initialData?.Title || "",
-    Caption: initialData?.Caption || "",
-    Subtitle1: initialData?.Subtitle1 || "",
-    Subtitle2: initialData?.Subtitle2 || "",
-    Subtitle3: initialData?.Subtitle3 || "",
-    Subtitle4: initialData?.Subtitle4 || "",
-    Content1: initialData?.Content1 || "",
-    Content2: initialData?.Content2 || "",
-    Content3: initialData?.Content3 || "",
-    Content4: initialData?.Content4 || "",
-    articleImage1: initialData?.articleImage1Url || "",
-    articleImage2: initialData?.articleImage2Url || "",
-    articleImage3: initialData?.articleImage3Url || "",
-    articleImage4: initialData?.articleImage3Url || "",
+    Title: "",
+    Caption: "",
+    Subtitle1: "",
+    Subtitle2: "",
+    Subtitle3: "",
+    Subtitle4: "",
+    Content1: "",
+    Content2: "",
+    Content3: "",
+    Content4: "",
+    articleImage1: "",
+    articleImage2: "",
+    articleImage3: "",
+    articleImage4: "",
     images: [null, null, null, null] as (File | null)[],
   });
 
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        Title: initialData.Title || "",
+        Caption: initialData.Caption || "",
+        Subtitle1: initialData.Subtitle1 || "",
+        Subtitle2: initialData.Subtitle2 || "",
+        Subtitle3: initialData.Subtitle3 || "",
+        Subtitle4: initialData.Subtitle4 || "",
+        Content1: initialData.Content1 || "",
+        Content2: initialData.Content2 || "",
+        Content3: initialData.Content3 || "",
+        Content4: initialData.Content4 || "",
+        articleImage1: initialData.articleImage1Url || "",
+        articleImage2: initialData.articleImage2Url || "",
+        articleImage3: initialData.articleImage3Url || "",
+        articleImage4: initialData.articleImage4Url || "",
+        images: [null, null, null, null] as (File | null)[],
+      });
+      setPreviewUrls([
+        initialData.articleImage1Url || null,
+        initialData.articleImage2Url || null,
+        initialData.articleImage3Url || null,
+        initialData.articleImage4Url || null,
+      ]);
+    }
+  }, [initialData]);
+
   const [previewUrls, setPreviewUrls] = useState<(string | null)[]>(() => [
-    initialData?.articleImage1Url || null,
-    initialData?.articleImage2Url || null,
-    initialData?.articleImage3Url || null,
-    initialData?.articleImage4Url || null,
+    null,
+    null,
+    null,
+    null,
   ]);
   const [type, setType] = useState(initialType);
 
@@ -180,7 +208,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
   return (
     <div className="mx-auto p-4 md:p-6 bg-gray-50 rounded-lg shadow-md">
       <form onSubmit={handleSubmit}>
-        <div className="my-6 flex justify-between items-center">
+        <div className="my-6 flex flex-col md:flex-row gap-5 justify-between md:items-center">
           <h2 className="text-primary font-semibold text-lg">Add Article</h2>
           <div>
             {type === "edit" && (
