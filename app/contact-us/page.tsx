@@ -76,7 +76,19 @@ const ContactUs = () => {
                     Phone No
                   </span>
                   <span className="text-gray-800">
-                    +234-819-050-3222 / +234-903-953-9042
+                    <a
+                      href="tel:+2348079508822"
+                      className="text-gray-600 hover:text-primary transition"
+                    >
+                      +2348079508822
+                    </a>
+                    <span className="text-gray-600">/</span>
+                    <a
+                      href="tel:+2349039539042"
+                      className="text-gray-600 hover:text-primary transition"
+                    >
+                      +2349039539042
+                    </a>{" "}
                   </span>
                 </div>
                 <div className="flex flex-col space-x-3">
@@ -84,7 +96,12 @@ const ContactUs = () => {
                     <Mail className="w-5 h-5 !text-white fill-black flex-shrink-0" />
                     Email Address
                   </span>
-                  <span className="text-gray-800">pharmabin@gmail.com</span>
+                  <a
+                    href="mailto:pharmabin@gmail.com"
+                    className="text-gray-600 hover:text-primary transition"
+                  >
+                    pharmabin@gmail.com
+                  </a>{" "}
                 </div>
                 <div className="flex flex-col space-x-3">
                   <span className="flex items-center text-lg gap-2 font-semibold">

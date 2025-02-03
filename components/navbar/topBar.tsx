@@ -5,14 +5,14 @@ import { FacebookIcon, InstagramIcon, WhatsappIcon, XIcon } from "../icons";
 
 const socialLinks = [
   {
-    name: "PharmaBin",
+    name: "PharmaBin Waste",
     icon: (
       <FacebookIcon className="w-4 h-4 cursor-pointer text-white hover:text-secondary" />
     ),
     url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
   },
   {
-    name: "PharmaBin_01",
+    name: "PharmaBin",
     icon: (
       <InstagramIcon className="w-4 h-4 cursor-pointer text-white hover:text-secondary" />
     ),
@@ -31,15 +31,25 @@ const socialLinks = [
 const TopBar: React.FC = () => {
   return (
     <div className=" hidden md:flex bg-primaryDark text-white py-3 px-5 lg:px-28  sm:flex-col md:flex-row justify-between items-center text-sm h-14">
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 ">
         <div className="flex items-center space-x-4">
           <PhoneCallIcon className="w-4 h-4" />
           <WhatsappIcon className="w-4 h-4" />
         </div>
-        <div className="flex items-center space-x-1">
-          <span>+234-819-050-3222</span>
+        <div className="flex items-center space-x-1 ">
+          <a
+            href="tel:+2348079508822"
+            className=" hover:text-primary transition"
+          >
+            +234-807-950-8822
+          </a>
           <span className="hidden md:inline">/</span>
-          <span>+234-903-953-9042</span>
+          <a
+            href="tel:+2349039539042"
+            className=" hover:text-primary transition"
+          >
+            +234-903-953-9042
+          </a>
         </div>
       </div>
 

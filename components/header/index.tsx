@@ -38,14 +38,15 @@ export default function Header() {
           <BottomRightIcon />{" "}
         </div>
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
-          Safely Dispose your Pharmaceutical waste with our Eco-friendly
+          Safely Dispose Your Pharmaceutical Waste With Our Eco-Friendly
           Services
         </h1>
         <p className="text-sm md:text-lg text-medium text-white">
-          PharmaBin pharmaceutical waste collection systems are leading a new
-          wave of pharmaceutical containers designed first and foremost to
-          PROTECT. With built-in security features that prevent tampering and
-          unauthorized access to non-hazardous pharmaceuticals.
+          PharmaBin is an initiative dedicated to solving the pressing issue of
+          pharmaceutical waste management in Nigeria. By integrating technology,
+          community engagement, and environmental sustainability, PharmaBin
+          provides a safe, efficient, and eco-friendly solution for the disposal
+          of expired, unused, or contaminated medications.
         </p>
         <div className="flex space-x-2 md:space-x-4">
           <Button variant="secondary">

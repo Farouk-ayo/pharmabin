@@ -95,11 +95,20 @@ const PharmacyDirectory = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-4 gap-6"
+        style={{
+          backgroundImage: "url(./bg-community.svg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         {/* Sidebar */}
         <div className="lg:col-span-1">
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h2 className="font-semibold mb-4">Local Governments</h2>
+          <div className="bg-transparent p-4 rounded-lg border">
+            <h2 className="font-semibold mb-4 text-xl border-b md:text-2xl">
+              Local Governments
+            </h2>
             <nav className="space-y-1 ">
               {localAreas.map((areaName) => (
                 <button
@@ -107,7 +116,7 @@ const PharmacyDirectory = () => {
                   onClick={() => setSelectedArea(areaName)}
                   className={`w-full text-left px-3 py-2 rounded-md transition-colors ${
                     selectedArea === areaName
-                      ? "bg-green-100 text-primary font-semibold"
+                      ? "bg-green-100 text-primary font-bold"
                       : "hover:bg-gray-100"
                   }`}
                 >

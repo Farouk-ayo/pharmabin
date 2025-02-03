@@ -23,10 +23,11 @@ const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
         </div>
       </Link>
       <p className="text-base text-gray-600 my-6">
-        PharmaBin Pharmaceutical Waste collection systems are leading a new wave
-        of pharmaceutical containers designed first and foremost to PROTECT.
-        With built-in security features that prevent tampering and unauthorized
-        access to non-hazardous pharmaceuticals.
+        PharmaBin is an initiative dedicated to solving the pressing issue of
+        pharmaceutical waste management in Nigeria. By integrating technology,
+        community engagement, and environmental sustainability, PharmaBin
+        provides a safe, efficient, and eco-friendly solution for the disposal
+        of expired, unused, or contaminated medications.
       </p>
       <div className="flex items-center space-x-4">
         {socialLinks.map((link) => (

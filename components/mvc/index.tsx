@@ -6,13 +6,13 @@ const MVCSection = () => {
       icon: "/m.svg",
       title: "Our Mission",
       content:
-        "We are committed to achieving efficient pharmaceutical waste management system by employing adaptable solutions and best practices as well as encouraging regional integration and customer focused service delivery methods",
+        "To establish a sustainable and innovative system for the safe disposal of pharmaceutical waste in Nigeria, promoting public health and environmental protection while addressing the unique challenges faced by communities.",
     },
     {
       icon: "/v.svg",
       title: "Our Vision",
       content:
-        "To improve environmental sustainability, achieve a cleaner, healthier environment and to be the hallmark of Pharmaceutical Waste Management Regulatory practices in the Nigeria as a whole",
+        "To lead a cultural shift towards an eco-friendly and sustainable pharmaceutical waste management in Nigeria",
     },
     {
       icon: "/c.svg",

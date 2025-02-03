@@ -4,7 +4,7 @@ import {
   InstagramIcon,
   LinkedInIcon2,
   TwitterIcon,
-  YouTtubeIcon,
+  TikTokIcon,
 } from "../icons";
 import ContactInfo from "./contactInfo";
 import CopyRight from "./copyRight";
@@ -41,7 +41,7 @@ const Footer = () => {
     {
       name: "TikTok",
       icon: (
-        <YouTtubeIcon
+        <TikTokIcon
           fill="transparent"
           stroke="#157D18"
           width={25}
@@ -112,7 +112,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-bgPrimary px-4 sm:px-6 lg:px-20 py-14">
+    <footer className="bg-bgPrimary px-4 sm:px-6 lg:px-20 pt-14 bg-[#F4F4F4]">
       <div className="mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           <LogoSection socialLinks={socialLinks} />

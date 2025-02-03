@@ -17,14 +17,14 @@ const ImageGallery = () => {
               index === 0
                 ? "left-0"
                 : index === 1
-                ? "left-10 sm:left-20"
-                : "left-20 sm:left-40"
+                ? "left-10 md:left-20"
+                : "left-20 md:left-40"
             }`}
           >
             <Image
               src={image}
               alt={`Gallery Image ${index + 1}`}
-              className="w-64 h-64 sm:w-[30rem] sm:h-[25rem] object-cover rounded-lg hover:outline hover:outline-4 hover:outline-primary"
+              className="w-64 h-64 md:w-[30rem] md:h-[25rem] object-cover rounded-lg hover:outline hover:outline-4 hover:outline-primary"
               width={320}
               height={320}
             />

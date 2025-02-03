@@ -26,12 +26,12 @@ export default function Home() {
       <Navbar />
       <Header />
       <section
-        className="px-4 lg:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10"
+        className="px-4 md:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10"
         style={{
           backgroundImage: "url(./bg-waste-land-1.svg)",
         }}
       >
-        <div className="lg:w-[50%]">
+        <div className="md:w-[50%]">
           <Badge text="About Us" bgColor="bg-tertiary" className="mb-8" />
           <h1
             className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6"
@@ -41,8 +41,8 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-end gap-8">
-          <div className="relative w-full lg:w-[50%] h-[30rem] lg:h-[50rem]">
+        <div className="flex flex-col md:flex-row items-end gap-8">
+          <div className="relative w-full md:w-[50%] h-[30rem] md:h-[50rem]">
             <Image
               src="/drugs.png"
               alt="drugs"
@@ -51,7 +51,7 @@ export default function Home() {
               className="rounded-lg"
             />
           </div>
-          <div className="w-full lg:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full flex flex-col justify-between">
+          <div className="w-full md:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full flex flex-col justify-between">
             <p className="text-textPrimary leading-relaxed mb-4">
               Welcome to PharmaBin, an online resource to help you find
               medication disposal programs at an independent community pharmacy
@@ -106,12 +106,12 @@ export default function Home() {
       </section>
 
       <section
-        className="px-4 lg:px-28 py-20 top-32 bg-white relative z-10"
+        className="px-4 md:px-28 py-20 top-32 bg-white relative z-10"
         style={{
           backgroundImage: "url(./bg-waste-land-2.svg)",
         }}
       >
-        <div className="lg:w-[50%]">
+        <div className="md:w-[50%]">
           <Badge text="Why PharmaBin" bgColor="bg-tertiary" className="mb-8" />
           <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
             The Most Secure Pharmaceutical Waste Management In Nigeria
@@ -132,8 +132,8 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/90 bg-[#157D18]/60 md:bg-transparent " />
         </div>
-        <section className="absolute top-[10%] lg:top-[30%] left-[5%] right-[5%] bg-white rounded-lg shadow p-8 md:p-16 flex flex-col lg:flex-row items-end gap-8">
-          <div className="relative  w-full lg:w-[50%] flex-col flex  ">
+        <section className="absolute top-[10%] md:top-[30%] left-[5%] right-[5%] bg-white rounded-lg shadow p-8 md:p-16 flex flex-col md:flex-row items-end gap-8">
+          <div className="relative  w-full md:w-[50%] flex-col flex  ">
             <Badge
               text="Nearby Location"
               bgColor="bg-tertiary"
@@ -166,7 +166,7 @@ export default function Home() {
               View Locations Near You
             </Button>
           </div>
-          <div className="relative hidden lg:inline-block w-full lg:w-[50%] h-[30rem] lg:h-[40rem]">
+          <div className="relative hidden md:inline-block w-full md:w-[50%] h-[30rem] md:h-[40rem]">
             <Image
               src="/drugs-1.png"
               alt="drugs"
@@ -179,7 +179,7 @@ export default function Home() {
         </section>
       </section>
       <section
-        className="relative pt-[26rem] sm:pt-40 lg:pt-96 "
+        className="relative pt-[26rem] sm:pt-40 md:pt-96 "
         style={{
           backgroundImage: "url(./bg-community.svg)",
           backgroundSize: "cover",
@@ -201,7 +201,7 @@ export default function Home() {
           </div>
 
           {/* Card Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 gap-6">
             {cards.map((card, index) => (
               <Card
                 key={index}
@@ -213,8 +213,8 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="py-20 flex flex-col lg:flex-row  gap-8 px-4 lg:px-28">
-          <div className="w-full lg:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full">
+        <div className="py-20 flex flex-col md:flex-row  gap-8 px-4 md:px-28">
+          <div className="w-full md:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full">
             <Badge
               text="Frequently Asked Questions"
               bgColor="bg-tertiary"
@@ -233,8 +233,8 @@ export default function Home() {
           <FaqSection />
         </div>
       </section>
-      <section className="bg-gradient-to-r from-[#157D18]/30 via-[#023022]/20 to-[#023022]/20 bg-[#023022]/10 md:bg-transparent  py-20 px-4 lg:px-28">
-        <div className=" w-full lg:w-[70%] mx-auto text-center mb-4">
+      <section className="bg-gradient-to-r from-[#157D18]/30 via-[#023022]/20 to-[#023022]/20 bg-[#023022]/10 md:bg-transparent  py-20 px-4 md:px-0 md:pr-28">
+        <div className=" w-full md:w-[70%] mx-auto text-center mb-4">
           <h1 className="text-2xl md:text-4xl font-bold text-primary mb-6 ">
             See How Pharmacies Like Yours Are Getting Ride Of Their
             Pharmaceutical Waste
@@ -242,7 +242,7 @@ export default function Home() {
           <DividerIcon />
         </div>
 
-        <div className="mt-4 flex flex-col lg:flex-row lg:gap-8">
+        <div className="mt-4 flex flex-col md:flex-row md:gap-8">
           <GallerySection />
           <TestimonialSection />
         </div>

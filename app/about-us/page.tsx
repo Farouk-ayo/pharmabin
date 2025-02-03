@@ -19,12 +19,12 @@ const AboutUs = () => {
         title="About Us"
         description={
           <p className="text-lg text-medium text-white">
-            Welcome to PharmaBin, an online resource to help you find medication
-            disposal programs at an independent community pharmacy in your
-            neighborhood. This public service program is presented by the 
-            <strong>
-              Association of Community Pharmacists in Nigeria (ACPN).
-            </strong>
+            Welcome to PharmaBin, an initiative dedicated to solving the
+            pressing issue of pharmaceutical waste management in Nigeria. By
+            integrating technology, community engagement, and environmental
+            sustainability, PharmaBin provides a safe, efficient, and
+            eco-friendly solution for the disposal of expired, unused, or
+            contaminated medications.
           </p>
         }
       />{" "}

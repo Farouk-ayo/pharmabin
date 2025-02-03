@@ -231,7 +231,7 @@ const StepTwoForm = ({
           isLoading={isLoading}
           className="text-white w-full"
         >
-          Continue
+          Submit
         </Button>
         <Button
           onClick={onBack}

@@ -52,14 +52,16 @@ const TestimonialSection = () => {
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="relative z-10 text-center text-primary  flex flex-col gap-2 lg:gap-20 h-full py-20 md:py-12">
-              <p className="text-xl md:text-2xl italic mb-6">
+            <div className="relative z-10 text-left text-primaryDark  flex flex-col gap-2 md:gap-5 h-full py-20 md:py-20">
+              <p className="text-xl md:text-2xl italic">
                 &quot;{testimonial.quote}&quot;
               </p>
-              <p className="font-medium text-black text-left">
+              <p className="font-semibold text-black text-left">
                 {testimonial.author}
                 <br />
-                <span className="text-black/70">{testimonial.designation}</span>
+                <span className="text-black/70 !font-normal">
+                  {testimonial.designation}
+                </span>
               </p>
             </div>
           </SwiperSlide>
