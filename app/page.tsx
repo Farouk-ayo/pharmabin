@@ -44,7 +44,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-end gap-8">
           <div className="relative w-full md:w-[50%] h-[30rem] md:h-[50rem]">
             <Image
-              src="/drugs.png"
+              src="/drugs.jpeg"
               alt="drugs"
               layout="fill"
               objectFit="cover"
