@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Button from "@/components/buttons";
 import Image from "next/image";
 import imageCompression from "browser-image-compression";
@@ -7,8 +7,8 @@ import { showToast } from "@/lib/util";
 import { z } from "zod";
 import { ArticleCard, ArticleResponse } from "@/lib/types";
 import LoadingSkeleton from "@/components/loadingSkeleton";
+import "react-quill-new/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface ArticleFormProps {
   initialData?: ArticleResponse;
@@ -27,6 +27,10 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
   isLoading,
   type: initialType,
 }) => {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill-new"), { ssr: false }),
+    []
+  );
   const [formData, setFormData] = useState({
     Title: "",
     Caption: "",
