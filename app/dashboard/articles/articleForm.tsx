@@ -7,8 +7,8 @@ import { showToast } from "@/lib/util";
 import { z } from "zod";
 import { ArticleCard, ArticleResponse } from "@/lib/types";
 import LoadingSkeleton from "@/components/loadingSkeleton";
-import ReactQuill from "react-quill-new";
-import "react-quill-new/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface ArticleFormProps {
   initialData?: ArticleResponse;
