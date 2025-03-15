@@ -23,9 +23,11 @@ export const Card: React.FC<CardProps> = ({
         priority
       />
     </div>
-    <div className="p-6 flex-col flex justify-between items-center text-center">
-      <h3 className="text-xl font-bold text-green-800 mb-2">{title}</h3>
-      <p className="text-gray-600 mb-4">{description}</p>
+    <div className="p-6 flex-col flex justify-between min-h-[20rem] items-center text-center">
+      <div className="flex flex-col items-center text-center">
+        <h3 className="text-xl font-bold text-green-800 mb-2">{title}</h3>
+        <p className="text-gray-600 mb-4">{description}</p>
+      </div>
       <a
         href={`/articles/${id}`}
         className="text-primary font-semibold hover:underline flex items-center"
