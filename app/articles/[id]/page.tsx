@@ -43,6 +43,7 @@ const socialLinks = [
 const ArticleDetails = () => {
   const { id } = useParams();
   const { data: article, isPending } = useGetArticle(id as string);
+  console.log(article);
   const { data: articles } = useGetArticles();
 
   if (isPending) {
@@ -80,19 +81,18 @@ const ArticleDetails = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
           {article?.Title}
         </h1>
-        <p className="text-textPrimary mb-6 md:mb-0">
+        <p className="text-textPrimary mb-6 ">
           {" "}
           {article?.createdAt &&
             new Date(article.createdAt).toLocaleDateString()}
         </p>
-        <div className="w-full aspect-[16/9] md:aspect-[21/9] relative mb-8 md:mb-0 rounded-lg overflow-hidden">
+        <div className="w-full  h-[20rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
             src={article?.articleImage1Url || "/placeholder.jpg"}
             alt={article?.Title || "Article image"}
             fill
             priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            className="object-cover md:object-contain object-left h-full w-full"
+            className="object-cover object-center rounded-lg h-full w-full"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;

@@ -190,7 +190,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
         articleImage4: formData.articleImage4,
       };
 
+      console.log(payload);
       if (onSubmit) {
+        console.log(payload);
         onSubmit(payload);
       }
     } catch (error) {
