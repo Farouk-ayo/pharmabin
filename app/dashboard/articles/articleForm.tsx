@@ -7,6 +7,9 @@ import { showToast } from "@/lib/util";
 import { z } from "zod";
 import { ArticleCard, ArticleResponse } from "@/lib/types";
 import LoadingSkeleton from "@/components/loadingSkeleton";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
+
 interface ArticleFormProps {
   initialData?: ArticleResponse;
   onSubmit?: (data: ArticleCard) => void;
@@ -144,6 +147,10 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     }
   };
 
+  const handleEditorChange = (content: string, field: string) => {
+    setFormData((prev) => ({ ...prev, [field]: content }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -204,6 +211,27 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
       onDelete();
     }
   };
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["blockquote", "link"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "list",
+    "blockquote",
+    "link",
+  ];
 
   return (
     <div className="mx-auto p-4 md:p-6 bg-gray-50 rounded-lg shadow-md">
@@ -340,15 +368,23 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 1
           </label>
-          <textarea
-            disabled={type === "view"}
-            rows={3}
-            name="Content1"
-            placeholder="Enter content 1"
-            value={formData.Content1}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+
+          {type === "view" ? (
+            <div
+              className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.Content1 }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.Content1}
+              onChange={(content) => handleEditorChange(content, "Content1")}
+              className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
+              placeholder="Enter content 1"
+            />
+          )}
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Subtitle 2
@@ -365,15 +401,22 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 2
           </label>
-          <textarea
-            rows={3}
-            disabled={type === "view"}
-            name="Content2"
-            placeholder="Enter content 2"
-            value={formData.Content2}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+          {type === "view" ? (
+            <div
+              className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.Content2 }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.Content2}
+              onChange={(content) => handleEditorChange(content, "Content2")}
+              className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
+              placeholder="Enter content 2"
+            />
+          )}
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Subtitle 3 (Optional)
@@ -390,15 +433,23 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 3 (Optional)
           </label>
-          <textarea
-            rows={3}
-            name="Content3"
-            placeholder="Enter content 3"
-            disabled={type === "view"}
-            value={formData.Content3}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+
+          {type === "view" ? (
+            <div
+              className="w-full  border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.Content3 }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.Content3}
+              onChange={(content) => handleEditorChange(content, "Content3")}
+              className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
+              placeholder="Enter content 3"
+            />
+          )}
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Subtitle 4 (Optional)
@@ -415,15 +466,22 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Content 4 (Optional)
           </label>
-          <textarea
-            rows={3}
-            name="Content4"
-            disabled={type === "view"}
-            placeholder="Enter content 4"
-            value={formData.Content4}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+          {type === "view" ? (
+            <div
+              className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.Content4 }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.Content4}
+              onChange={(content) => handleEditorChange(content, "Content4")}
+              className="bg-white border rounded-md mb-6 px-4 py-2  focus:outline-none focus:ring-1 focus:ring-primary"
+              placeholder="Enter content 4"
+            />
+          )}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-6 mt-6">

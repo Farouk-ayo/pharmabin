@@ -84,12 +84,19 @@ const ArticleDetails = () => {
           {article?.createdAt &&
             new Date(article.createdAt).toLocaleDateString()}
         </p>
-        <div className="w-full h-[40rem] relative mb-8">
+        <div className="w-full aspect-[16/9] md:aspect-[21/9] relative mb-8 rounded-lg overflow-hidden shadow-md">
           <Image
-            src={article?.articleImage1Url || "/"}
-            alt="Hands-Free Waste Disposal"
-            layout="fill"
-            objectFit="cover"
+            src={article?.articleImage1Url || "/placeholder.jpg"}
+            alt={article?.Title || "Article image"}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            className="object-cover object-left"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.onerror = null;
+              target.src = "/placeholder.jpg";
+            }}
           />
         </div>
       </div>
@@ -101,8 +108,10 @@ const ArticleDetails = () => {
               {article?.Subtitle1}
             </h2>
 
-            <p className="text-gray-700 mb-8">{article?.Content1}</p>
-          </div>
+            <div 
+              className="text-gray-700 mb-8"
+              dangerouslySetInnerHTML={{ __html: article?.Content1 || '' }}
+            />          </div>
 
           {article?.Content2 && (
             <div className="prose max-w-none  mt-6">
@@ -110,8 +119,10 @@ const ArticleDetails = () => {
                 {article?.Subtitle2}
               </h2>
 
-              <p className="text-gray-700 mb-8">{article?.Content2}</p>
-
+              <div 
+              className="text-gray-700 mb-8"
+              dangerouslySetInnerHTML={{ __html: article?.Content2 || '' }}
+            />
               {article?.articleImage2Url && (
                 <div className="relative bg-sky-100 w-full h-[28rem] rounded-lg mb-8">
                   <Image
@@ -131,8 +142,10 @@ const ArticleDetails = () => {
                 {article?.Subtitle3}
               </h2>
 
-              <p className="text-gray-700 mb-8">{article?.Content3}</p>
-
+              <div 
+              className="text-gray-700 mb-8"
+              dangerouslySetInnerHTML={{ __html: article?.Content3 || '' }}
+            />
               {/* Waste Bins Image */}
               {article?.articleImage3Url && (
                 <div className="relative bg-sky-100 w-full h-[28rem] rounded-lg mb-8">
@@ -153,8 +166,10 @@ const ArticleDetails = () => {
                 {article?.Subtitle4}
               </h2>
 
-              <p className="text-gray-700 mb-8">{article?.Content4}</p>
-
+              <div 
+              className="text-gray-700 mb-8"
+              dangerouslySetInnerHTML={{ __html: article?.Content4 || '' }}
+            />
               {/* Waste Bins Image */}
               {article?.articleImage4Url && (
                 <div className="relative bg-sky-100 w-full h-[28rem] rounded-lg mb-8">

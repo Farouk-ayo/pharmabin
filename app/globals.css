@@ -73,3 +73,10 @@ body {
 .hamburger.open .line:nth-child(3) {
   transform: translateY(-10px) rotate(-45deg);
 }
+
+.ql-container.ql-snow {
+  border: none !important;
+}
+.ql-toolbar.ql-snow {
+  padding: 0 !important;
+}

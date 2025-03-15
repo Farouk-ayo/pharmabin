@@ -54,7 +54,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <div className="relative w-full mx-auto md:w-1/2 overflow-x-hidden ">
+    <div className="relative w-full mx-auto md:w-[65%] overflow-x-hidden ">
       <Swiper
         modules={[Pagination, Autoplay, Navigation]}
         spaceBetween={30}
