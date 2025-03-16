@@ -86,13 +86,13 @@ const ArticleDetails = () => {
           {article?.createdAt &&
             new Date(article.createdAt).toLocaleDateString()}
         </p>
-        <div className="w-full  h-[20rem] relative mb-8 rounded-lg overflow-hidden">
+        <div className="w-full aspect-[21/9] md:h-[20rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
             src={article?.articleImage1Url || "/placeholder.jpg"}
             alt={article?.Title || "Article image"}
             fill
             priority
-            className="object-cover object-center rounded-lg h-full w-full"
+            className="object-cover object-left md:object-center rounded-lg h-full w-full"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
