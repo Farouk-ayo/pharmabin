@@ -11,7 +11,7 @@ interface LayoutProps {
 
 export const metadata: Metadata = {
   title: " Register || Pharmabin",
-  description: " Register Pharmabin",
+  description: " Register page",
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {

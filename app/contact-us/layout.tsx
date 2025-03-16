@@ -9,8 +9,8 @@ interface LayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: " Home || Pharmabin",
-  description: " Home Pharmabin",
+  title: " Contact Us || Pharmabin",
+  description: " Contact Us page",
 };
 
 const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
