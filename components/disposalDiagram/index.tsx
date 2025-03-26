@@ -16,44 +16,42 @@ const DisposalDiagram: React.FC = () => {
   const disposalPoints: DisposalPoint[] = [
     {
       number: 1,
-      title: "Point Of Use Disposal",
+      title: "⁠⁠Safe & Eco-Friendly Disposal",
       description:
-        "Save time and labor by disposing and segregating waste at point of generation. Our reusable containers eliminate double-packaging needs.",
+        "Prevents environmental pollution and protects public health.",
       baseRotation: 210,
     },
     {
       number: 2,
-      title: "Waste Segregation",
+      title: "Community-Based Collection",
       description:
-        "Efficiently separate different types of waste streams to maximize recycling potential and minimize environmental impact.",
+        "Convenient collection points in community pharmacies and hospitals.",
       baseRotation: 270,
     },
     {
       number: 3,
-      title: "Container Management",
-      description:
-        "Utilize specialized containers for different waste types, ensuring proper handling and reducing cross-contamination risks.",
+      title: "⁠Supports Public Health",
+      description: "Reduces antibiotic resistance and drug-related hazards.",
       baseRotation: 330,
     },
     {
       number: 4,
-      title: "Transport Optimization",
-      description:
-        "Streamline waste movement with efficient routing and scheduling, reducing operational costs and environmental footprint.",
+      title: "Regulatory Compliance",
+      description: "Aligns with NAFDAC and global waste management standards.",
       baseRotation: 30,
     },
     {
       number: 5,
-      title: "Processing & Recovery",
+      title: "User-Friendly Digital Platform",
       description:
-        "Implement advanced sorting and processing techniques to maximize material recovery and minimize landfill disposal.",
+        "Easily locate nearby disposal sites via the PharmaBin app/website.",
       baseRotation: 90,
     },
     {
       number: 6,
-      title: "Sustainable Solutions",
+      title: "⁠Incentive-Based Participation",
       description:
-        "Focus on continuous improvement in waste reduction strategies and environmentally friendly disposal methods.",
+        "Pharmacies and hospitals receive benefits for proper waste collection.",
       baseRotation: 150,
     },
   ];

@@ -10,53 +10,41 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    question:
-      "What materials will my pharmacy receive with participation in the Pharmaceutical Disposal Program?",
+    question: "What Is PharmaBin?",
     answer: `
-    • Discounts on the products of the Take-Back Collection Program: a 10-gallon collection container; a 20-gallon collection container; or 8″ x 11″ TakeAway Envelopes, which you can provide for free or sell to patients, who will fill them from home and mail directly to Sharps Compliance, Inc. for incineration. <br/>
-
-   <br/> • Free shipping on Take-Back Collection Program products to and from your store. (Please note there is a return weight limit of 50 lbs. for the 20-gallon Take-Back Collection Program. Returned systems weighing over 50 lbs. are subject to a charge of $1.50 per pound in excess of 50 lbs.)<br/>
-
-   <br/> • Customizable marketing materials, including counter displays, window clings, fliers, bag stuffers, and press releases for local media.`,
+   <strong>PharmaBin</strong> is an initiative dedicated to solving the pressing issue of pharmaceutical waste management in Nigeria. By integrating technology, community engagement, and environmental sustainability, <strong>PharmaBin</strong> provides a safe, efficient, and eco-friendly solution for the disposal of expired, unused, or contaminated medications`,
   },
   {
-    question: "How does the Pharmaceutical Waste Take-Back Program work?",
+    question: "Why is proper pharmaceutical waste disposal important?",
     answer: `
-    • The PharmaBin wastebin is a safe, easy method to dispose of unused patient medications, available in 10- or 20-gallon pharmacy drop boxes or convenient postage pre-paid envelopes for patients to mail on their own.
-   <br/> • Patients and consumers can bring in their unwanted or expired medications and hand them over to the pharmacist, who will insert them into the special wastebin kept behind the counter.
-   <br/> • When the box is full, the pharmacist seals it and calls the Research Assistant to come for it. In addition, a pharmacy can choose to distribute envelopes to patients to drop their medications into, seal, and mail back to the incineration facility.`,
+   Improper disposal can harm the environment, contribute to antimicrobial resistance, and pose health risks through accidental ingestion or drug misuse.`,
   },
   {
-    question: "How will patients know of the service?",
+    question: "Where can I drop off my unused or expired medicines?",
     answer: `
-    • There are two ways your patients and others can be made aware of your community service. The first is by reproducing the PCN, ACPN, NAFDAC provided customizable in-store signs, flyers and bag stuffers, as well as using media tools, such as a press release and letter to your local newspaper.
-   <br/> • Another way is by increasing the awareness of your services by including your location on their special consumer medication disposal mapping tool.`,
+    You can find a registered collection point near you through our website.`,
   },
   {
-    question:
-      "What items can be accepted into the Take-Back Program system for disposal?",
+    question: "What types of pharmaceutical waste can be disposed of?",
     answer: `
-    • Any pharmaceutical product, prescription or OTC, can be accepted for disposal, EXCLUDING CONTROLLED SUBSTANCES, syringes, thermometers, home-based care or durable medical equipment, and liquids over 4 oz. Medications in any dosage form and any type of packaging are allowed, provided the medications are not controlled substances.
-   <br/> • Expired, unused, fake and all kinds of drugs are accepted.`,
+    Expired medicines, Leftover drugs, Unused drugs such as blisters, IV fluids, and other pharmaceutical-related waste.`,
+  },
+  {
+    question: "What happens to the collected pharmaceutical waste?",
+    answer: `
+    A licensed waste disposal company collects the waste and ensures safe disposal in line with NAFDAC regulations.`,
   },
   {
     question:
-      "Will incentives be available for me when I return my pharmaceutical waste?",
+      "Will incentives be available for me when i return my pharmaceutical waste?",
     answer: `
-    • Yes, but for now, there are no incentives. With time we will start to give incentives to those that return their pharmaceutical waste to the nearest pharmaceutical waste collection point.`,
+   Yes, but for now, there are no incentives. With time we will start to give incentives to those that return their pharmaceutical waste to the nearest pharmaceutical waste collection point.`,
   },
   {
     question:
-      "Why exactly is PharmaBin the best pharmaceutical waste disposal?",
+      "Can I Get to know the nearest participating pharmacies In my environment?",
     answer: `
-    • PharmaBin is a big pharmaceutical waste disposal hub in Nigeria. Through a unique partnership with NAFDAC, PharmaBin is able to increase awareness of your services by including your location on their special consumer medication disposal mapping tool.
-   <br/> • Any pharmaceutical product, prescription or OTC, can be accepted for disposal, EXCLUDING CONTROLLED SUBSTANCES, syringes, thermometers, home-based care or durable medical equipment, and liquids over 4 oz. Medications in any dosage form and any type of packaging are allowed, provided the medications are not controlled substances.`,
-  },
-  {
-    question:
-      "Can I get to know the nearest participating pharmacies in my environment?",
-    answer: `
-    • Yes, you will be able to know the nearest waste collection point in your environment. Just come to the PharmaBin website and you will be able to search for the locations near you.`,
+   Yes, you will be able to know the nearest waste collection point in your environment. Just come to the PharmaBin website and you will be able to search for the locations near you.`,
   },
 ];
 
