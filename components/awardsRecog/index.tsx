@@ -53,34 +53,25 @@ const highlights = [
   },
 ];
 
-const ProgramHighlights: React.FC = () => {
-  const [selectedHighlight, setSelectedHighlight] = useState<{
-    id: number;
+interface ProgramHighlightsProps {
+  id: number;
+  title: string;
+  date: string;
+  description: string;
+  theme: string;
+  image: string;
+  position: string;
+  detailedContent: {
     title: string;
-    date: string;
-    description: string;
-    theme: string;
-    image: string;
-    position: string;
-    detailedContent?: {
-      title: string;
-      media: { type: string; src: string; alt: string }[];
-    };
-  } | null>(null);
+    media: { type: string; src: string; alt: string }[];
+  };
+}
 
-  const openModal = (highlight: {
-    id: number;
-    title: string;
-    date: string;
-    description: string;
-    theme: string;
-    image: string;
-    position: string;
-    detailedContent: {
-      title: string;
-      media: { type: string; src: string; alt: string }[];
-    };
-  }) => {
+const ProgramHighlights: React.FC = () => {
+  const [selectedHighlight, setSelectedHighlight] =
+    useState<ProgramHighlightsProps | null>(null);
+
+  const openModal = (highlight: ProgramHighlightsProps) => {
     setSelectedHighlight(highlight);
   };
 
@@ -93,18 +84,17 @@ const ProgramHighlights: React.FC = () => {
       className="timeline-section py-16 bg-light text-primary overflow-x-hidden"
       id="program-highlights"
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-0">
         <div className="relative mt-12">
-          {/* KEY CHANGE: Dotted Vertical Line BELOW the cards */}
           <div
             className="absolute w-[1px] left-1/2 transform -translate-x-1/2 top-[60px]"
             style={{
-              height: "calc(100% - 60px)", // Adjusted to start lower
+              height: "calc(100% - 60px)",
               backgroundImage:
                 "linear-gradient(to bottom, #157D18 50%, transparent 50%)",
               backgroundSize: "2px 20px",
               backgroundRepeat: "repeat-y",
-              zIndex: 0, // Ensure line is behind cards
+              zIndex: 0,
             }}
           ></div>
 
@@ -113,16 +103,14 @@ const ProgramHighlights: React.FC = () => {
               <div
                 key={highlight.id}
                 className="relative w-full flex items-center"
-                // KEY CHANGE: Removed alternating flex direction
                 style={{
                   flexDirection: index % 2 === 0 ? "row" : "row-reverse",
                   justifyContent: index % 2 === 0 ? "flex-start" : "flex-end",
                 }}
                 data-aos={`${index % 2 === 0 ? "fade-left" : "fade-right"}`}
               >
-                {/* KEY CHANGE: Position Badge Placement */}
                 <div
-                  className="absolute z-10  p-2 text-white font-bold text-sm"
+                  className="absolute hidden md:inline-block z-10  p-2 text-white font-bold text-sm"
                   style={{
                     right: index % 2 === 0 ? "20%" : "60%",
                   }}
@@ -133,7 +121,7 @@ const ProgramHighlights: React.FC = () => {
                       flexDirection: index % 2 === 0 ? "row" : "row-reverse",
                     }}
                   >
-                    {/* Left dotted line */}
+                    {" "}
                     <div className="flex items-center space-x-2">
                       <div
                         className={`w-2 h-2 rounded-full`}
@@ -146,8 +134,6 @@ const ProgramHighlights: React.FC = () => {
                         }}
                       ></div>
                     </div>
-
-                    {/* Numbered Badge */}
                     <div
                       className={`relative flex items-center justify-center w-12 h-12 rounded-full text-white font-bold text-lg shadow-lg`}
                       style={{ backgroundColor: highlight.theme }}
@@ -155,8 +141,6 @@ const ProgramHighlights: React.FC = () => {
                       {highlight.id}
                       <div className="absolute inset-0 border-4 border-white rounded-full opacity-80"></div>
                     </div>
-
-                    {/* Title */}
                     <h3
                       className=" text-xl font-semibold"
                       style={{ color: highlight.theme }}
@@ -165,17 +149,14 @@ const ProgramHighlights: React.FC = () => {
                     </h3>
                   </div>
                 </div>
-
-                {/* Card */}
                 <div
-                  className="w-[55%] rounded-lg shadow-md overflow-hidden p-2 bg-white hover:shadow-lg transition relative z-10"
+                  className="w-[100%] md:w-[55%] rounded-lg shadow-md overflow-hidden p-2 bg-white hover:shadow-lg transition relative z-10"
                   style={{
                     borderTop: `4px solid ${highlight.theme}`,
-                    marginLeft: index % 2 === 0 ? "0" : "auto", // Align cards
+                    marginLeft: index % 2 === 0 ? "0" : "auto",
                     marginRight: index % 2 === 0 ? "auto" : "0",
                   }}
                 >
-                  {/* Image */}
                   <div className="relative w-full h-64 overflow-hidden">
                     <Image
                       src={highlight.image || ""}
@@ -187,7 +168,6 @@ const ProgramHighlights: React.FC = () => {
                     />
                   </div>
 
-                  {/* Content */}
                   <div className="w-full p-6 bg-white flex flex-col justify-between items-center">
                     <div className="flex flex-col items-center text-center">
                       <h3
@@ -200,8 +180,6 @@ const ProgramHighlights: React.FC = () => {
                         {highlight.date}
                       </p>
                     </div>
-
-                    {/* Explore Moments Button */}
                     {highlight.detailedContent && (
                       <button
                         onClick={() => openModal(highlight)}
