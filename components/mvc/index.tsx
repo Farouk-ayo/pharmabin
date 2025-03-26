@@ -1,84 +1,36 @@
-import Image from "next/image";
+import React from "react";
+import Badge from "../badge";
 
-const MVCSection = () => {
-  const cards = [
-    {
-      icon: "/m.svg",
-      title: "Our Mission",
-      content:
-        "To establish a sustainable and innovative system for the safe disposal of pharmaceutical waste in Nigeria, promoting public health and environmental protection while addressing the unique challenges faced by communities.",
-    },
-    {
-      icon: "/v.svg",
-      title: "Our Vision",
-      content:
-        "To lead a cultural shift towards an eco-friendly and sustainable pharmaceutical waste management in Nigeria",
-    },
-    {
-      icon: "/c.svg",
-      title: "Our Core Values",
-      content:
-        "To achieve our vision of being the largest independent network of pharmaceutical waste management across Nigeria, we are guided by the core values of the nation",
-    },
-  ];
-
+const Mvc = () => {
   return (
-    <section
-      className="relative w-full md:px-8  overflow-hidden  px-4 lg:px-28 py-96  z-0"
-      style={{
-        backgroundImage: "url(./bg-about-us.svg)",
-      }}
-    >
-      <div className="absolute inset-0  bg-gray-50 " />
+    <div className="relative pt-40 py-16 px-6 md:px-20">
+      <div className="max-w-6xl mx-auto text-center">
+        <Badge text="Mission & Vision" bgColor="bg-tertiary mb-4" />
+        <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-20 text-center">
+          See What Is Driving Us - Our Mission & Vision
+        </h1>
+      </div>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div className="bg-[#F7F7F7] shadow-lg rounded-lg p-6 md:p-8 border-l-8 border-primary">
+          <h3 className="text-2xl font-semibold text-primary">Our Mission</h3>
+          <p className="text-gray-700 mt-3 leading-relaxed">
+            To establish a sustainable and innovative system for the safe
+            disposal of pharmaceutical waste in Nigeria, promoting public health
+            and environmental protection while addressing the unique challenges
+            faced by communities.
+          </p>
+        </div>
 
-      <div className="relative  mx-auto">
-        <div className="flex gap-16  md:gap-2 flex-wrap justify-between">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="relative group w-full md:w-[40%] lg:w-[30%] z-10"
-            >
-              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
-                <Image
-                  priority
-                  src={card.icon}
-                  alt={card.title}
-                  width={100}
-                  height={100}
-                  className="text-white"
-                />
-              </div>
-              <div className="pt-20  bg-white rounded-lg shadow-2xl hover:shadow-xl transition-shadow duration-300 p-6 h-full flex flex-col ">
-                <h3 className="text-2xl font-bold text-primary text-center mb-4">
-                  {card.title}
-                </h3>
-                <p className="text-gray-600 text-center flex-grow">
-                  {card.content}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="bg-[#F7F7F7] shadow-lg rounded-lg p-6 md:p-8 border-l-8 border-secondary">
+          <h3 className="text-2xl font-semibold text-secondary">Our Vision</h3>
+          <p className="text-gray-700 mt-3 leading-relaxed">
+            To lead a cultural shift towards an eco-friendly and sustainable
+            pharmaceutical waste management in Nigeria.
+          </p>
         </div>
       </div>
-      <div className="hidden xl:inline-block absolute  -top-[25%] left-[20%] h-full w-[30rem]">
-        <Image
-          priority
-          src="/line-up.svg"
-          alt="line"
-          objectFit="contain"
-          layout="fill"
-        />
-      </div>
-      <div className="hidden xl:inline-block absolute  -bottom-[23%] h-full right-[20%] w-[30rem]">
-        <Image
-          src="/line-down.svg"
-          alt="line"
-          objectFit="contain"
-          layout="fill"
-        />
-      </div>
-    </section>
+    </div>
   );
 };
 
-export default MVCSection;
+export default Mvc;

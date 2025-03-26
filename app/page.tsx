@@ -13,14 +13,36 @@ import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
 import Navbar from "@/components/navbar";
-import { services } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
-import { showToast } from "@/lib/util";
 import Image from "next/image";
 
 export default function Home() {
   const { data: articles } = useGetArticles();
   const cards = articles?.slice(0, 3) || [];
+  const sdgData = [
+    {
+      id: 3,
+      title: "Good Health and Well-being",
+      description:
+        "By ensuring safe disposal of pharmaceutical waste, PharmaBin prevents drug misuse, reduces antimicrobial resistance, and minimizes health hazards caused by improper disposal.",
+      color: "#157D18",
+    },
+    {
+      id: 6,
+      title: "Clean Water and Sanitation",
+      description:
+        "Pharmaceutical waste, when improperly disposed of, contaminates water bodies. PharmaBin’s structured disposal system helps protect water quality and public health.",
+      color: "#00AED9",
+    },
+    {
+      id: 12,
+      title: "Responsible Consumption and Production",
+      description:
+        "PharmaBin promotes responsible pharmaceutical waste management, reducing environmental pollution and supporting sustainable recycling where applicable.",
+      color: "#CF8D2A",
+    },
+  ];
+
   return (
     <section>
       <Navbar />
@@ -33,10 +55,7 @@ export default function Home() {
       >
         <div className="md:w-[50%]">
           <Badge text="About Us" bgColor="bg-tertiary" className="mb-8" />
-          <h1
-            className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6"
-            onClick={() => showToast.success("Hello")}
-          >
+          <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
             The Industry Leader In Pharmaceutical Waste Management
           </h1>
         </div>
@@ -53,43 +72,40 @@ export default function Home() {
           </div>
           <div className="w-full md:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full flex flex-col justify-between">
             <p className="text-textPrimary leading-relaxed mb-4">
-              Welcome to PharmaBin, an online resource to help you find
-              medication disposal programs at an independent community pharmacy
-              in your neighborhood. This public service program is presented by
-              the{" "}
-              <strong>
-                Association of Community Pharmacists in Nigeria (ACPN)
-              </strong>
-              .
+              <strong>PharmaBin</strong> is an initiative dedicated to solving
+              the pressing issue of pharmaceutical waste management in Nigeria.
+              By integrating technology, community engagement, and environmental
+              sustainability, PharmaBin provides a safe, efficient, and
+              eco-friendly solution for the disposal of expired, unused, or
+              contaminated medications.
               <br />
               <br />
-              PharmaBin pharmaceutical solutions are designed for healthcare
-              facilities to efficiently manage pharmaceutical waste. Our
-              comprehensive services include waste characterization, staff
-              training, and ongoing support for your team members to help ensure
-              safety and regulatory compliance.
+              Our platform connects households, community pharmacies, and
+              regulatory bodies, ensuring proper collection and disposal of
+              pharmaceutical waste while raising awareness about its impact on
+              health and the environment. With a vision to lead responsible
+              waste management practices in Nigeria, <strong>
+                PharmaBin
+              </strong>{" "}
+              is committed to fostering a cleaner, healthier, and more
+              sustainable future.
               <br />
-              <br /> Managed by the ACPN, this program is designed to help
-              independent community pharmacies protect their patients and the
-              environment while potentially attracting new patients through a
-              low-cost, turn-key program.
+              <br /> Through technology-driven tracking and reporting, PharmaBin
+              ensures that collected waste is properly handled, reducing the
+              risks of environmental pollution, water contamination, and
+              medication misuse.
               <br />
               <br />
-              Our security focus also extends to our services, we deliver:
+              Beyond collection, PharmaBin serves as an educational hub,
+              providing communities with vital information on the dangers of
+              improper pharmaceutical waste disposal and promoting best
+              practices for medication management.
+              <br />
+              <br />
+              By bridging the gap between individuals, healthcare facilities,
+              and regulatory bodies, PharmaBin is pioneering a safe, efficient,
+              and eco-friendly approach to pharmaceutical waste disposal.
             </p>
-
-            <div>
-              <ul className="text-textPrimary flex flex-col gap-2">
-                {services.map((service, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <CheckMark className=" w-12 h-12 " />
-                    <span>
-                      <strong>{service.title}</strong> {service.description}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
 
             <Button
               variant="secondary"
@@ -101,6 +117,56 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section
+        className="px-4 md:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10"
+        style={{ backgroundImage: "url(/bg-waste-land-1.svg)" }}
+      >
+        <div className="md:w-[50%] ml-auto">
+          <Badge
+            text="Sustainable Development Goals"
+            bgColor="bg-tertiary"
+            className="mb-8"
+          />
+          <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 ">
+            Sustainable Development Goals (SDGs) Addressed By PharmaBin{" "}
+          </h1>
+        </div>
+        <div className="flex flex-col md:flex-row items-end gap-2">
+          <div className="relative w-full md:w-[50%] h-[30rem] md:h-[30rem]">
+            <Image
+              src="/sdg.svg"
+              alt="Sustainable Development Goals Infographic"
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
+          <div className="w-full md:w-1/2 space-y-3">
+            <p className="text-textPrimary leading-relaxed">
+              <strong>PharmaBin</strong> aligns with the following three United
+              Nations Sustainable Development Goals (SDGs):
+              <br />
+              <br />
+            </p>
+            {sdgData.map((sdg) => (
+              <div
+                key={sdg.id}
+                className="flex items-start gap-2"
+                style={{ borderColor: sdg.color }}
+              >
+                <CheckMark className={`w-16`} fill={sdg.color} />
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    SDG {sdg.id}: {sdg.title}
+                  </h3>
+                  <p className="text-gray-700 mt-2">{sdg.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="top-32 relative">
         <Carousel />
       </section>
@@ -114,7 +180,7 @@ export default function Home() {
         <div className="md:w-[50%]">
           <Badge text="Why PharmaBin" bgColor="bg-tertiary" className="mb-8" />
           <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-            The Most Secure Pharmaceutical Waste Management In Nigeria
+            Why Choose PharmaBin For Your Pharmaceutical Waste Management
           </h1>
         </div>
         <DisposalDiagram />

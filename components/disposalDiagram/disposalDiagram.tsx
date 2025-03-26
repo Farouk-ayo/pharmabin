@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import Badge from "../badge";
 
 const DisposalDiagram = () => {
   const [activeBox, setActiveBox] = useState<number | null>(null);
@@ -32,18 +33,16 @@ const DisposalDiagram = () => {
   const items = [
     {
       id: 1,
-      title: "Point Of Use Disposal",
-      content:
-        "Save time and labor by disposing and segregating waste at point of generation. Our reusable containers eliminate labor associated with box assembly and remove the need to double-package for transport",
+      title: "Sustainability",
+      content: "Committed to long-term environmental and public health safety.",
       position: "col-start-1 row-start-2",
       rotation: 180,
       className: "bottom-[55%] right-[40%] ",
     },
     {
       id: 2,
-      title: "Secure Locking",
-      content:
-        "Inbuilt container safety trays prevent unauthorized access, and permanent locking mechanisms eliminate risk of tampering, pilfering and misappropriation of discarded pharmaceuticals",
+      title: "Innovation",
+      content: "Using technology to simplify pharmaceutical waste disposal.",
       position: "col-start-1 row-start-1",
       rotation: 240,
       className: "-top-[110%] right-[30%] ",
@@ -51,36 +50,35 @@ const DisposalDiagram = () => {
 
     {
       id: 3,
-      title: "Leakproof Containers",
+      title: "Community Engagement",
       content:
-        "Our clinically designed pharmaceutical containers have built-in seals which minimize odors and prevent leaking of any free-flowing liquids",
+        "Partnering with local pharmacies and hospitals to drive impact.",
       position: "col-start-3 row-start-1",
       rotation: 300,
       className: "-top-[110%] left-[80%]",
     },
     {
       id: 4,
-      title: "Immediate Cost Reduction",
-      content:
-        "Dramatically reduced waste costs by customized scheduling, elimination of disposables and on-site solutions to effectively segregate hazardous and non-hazardous pharmaceuticals",
+      title: "Integrity & Compliance",
+      content: "Adhering to regulatory guidelines and ethical practices.",
       position: "col-start-3 row-start-2",
       rotation: 0,
       className: "bottom-[55%] left-[94%] ",
     },
     {
       id: 5,
-      title: "Easy Classification",
+      title: "Public Health Advocacy",
       content:
-        "Your custom inventory is updated weekly with the latest classifications to ensure you are always in compliance with drug disposal. Make your pharmaceutical waste management easy with PharmaBin",
+        "Educating people on responsible pharmaceutical waste management.",
       position: "col-start-3 row-start-3",
       rotation: 120,
       className: "bottom-[0%] right-[30%]  ",
     },
     {
       id: 6,
-      title: "Give The Best Awareness",
+      title: "Accountability",
       content:
-        "PharmaBin has an ongoing commitment to help educate healthcare staff to achieve greater safety awareness, and to drive behavioral change in waste management, segregation, compliance and best practice",
+        "Ensuring transparency in waste collection and disposal processes.",
       position: "col-start-1 row-start-3",
       rotation: 60,
       className: "bottom-[0%] left-[80%]  ",
@@ -88,11 +86,11 @@ const DisposalDiagram = () => {
   ];
 
   return (
-    <div className="w-full mx-auto py-10 ">
+    <div className="w-full text-center mx-auto py-10 ">
+      <Badge text="Core Values" bgColor="bg-tertiary mb-4" />
       <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-20 text-center">
-        Why PharmaBin Pharmaceutical Waste Management
+        Core Values Of PharmaBin
       </h1>
-
       <div className="lg:grid lg:grid-cols-3 gap-16 relative flex flex-col items-center justify-center">
         <div className="lg:col-start-2 lg:row-start-2 w-80 h-80 mx-auto relative hidden lg:block">
           <div className="relative w-full h-full z-20">
@@ -157,7 +155,7 @@ const DisposalDiagram = () => {
             key={item.id}
             className={`relative z-20 ${
               item.position
-            } items-center h-48 my-auto  w-full left-0 ${
+            } items-center  my-auto  w-full left-0 ${
               item.id === 2
                 ? "lg:left-16"
                 : item.id === 3
@@ -184,7 +182,7 @@ const DisposalDiagram = () => {
             </div>
 
             <div
-              className={`p-6 rounded-lg border border-primary bg-white shadow-lg transition-all duration-300  h-full ${
+              className={`p-6 rounded-lg border border-primary bg-white shadow-lg transition-all duration-300   ${
                 activeBox === item.id
                   ? "scale-105 border-green-500"
                   : "scale-100"
