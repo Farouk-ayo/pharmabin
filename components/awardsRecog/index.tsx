@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Modal from "../modal/modal";
 import Image from "next/image";
+import { ArrowRightIcon } from "lucide-react";
 
 const highlights = [
   {
@@ -19,7 +20,7 @@ const highlights = [
     date: "03/03/2024",
     image: "/award-2.png",
     description: "",
-    theme: "#0C5AA3",
+    theme: "#251F23",
     position: "Third Position",
     detailedContent: {
       title: "Participation At The MTS 1.0 By FATEMSA OAU (08/02/2025)",
@@ -47,7 +48,7 @@ const highlights = [
     date: "15/03/2024",
     image: "/award-4.png",
     description: "",
-    theme: "#57157D",
+    theme: "#D18C26",
     position: "Second Position",
   },
 ];
@@ -87,19 +88,6 @@ const ProgramHighlights: React.FC = () => {
     setSelectedHighlight(null);
   };
 
-  const getPositionColor = (position: string) => {
-    switch (position) {
-      case "First Position":
-        return "#157D18"; // Green
-      case "Second Position":
-        return "#0C5AA3"; // Blue
-      case "Third Position":
-        return "#E11F7D"; // Pink
-      default:
-        return "#57157D"; // Purple
-    }
-  };
-
   return (
     <section
       className="timeline-section py-16 bg-light text-primary overflow-x-hidden"
@@ -134,20 +122,53 @@ const ProgramHighlights: React.FC = () => {
               >
                 {/* KEY CHANGE: Position Badge Placement */}
                 <div
-                  className="absolute z-10 w-40 p-2 rounded-full shadow-lg text-white font-bold text-sm"
+                  className="absolute z-10  p-2 text-white font-bold text-sm"
                   style={{
-                    backgroundColor: getPositionColor(highlight.position),
-                    // Dynamically position badge based on index
-                    // left: index % 2 === 0 ? "" : "0",
-                    right: index % 2 === 0 ? "200px" : "auto",
+                    right: index % 2 === 0 ? "20%" : "60%",
                   }}
                 >
-                  {highlight.position}
+                  <div
+                    className="flex items-center  space-x-4"
+                    style={{
+                      flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+                    }}
+                  >
+                    {/* Left dotted line */}
+                    <div className="flex items-center space-x-2">
+                      <div
+                        className={`w-2 h-2 rounded-full`}
+                        style={{ backgroundColor: highlight.theme }}
+                      ></div>
+                      <div
+                        className={`h-0.5 w-8 border-dashed border-t`}
+                        style={{
+                          borderColor: highlight.theme,
+                        }}
+                      ></div>
+                    </div>
+
+                    {/* Numbered Badge */}
+                    <div
+                      className={`relative flex items-center justify-center w-12 h-12 rounded-full text-white font-bold text-lg shadow-lg`}
+                      style={{ backgroundColor: highlight.theme }}
+                    >
+                      {highlight.id}
+                      <div className="absolute inset-0 border-4 border-white rounded-full opacity-80"></div>
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      className=" text-xl font-semibold"
+                      style={{ color: highlight.theme }}
+                    >
+                      {highlight.position}
+                    </h3>
+                  </div>
                 </div>
 
                 {/* Card */}
                 <div
-                  className="w-[55%] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition relative z-10"
+                  className="w-[55%] rounded-lg shadow-md overflow-hidden p-2 bg-white hover:shadow-lg transition relative z-10"
                   style={{
                     borderTop: `4px solid ${highlight.theme}`,
                     marginLeft: index % 2 === 0 ? "0" : "auto", // Align cards
@@ -159,7 +180,7 @@ const ProgramHighlights: React.FC = () => {
                     <Image
                       src={highlight.image || ""}
                       alt={highlight.title}
-                      className="object-cover object-center"
+                      className="object-fill object-center"
                       fill={true}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority
@@ -184,9 +205,14 @@ const ProgramHighlights: React.FC = () => {
                     {highlight.detailedContent && (
                       <button
                         onClick={() => openModal(highlight)}
-                        className="text-secondary font-semibold hover:underline focus:outline-none self-center"
+                        className={`flex items-center gap-2   rounded-md outline outline-1  px-4 py-1  self-center bg-transparent`}
+                        style={{
+                          color: highlight.theme,
+                          outlineColor: highlight.theme,
+                        }}
                       >
-                        Explore moments
+                        Explore Moments
+                        <ArrowRightIcon />
                       </button>
                     )}
                   </div>
