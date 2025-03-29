@@ -15,7 +15,7 @@ const Achievement: React.FC<AchievementProps> = ({
 }) => {
   return (
     <section className="my-10">
-      <h2 className="text-green-700 font-bold text-base md:text-xl text-center">
+      <h2 className="text-green-700 font-bold text-base md:text-xl text-left">
         {title} ({date})
       </h2>
       <div

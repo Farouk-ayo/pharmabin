@@ -110,25 +110,26 @@ const ProgramHighlights: React.FC = () => {
                 data-aos={`${index % 2 === 0 ? "fade-left" : "fade-right"}`}
               >
                 <div
-                  className="absolute hidden md:inline-block z-10  p-2 text-white font-bold text-sm"
-                  style={{
-                    right: index % 2 === 0 ? "20%" : "60%",
-                  }}
+                  className={`absolute hidden md:block z-10  p-2 text-white font-bold text-sm  ${
+                    index % 2 === 0
+                      ? "translate-x-full right-[45%]"
+                      : " right-[55%] "
+                  } `}
                 >
                   <div
-                    className="flex items-center  space-x-4"
+                    className="flex relative items-center  space-x-4"
                     style={{
                       flexDirection: index % 2 === 0 ? "row" : "row-reverse",
                     }}
                   >
                     {" "}
-                    <div className="flex items-center space-x-2">
+                    <div className="relative flex items-center space-x-2">
                       <div
                         className={`w-2 h-2 rounded-full`}
                         style={{ backgroundColor: highlight.theme }}
                       ></div>
                       <div
-                        className={`h-0.5 w-8 border-dashed border-t`}
+                        className={` relative h-0.5 w-8 border-dashed border-t`}
                         style={{
                           borderColor: highlight.theme,
                         }}
@@ -157,7 +158,7 @@ const ProgramHighlights: React.FC = () => {
                     marginRight: index % 2 === 0 ? "auto" : "0",
                   }}
                 >
-                  <div className="relative w-full h-64 overflow-hidden">
+                  <div className="relative w-full h-64 md:h-80 overflow-hidden">
                     <Image
                       src={highlight.image || ""}
                       alt={highlight.title}
