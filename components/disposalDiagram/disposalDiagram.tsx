@@ -45,7 +45,7 @@ const DisposalDiagram = () => {
       content: "Using technology to simplify pharmaceutical waste disposal.",
       position: "col-start-1 row-start-1",
       rotation: 240,
-      className: "-top-[110%] right-[30%] ",
+      className: "-top-[110%] right-[10%] ",
     },
 
     {
@@ -55,7 +55,7 @@ const DisposalDiagram = () => {
         "Partnering with local pharmacies and hospitals to drive impact.",
       position: "col-start-3 row-start-1",
       rotation: 300,
-      className: "-top-[110%] left-[80%]",
+      className: "-top-[110%] left-[60%]",
     },
     {
       id: 4,
@@ -72,7 +72,7 @@ const DisposalDiagram = () => {
         "Educating people on responsible pharmaceutical waste management.",
       position: "col-start-3 row-start-3",
       rotation: 120,
-      className: "bottom-[0%] right-[30%]  ",
+      className: "bottom-[0%] right-[10%]  ",
     },
     {
       id: 6,
@@ -81,7 +81,7 @@ const DisposalDiagram = () => {
         "Ensuring transparency in waste collection and disposal processes.",
       position: "col-start-1 row-start-3",
       rotation: 60,
-      className: "bottom-[0%] left-[80%]  ",
+      className: "bottom-[0%] left-[60%]  ",
     },
   ];
 
@@ -91,7 +91,7 @@ const DisposalDiagram = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-20 text-center">
         Core Values Of PharmaBin
       </h1>
-      <div className="lg:grid lg:grid-cols-3 gap-16 relative flex flex-col items-center justify-center">
+      <div className="lg:grid lg:grid-cols-3 gap-x-32 gap-y-24 relative flex flex-col items-center justify-center">
         <div className="lg:col-start-2 lg:row-start-2 w-80 h-80 mx-auto relative hidden lg:block">
           <div className="relative w-full h-full z-20">
             {/* Outer Background Circle */}
@@ -135,9 +135,9 @@ const DisposalDiagram = () => {
               style={{
                 top: "50%",
                 left: "50%",
-                transform: `rotate(${index * 60}deg) translate(120px) rotate(-${
-                  index * 60
-                }deg)`,
+                transform: `rotate(${
+                  ((index + 3) % 6) * 60
+                }deg) translate(120px) rotate(-${((index + 3) % 6) * 60}deg)`,
                 marginLeft: "-20px",
                 marginTop: "-20px",
               }}
@@ -155,17 +155,17 @@ const DisposalDiagram = () => {
             key={item.id}
             className={`relative z-20 ${
               item.position
-            } items-center  my-auto  w-full left-0 ${
+            } items-center  my-auto  w-full  ${
               item.id === 2
-                ? "lg:left-16"
+                ? "lg:left-[45%]"
                 : item.id === 3
-                ? "lg:right-16"
+                ? "lg:right-[45%]"
                 : item.id === 1 || item.id === 4
                 ? ""
                 : item.id === 6
-                ? "lg:left-16"
+                ? "lg:left-[45%]"
                 : item.id === 5
-                ? "lg:right-16"
+                ? "lg:right-[45%]"
                 : ""
             }`}
           >

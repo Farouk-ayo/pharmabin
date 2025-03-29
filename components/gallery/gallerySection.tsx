@@ -19,7 +19,7 @@ const GallerySection = () => {
           </p>
         </div>
       </div>
-      <div className="px-4 md:px-20 py-10">
+      <div className="px-4 md:px-20">
         <Achievement
           title="Introducing The Brain Behind PharmaBin"
           date="14/02/2025"

@@ -210,19 +210,19 @@ export default function Home() {
               Collection Point Near You
             </h1>
             <p className="text-base sm:text-base xl:text-lg text-textPrimary leading-relaxed mb-4">
-              PharmaBin is a big pharmaceutical waste disposal in Nigeria.
-              Through a unique partnership with NAFDAC, PharmaBin is able to
-              increase awareness of your services by including your location on
-              their special consumer medication disposal mapping tool.
+              PharmaBin is an initiative dedicated to solving the pressing issue
+              of pharmaceutical waste management in Nigeria. By integrating
+              technology, community engagement, and environmental
+              sustainability, PharmaBin provides a safe, efficient, and
+              eco-friendly solution for the disposal of expired, unused, or
+              contaminated medications.
               <br />
-              Participating pharmacies may benefit from offering the
-              uniqueservices of the TakeAway program with increased foot traffic
-              to the pharmacy. Any pharmaceutical product, prescription or OTC,
-              can be accepted for disposal, EXCLUDING CONTROLLED SUBSTANCES,
-              syringes, thermometers, home-based care or durable medical
-              equipment, and liquids over 4 oz. Medications in any dosage form
-              and any type of packaging are allowed, provided the medications
-              are not controlled substances.
+              Our platform connects households, community pharmacies, and
+              regulatory bodies, ensuring proper collection and disposal of
+              pharmaceutical waste while raising awareness about its impact on
+              health and the environment. With a vision to lead responsible
+              waste management practices in Nigeria, PharmaBin is committed to
+              fostering a cleaner, healthier, and more sustainable future.
             </p>
             <Button
               variant="secondary"
@@ -290,10 +290,12 @@ export default function Home() {
               Want To Ask PharmaBin Anything? We Have Answers
             </h1>
             <p>
-              PharmaBin is a big pharmaceutical waste disposal in Nigeria.
-              Through a unique partnership with NAFDAC, PharmaBin is able to
-              increase awareness of your services by including your location on
-              their special consumer medication disposal mapping tool.
+              PharmaBin is an initiative dedicated to solving the pressing issue
+              of pharmaceutical waste management in Nigeria. By integrating
+              technology, community engagement, and environmental
+              sustainability, PharmaBin provides a safe, efficient, and
+              eco-friendly solution for the disposal of expired, unused, or
+              contaminated medications.
             </p>
           </div>
           <FaqSection />

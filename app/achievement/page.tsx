@@ -13,7 +13,7 @@ const page = () => {
       }}
     >
       <Header
-        title="Achivement"
+        title="Achievement"
         description={
           <p className="text-lg text-medium text-white ">
             Recognizing Impact, Celebrating Progress – Every Certificate Earned
