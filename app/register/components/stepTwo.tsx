@@ -192,7 +192,7 @@ const StepTwoForm = ({
         </div>
         <div>
           <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
-            Pharmacy Zip Code
+            Pharmacy Zip Code (optional)
           </label>
           <input
             {...register("zipCode")}
