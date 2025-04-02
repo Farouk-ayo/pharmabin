@@ -85,7 +85,6 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
           </span>
         )}
       </div>
-
       <Button
         variant="primary"
         type="submit"

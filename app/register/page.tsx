@@ -18,7 +18,7 @@ const Page = () => {
     City: "",
     State: "",
     localGovt: "",
-    zipCode: 0,
+    zipCode: 0 || undefined,
     Others: "",
   });
   const postRegister = usePostRegister();
@@ -37,7 +37,11 @@ const Page = () => {
       ...data,
     }));
 
-    const completeFormData = { ...formData, ...data };
+    const completeFormData = {
+      ...formData,
+      ...data,
+      zipCode: data.zipCode ?? 0,
+    };
 
     postRegister.mutate(completeFormData, {
       onSuccess: () => {
@@ -45,6 +49,7 @@ const Page = () => {
         setStep(3);
       },
       onError: (error: Error) => {
+        console.log(error);
         showToast.error(error.message);
       },
     });

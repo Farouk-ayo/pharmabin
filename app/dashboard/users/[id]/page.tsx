@@ -95,7 +95,10 @@ const EditUser: React.FC = () => {
 
   const onSubmit = handleFormSubmit((data: FormInputs) => {
     updateUser(
-      { _id: Array.isArray(id) ? id[0] : id || "", data },
+      {
+        _id: Array.isArray(id) ? id[0] : id || "",
+        data: { ...data, zipCode: data.zipCode ?? 0 },
+      },
       {
         onSuccess: () => {
           router.push("/dashboard/users");

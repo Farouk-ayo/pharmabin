@@ -57,6 +57,7 @@ export interface SidebarProps {
 export type ArticleResponse = {
   _id: string;
   Title: string;
+  Author: string;
   Caption: string;
   Subtitle1: string;
   Content1: string;
@@ -81,6 +82,7 @@ export type ArticleResponse = {
 
 export type ArticleCard = {
   Title: string;
+  Author: string;
   Caption: string;
   Subtitle1?: string;
   Subtitle2?: string;

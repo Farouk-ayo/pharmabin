@@ -94,6 +94,16 @@ export const showToast = {
   },
 };
 
+export function formatDateToString(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 // Example usage in your app:
 /*
 import { showToast } from '@/utils/toast';

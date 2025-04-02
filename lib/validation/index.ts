@@ -13,10 +13,7 @@ export const stepTwoSchema = z.object({
   City: z.string().min(5, "Business address is required"),
   State: z.string().min(1, "State is required"),
   localGovt: z.string().min(1, "Local Government is required"),
-  zipCode: z.coerce
-    .number()
-    .positive("Zip code must be a positive number")
-    .int("Zip code must be an integer"),
+  zipCode: z.coerce.number().int("Zip code must be an integer").optional(),
   Others: z.string().optional(),
 });
 

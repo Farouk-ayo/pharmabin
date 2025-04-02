@@ -33,6 +33,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
   );
   const [formData, setFormData] = useState({
     Title: "",
+    Author: "",
     Caption: "",
     Subtitle1: "",
     Subtitle2: "",
@@ -53,6 +54,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     if (initialData) {
       setFormData({
         Title: initialData.Title || "",
+        Author: initialData.Author || "",
         Caption: initialData.Caption || "",
         Subtitle1: initialData.Subtitle1 || "",
         Subtitle2: initialData.Subtitle2 || "",
@@ -175,6 +177,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
 
       const payload = {
         Title: formData.Title,
+        Author: formData.Author,
         Caption: formData.Caption,
         Subtitle1: formData.Subtitle1,
         Subtitle2: formData.Subtitle2,
@@ -333,6 +336,18 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
 
         {/* Input Fields */}
         <div className="grid  mt-5">
+          <label className="block  mt-4  text-sm font-semibold text-gray-700">
+            Author
+          </label>
+          <input
+            disabled={type === "view"}
+            type="text"
+            name="Author"
+            placeholder="Enter author name"
+            value={formData.Author}
+            onChange={handleChange}
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          />
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Title
           </label>

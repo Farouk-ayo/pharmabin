@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useGetArticle, useGetArticles } from "@/lib/hooks/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Carousel from "@/components/carousel";
+import { formatDateToString } from "@/lib/util";
 
 const socialLinks = [
   {
@@ -83,8 +84,14 @@ const ArticleDetails = () => {
         </h1>
         <p className="text-textPrimary mb-6 ">
           {" "}
-          {article?.createdAt &&
-            new Date(article.createdAt).toLocaleDateString()}
+          <span>
+            {" "}
+            {article?.createdAt && formatDateToString(article.createdAt)}
+          </span>
+          <span>-</span>{" "}
+          <span className="text-primary font-semibold block md:inline ">
+            Written by {article?.Author}
+          </span>
         </p>
         <div className="w-full aspect-[21/9] md:h-[20rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
