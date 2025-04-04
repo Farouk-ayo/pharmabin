@@ -27,7 +27,7 @@ const highlights = [
       media: [
         {
           type: "image",
-          src: "/award-2.png",
+          src: "/award-2a.png",
           alt: "Muslim Tech Summit 1.0 Hackathon",
         },
       ],
@@ -35,7 +35,7 @@ const highlights = [
   },
   {
     id: 3,
-    title: "PharmaBin - Hult Prize On-Campus Program",
+    title: "Hult Prize On-Campus Program At Al-Hikmah University",
     date: "26/02/2023",
     image: "/award-3.png",
     description: "",
@@ -84,7 +84,7 @@ const ProgramHighlights: React.FC = () => {
       className="timeline-section py-16 bg-light text-primary overflow-x-hidden"
       id="program-highlights"
     >
-      <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-0">
+      <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-0    ">
         <div className="relative mt-12">
           <div
             className="absolute w-[1px] left-1/2 transform -translate-x-1/2 top-[60px]"
@@ -172,7 +172,7 @@ const ProgramHighlights: React.FC = () => {
                   <div className="w-full p-6 bg-white flex flex-col justify-between items-center">
                     <div className="flex flex-col items-center text-center">
                       <h3
-                        className="text-xl font-bold mb-2 text-center"
+                        className="text-xl md:text-2xl font-semibold mb-2 text-center"
                         style={{ color: highlight.theme }}
                       >
                         {highlight.title}
