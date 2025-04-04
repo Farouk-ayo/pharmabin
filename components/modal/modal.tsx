@@ -1,6 +1,6 @@
-import { CrossIcon } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
+import { CrossIcon } from "../icons";
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,52 +12,102 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, detailedContent }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
+  const getGridClass = () => {
+    const count = detailedContent?.media?.length || 0;
+    if (count === 1) return "grid-cols-1";
+    if (count === 2) return "grid-cols-1 md:grid-cols-2";
+    return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300 ease-in-out">
-      <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-3/4 h-[80%] p-6 relative transform transition-all duration-500 ease-in-out overflow-hidden">
-        {/* Close button */}
+    <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[9999] transition-opacity duration-300 ease-in-out p-4 top-[10%]">
+      <div className="bg-white rounded-lg max-w-4xl w-[90%] h-45%] md:h-[80%] max-h-[90vh] p-4 md:p-6 relative transform transition-all duration-500 ease-in-out flex flex-col">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-red-500 transition duration-300"
         >
-          <CrossIcon size={24} />
+          <CrossIcon width={40} height={40} />
         </button>
 
-        {/* Modal Header */}
-        <h3 className="text-3xl font-bold text-primary mb-4">
+        <h3 className=" text-base md:text-xl  font-semibold text-primary mb-4 pr-8">
           {detailedContent?.title}
         </h3>
 
-        {/* Modal Content (Scrollable Area) */}
-        <div className="space-y-6 overflow-y- overflow-x-hidden auto h-[90%] pr-2 custom-scrollbar">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {detailedContent?.media.map((item, index) => (
-              <div key={index} className="w-full">
-                {/* Image Display */}
-                {item.type === "image" && (
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-64 object-cover rounded-lg shadow-md transition-transform transform hover:scale-105"
-                  />
-                )}
-
-                {/* Video Display */}
-                {item.type === "video" && (
-                  <div className="relative h-64">
+        <div className="overflow-y-auto overflow-x-hidden flex-1 pr-2 custom-scrollbar">
+          <div className={`grid ${getGridClass()} gap-4 pb-4`}>
+            {detailedContent?.media?.length === 1 ? (
+              <div className="w-full mx-auto" style={{ maxHeight: "70vh" }}>
+                {detailedContent.media[0].type === "image" ? (
+                  <div className="relative w-full h-full min-h-[30vh] md:min-h-[50vh]">
+                    <Image
+                      src={detailedContent.media[0].src}
+                      alt={detailedContent.media[0].alt || "Media content"}
+                      fill
+                      // sizes="(max-width: 768px) 100vw, 80vw"
+                      className="object-contain rounded-lg"
+                      priority
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="relative w-full"
+                    style={{ minHeight: "50vh" }}
+                  >
                     <video
                       controls
-                      className="w-full h-full object-cover rounded-lg shadow-md"
+                      className="w-full h-full object-contain rounded-lg"
+                      style={{ maxHeight: "70vh" }}
                     >
-                      <source src={item.src} type="video/mp4" />
+                      <source
+                        src={detailedContent.media[0].src}
+                        type="video/mp4"
+                      />
                       Your browser does not support the video tag.
                     </video>
                   </div>
                 )}
               </div>
-            ))}
+            ) : (
+              detailedContent?.media.map((item, index) => (
+                <div key={index} className="w-full h-64 relative">
+                  {item.type === "image" ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={item.src}
+                        alt={item.alt || "Media content"}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover rounded-lg transition-transform hover:scale-105 duration-300"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative h-full w-full">
+                      <video
+                        controls
+                        className="w-full h-full object-cover rounded-lg"
+                      >
+                        <source src={item.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

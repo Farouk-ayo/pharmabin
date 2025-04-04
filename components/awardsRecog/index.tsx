@@ -84,7 +84,7 @@ const ProgramHighlights: React.FC = () => {
       className="timeline-section py-16 bg-light text-primary overflow-x-hidden"
       id="program-highlights"
     >
-      <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-0">
+      <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-0    ">
         <div className="relative mt-12">
           <div
             className="absolute w-[1px] left-1/2 transform -translate-x-1/2 top-[60px]"
