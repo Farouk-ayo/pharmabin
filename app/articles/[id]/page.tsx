@@ -48,7 +48,7 @@ const ArticleDetails = () => {
   const { data: articles } = useGetArticles();
 
   if (isPending) {
-    <LoadingSkeleton count={1} type="Article" />;
+    return <LoadingSkeleton count={1} type="ArticleID" />;
   }
   return (
     <section className=" relative  top-28  md:top-40 px-4 lg:px-28 pb-40 items-center overflow-hidden">
