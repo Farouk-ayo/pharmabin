@@ -34,6 +34,6 @@ export const Card: React.FC<CardProps> = ({
       >
         Read More <span className="ml-2 text-primary ">&rarr;</span>
       </a>
-    </div>xxx
+    </div>
   </div>
 );
