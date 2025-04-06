@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import RootClientLayout from "./layout.client";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const sourceSansPro = Source_Sans_3({
   subsets: ["latin"],
@@ -83,6 +85,8 @@ export default function RootLayout({
     <html lang="en" className={sourceSansPro.className}>
       <body className={` antialiased`}>
         <RootClientLayout>{children}</RootClientLayout>
+        <GoogleAnalytics gaId="G-3XEL136MDR" />
+        <Analytics />
       </body>
     </html>
   );
